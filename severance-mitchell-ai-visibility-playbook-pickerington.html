@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Visibility Playbook – Mitchell Severance · Pickerington Market</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-mid: #243660;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale: #F5EDD6;
+    --white: #FFFFFF;
+    --off-white: #F7F8FA;
+    --light-gray: #E8ECF2;
+    --mid-gray: #8492A6;
+    --dark-gray: #2D3748;
+    --green: #2E7D5B;
+    --amber: #B45309;
+    --red: #C0392B;
+    --green-bg: #D1FAE5;
+    --amber-bg: #FEF3C7;
+    --red-bg: #FEE2E2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--dark-gray);
+    line-height: 1.6;
+  }
+
+  .cover {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.06);
+  }
+
+  .cover-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .cover-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(52px, 9vw, 88px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+
+  .cover-name span { color: var(--gold); }
+
+  .cover-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+  }
+
+  .cover-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    color: var(--white);
+    max-width: 680px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+
+  .cover-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    margin-bottom: 50px;
+    line-height: 1.7;
+  }
+
+  .cover-score-pill {
+    background: rgba(201,168,76,0.15);
+    border: 2px solid var(--gold);
+    border-radius: 50px;
+    padding: 14px 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 50px;
+  }
+
+  .cover-score-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .cover-score-label { text-align: left; }
+
+  .cover-score-label .band {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    display: block;
+  }
+
+  .cover-score-label .out-of {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    display: block;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .cover-branding {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .page-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--mid-gray);
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .divider-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+
+  .scorecard-section { background: var(--navy); padding: 60px 0; }
+
+  .scorecard-inner { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+
+  .scorecard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .scorecard-left .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .scorecard-left h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .scorecard-left p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    max-width: 420px;
+    line-height: 1.65;
+  }
+
+  .big-score { text-align: center; flex-shrink: 0; }
+
+  .big-score-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .big-score-band {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    display: block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .big-score-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .score-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .score-tile {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .score-tile .tile-value {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .score-tile .tile-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+
+  .tile-green .tile-value { color: #4ADE80; }
+  .tile-amber .tile-value { color: #FCD34D; }
+  .tile-red .tile-value { color: #F87171; }
+
+  .score-change {
+    font-size: 11px;
+    margin-top: 4px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .change-up { color: #4ADE80; }
+  .change-same { color: rgba(255,255,255,0.3); }
+
+  .heatmap {
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .heatmap-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .heatmap-table { width: 100%; border-collapse: collapse; }
+
+  .heatmap-table th {
+    background: rgba(255,255,255,0.04);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding: 10px 12px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .heatmap-table th:first-child { text-align: left; width: 40%; }
+
+  .heatmap-table td {
+    padding: 10px 12px;
+    font-size: 12px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .heatmap-table td:first-child {
+    text-align: left;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+
+  .cell-named {
+    background: rgba(74,222,128,0.2);
+    color: #4ADE80;
+    font-weight: 700;
+    font-size: 11px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+  }
+
+  .cell-mentioned {
+    background: rgba(252,211,77,0.18);
+    color: #FCD34D;
+    font-weight: 700;
+    font-size: 11px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+  }
+
+  .cell-absent {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.25);
+    font-weight: 600;
+    font-size: 11px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+  }
+
+  .findings-section { background: var(--white); }
+
+  .finding-card {
+    border-left: 4px solid var(--gold);
+    background: var(--off-white);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+
+  .finding-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .finding-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .finding-body { font-size: 14px; color: var(--dark-gray); line-height: 1.7; }
+
+  .finding-card.finding-edge { border-left-color: var(--navy); background: var(--navy); }
+  .finding-card.finding-edge .finding-number { color: var(--gold); }
+  .finding-card.finding-edge .finding-title { color: var(--white); }
+  .finding-card.finding-edge .finding-body { color: rgba(255,255,255,0.75); }
+
+  .market-compare {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .market-compare-col { text-align: center; }
+
+  .market-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .market-score {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+  }
+
+  .market-score-old { color: rgba(255,255,255,0.35); }
+  .market-score-new { color: var(--gold); }
+
+  .market-band {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: 6px;
+  }
+
+  .market-band-old { color: rgba(255,255,255,0.4); }
+  .market-band-new { color: var(--white); }
+
+  .market-note { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 6px; display: block; }
+
+  .market-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    align-self: stretch;
+    display: none;
+  }
+
+  .moves-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 36px;
+  }
+
+  .move-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .move-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .move-rank {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .move-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .move-body { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+  .move-timeline {
+    margin-top: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .pyramid-layers { display: flex; flex-direction: column; gap: 16px; }
+
+  .layer-row { display: flex; gap: 20px; align-items: flex-start; }
+
+  .layer-indicator {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .layer-green { background: var(--green-bg); color: var(--green); }
+  .layer-amber { background: var(--amber-bg); color: var(--amber); }
+  .layer-red { background: var(--red-bg); color: var(--red); }
+
+  .layer-content { flex: 1; }
+
+  .layer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .layer-desc { font-size: 14px; color: var(--mid-gray); line-height: 1.6; margin-bottom: 8px; }
+
+  .layer-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 3px 12px;
+  }
+
+  .status-green { background: var(--green-bg); color: var(--green); }
+  .status-amber { background: var(--amber-bg); color: var(--amber); }
+  .status-red { background: var(--red-bg); color: var(--red); }
+
+  .content-block {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .content-block h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .content-block p { font-size: 14px; color: var(--dark-gray); line-height: 1.75; margin-bottom: 12px; }
+
+  .check-list { list-style: none; margin-top: 12px; }
+
+  .check-list li {
+    font-size: 14px;
+    color: var(--dark-gray);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light-gray);
+    padding-left: 28px;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .check-list li:last-child { border-bottom: none; }
+
+  .check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .engines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 28px 0;
+  }
+
+  .engine-card {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 24px;
+    border-top: 3px solid var(--navy);
+  }
+
+  .engine-icon { font-size: 28px; margin-bottom: 12px; }
+
+  .engine-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .engine-desc { font-size: 13px; color: var(--mid-gray); line-height: 1.6; }
+
+  .plan-phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 28px 0;
+  }
+
+  .phase-card { border-radius: 12px; padding: 28px 24px; background: var(--navy); }
+
+  .phase-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .phase-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .phase-items { list-style: none; }
+
+  .phase-items li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .phase-items li:last-child { border-bottom: none; }
+
+  .phase-items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .score-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; margin: 20px 0; }
+
+  .score-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .score-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--white);
+    vertical-align: middle;
+  }
+
+  .score-table td:first-child { font-weight: 600; color: var(--navy); }
+
+  .rules-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; margin: 20px 0; }
+
+  .rules-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .rules-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  .rules-table td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; width: 160px; }
+
+  .glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; }
+
+  .glossary-item { padding: 16px 20px; border-bottom: 1px solid var(--light-gray); border-right: 1px solid var(--light-gray); }
+
+  .glossary-term { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+
+  .glossary-def { font-size: 13px; color: var(--mid-gray); line-height: 1.55; }
+
+  .back-cover { background: var(--navy); padding: 80px 40px; text-align: center; }
+
+  .back-cover h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .back-cover h2 span { color: var(--gold); }
+
+  .back-cover p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto 36px; line-height: 1.75; }
+
+  .back-cover-branding {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .section-marker {
+    background: var(--light-gray);
+    padding: 10px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-marker::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .callout {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.65;
+  }
+
+  .callout strong { color: var(--navy); }
+
+  .query-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
+
+  .query-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .query-table td {
+    padding: 11px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--white);
+    line-height: 1.55;
+  }
+
+  .query-table td:first-child {
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 130px;
+  }
+
+  @media (max-width: 600px) {
+    .page-section { padding: 40px 20px; }
+    .scorecard-inner { padding: 0 20px; }
+    .scorecard-header { flex-direction: column; }
+    .cover { padding: 40px 24px; }
+    .cover-footer { padding: 0 20px; }
+    .market-compare { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    .cover { page-break-after: always; }
+    .scorecard-section { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <p class="cover-eyebrow">AI Visibility Playbook · Pickerington Market Edition</p>
+  <h1 class="cover-name">MITCHELL<br><span>SEVERANCE</span></h1>
+  <p class="cover-title">Senior Loan Officer · Pickerington, Ohio · NMLS #493686</p>
+  <div class="cover-divider"></div>
+  <h2 class="cover-headline">How to be the first name AI gives when a buyer in Pickerington asks: "Who is the best loan officer near me?"</h2>
+  <p class="cover-sub">Your score goes up when the market gets smaller. Here is why — and what to do with it.</p>
+  <div class="cover-score-pill">
+    <div class="cover-score-number">48</div>
+    <div class="cover-score-label">
+      <span class="band">DEVELOPING</span>
+      <span class="out-of">out of 100 · Pickerington AI Visibility Score</span>
+    </div>
+  </div>
+  <p class="cover-branding">Presented by Brian Snyder · Union Home Mortgage</p>
+  <div class="cover-footer">
+    <span>Building Better Businesses. Building Better Lives.</span>
+    <span>Confidential · June 2026</span>
+  </div>
+</section>
+
+<!-- SCORECARD -->
+<div class="section-marker">01 · Your Scorecard</div>
+<section class="scorecard-section">
+  <div class="scorecard-inner">
+
+    <div class="scorecard-header">
+      <div class="scorecard-left">
+        <p class="eyebrow">AI Visibility Audit · Pickerington, Ohio</p>
+        <h2>A Smaller Market.<br>A Better Score.</h2>
+        <p>When the market shrinks from all of Columbus to specifically Pickerington, your score goes up — not because anything about you changed, but because the competition thins out dramatically. Pickerington is not Columbus. Fewer LOs are competing for AI's attention here, your name is already attached to this zip code across multiple platforms, and you are one of the most visible mortgage professionals in this specific community. Here is where you stand.</p>
+      </div>
+      <div class="big-score">
+        <span class="big-score-number">48</span>
+        <span class="big-score-band">Developing</span>
+        <span class="big-score-sub">out of 100 · Pickerington market</span>
+      </div>
+    </div>
+
+    <!-- Market comparison -->
+    <div class="market-compare">
+      <div class="market-compare-col">
+        <span class="market-label">Columbus Market Score</span>
+        <span class="market-score market-score-old">38</span>
+        <span class="market-band market-band-old">Emerging</span>
+        <span class="market-note">More competitors, more noise</span>
+      </div>
+      <div class="market-compare-col">
+        <span class="market-label">Pickerington Market Score</span>
+        <span class="market-score market-score-new">48</span>
+        <span class="market-band market-band-new">Developing</span>
+        <span class="market-note">Thinner field, clearer signal</span>
+      </div>
+    </div>
+
+    <div class="score-tiles">
+      <div class="score-tile tile-amber">
+        <div class="tile-value">22%</div>
+        <div class="tile-label">Discovery<br>Presence</div>
+        <div class="score-change change-up">▲ Up from 8%</div>
+      </div>
+      <div class="score-tile tile-green">
+        <div class="tile-value">88%</div>
+        <div class="tile-label">Branded<br>Presence</div>
+        <div class="score-change change-up">▲ Slightly up</div>
+      </div>
+      <div class="score-tile tile-amber">
+        <div class="tile-value">55</div>
+        <div class="tile-label">Reviews &amp;<br>Service</div>
+        <div class="score-change change-same">Same</div>
+      </div>
+      <div class="score-tile tile-green">
+        <div class="tile-value">65</div>
+        <div class="tile-label">Brand<br>Clarity</div>
+        <div class="score-change change-up">▲ Slightly up</div>
+      </div>
+      <div class="score-tile tile-amber">
+        <div class="tile-value">32</div>
+        <div class="tile-label">Third-Party<br>Proof</div>
+        <div class="score-change change-up">▲ Up from 18</div>
+      </div>
+      <div class="score-tile tile-amber">
+        <div class="tile-value">48</div>
+        <div class="tile-label">Owned<br>Pages</div>
+        <div class="score-change change-same">Same</div>
+      </div>
+    </div>
+
+    <div class="heatmap">
+      <div class="heatmap-title">Query × Tool Heatmap — Pickerington, Ohio</div>
+      <table class="heatmap-table">
+        <thead>
+          <tr>
+            <th>Search Query</th>
+            <th>ChatGPT</th>
+            <th>Gemini</th>
+            <th>Perplexity</th>
+            <th>Google AI</th>
+            <th>Claude</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Best loan officer in Pickerington OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>Best mortgage lender Pickerington OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>First-time homebuyer lender Pickerington OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>Local mortgage lender Pickerington OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>Wealth building loan officer Pickerington OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>Mitchell Severance Union Home Mortgage</td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+          </tr>
+          <tr>
+            <td>Mitchell Severance NMLS 493686</td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+          </tr>
+          <tr>
+            <td>Is Mitchell Severance a good loan officer</td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>Mortgage Mitch Pickerington Ohio</td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY THE SCORE CHANGED -->
+<div class="section-marker">02 · Why the Score Changed</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Market Size Matters</p>
+    <h2 class="section-title">Why Pickerington Scores Higher</h2>
+    <div class="divider-bar"></div>
+
+    <div class="content-block">
+      <p>Your footprint did not change. Your site, your reviews, your NMLS listing, your Yelp page, your Pickerington Chamber membership — none of that moved. What changed is the size of the contest.</p>
+
+      <h3>Columbus: 1.3 million people, hundreds of LOs</h3>
+      <p>When AI answers "best loan officer in Columbus OH," it has a very long list to pull from. National brands, big banks, independent brokers, and dozens of individual LOs all compete for the same answer. Your footprint is real, but it gets diluted by the volume of competition. Discovery presence was 8%.</p>
+
+      <h3>Pickerington: around 40,000 people, a handful of LOs</h3>
+      <p>When AI narrows to Pickerington specifically, the list of credible local options shrinks fast. The competitors visible in this market are mostly Guaranteed Rate Affinity LOs, a few bank branch names, and Mitchell Severance. You have a physical office address on Hill Road North that is indexed across Yelp, Yahoo Local, Findglocal, and the Pickerington Chamber. That geographic anchor matters enormously in a small market. Discovery presence jumps to 22% simply because there are fewer people in the room.</p>
+
+      <h3>The third-party score jumps too</h3>
+      <p>Your Chamber of Commerce listing, Yelp presence, and local address mentions mean a lot more in a Pickerington search than they do in a Columbus-wide search. AI sees you as an established local presence in this specific community — not just another name in a large metro.</p>
+    </div>
+
+    <div class="callout">
+      <strong>The core insight:</strong> You are already a recognizable name in Pickerington. The moves you need to make to own this market are smaller and faster than they would be in Columbus. A few targeted actions — especially local reviews and one or two outside mentions — can put you in the top result for Pickerington mortgage searches within 60 days.
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<div class="section-marker">03 · Findings &amp; Next Moves</div>
+<section class="findings-section">
+  <div class="page-section">
+    <p class="section-eyebrow">Your Personalized Diagnosis</p>
+    <h2 class="section-title">What the Pickerington Audit Found</h2>
+    <p class="section-sub">Four findings specific to this market, then three moves to make — in order.</p>
+    <div class="divider-bar"></div>
+
+    <div class="finding-card">
+      <p class="finding-number">Finding 01</p>
+      <h3 class="finding-title">You are already a visible presence in Pickerington — you just are not claiming it.</h3>
+      <p class="finding-body">Your office address at 49 Hill Road North appears on Yelp, Yahoo Local, Findglocal, and the Pickerington Chamber. AI uses all of those to anchor you geographically to this specific city. Gemini and Google AI already surface your name for some Pickerington-specific queries — something that does not happen for Columbus-wide searches. You have more local presence here than you probably realize. The work is to sharpen it, not start from scratch.</p>
+    </div>
+
+    <div class="finding-card">
+      <p class="finding-number">Finding 02</p>
+      <h3 class="finding-title">Guaranteed Rate Affinity is your main competition in this market — and their LOs are generic.</h3>
+      <p class="finding-body">The Yellow Pages and local directories list several Guaranteed Rate Affinity loan officers in Pickerington: Peggy Halbrook, Brian Thomas, Drew Frayer. These are national-brand LOs with a local office. They have rate-first positioning and no distinctive lane. "Mitchell Severance helps Pickerington families build wealth through homeownership" is a story none of them are telling. In a small market with a thin competitor field, that differentiation is a decisive advantage — if you put it everywhere.</p>
+    </div>
+
+    <div class="finding-card">
+      <p class="finding-number">Finding 03</p>
+      <h3 class="finding-title">The Pickerington-specific discovery gap is closable in 30 days.</h3>
+      <p class="finding-body">The queries that are still showing dashes — "best loan officer in Pickerington OH," "wealth building loan officer Pickerington" — are not hard to crack in a market this size. You need three things: your Pickerington office address stated clearly on every profile, the word "Pickerington" appearing near your name and your lane language on at least four or five outside platforms, and a handful of Google reviews that mention Pickerington by name. That is a month of focused work, not a year.</p>
+    </div>
+
+    <div class="finding-card">
+      <p class="finding-number">Finding 04</p>
+      <h3 class="finding-title">The Pickerington Chamber membership is underused as an AI signal.</h3>
+      <p class="finding-body">You are listed in the Pickerington Area Chamber of Commerce directory. That is a trusted, locally-indexed third-party source — exactly what AI looks for. But the listing is minimal. A fuller chamber profile, combined with community involvement and event mentions, can turn that single link into multiple AI-readable signals that place you in Pickerington searches. The Chamber is also a path to local press coverage, business features, and partner connections. It is an asset you are barely using.</p>
+    </div>
+
+    <div class="finding-card finding-edge">
+      <p class="finding-number">Your Edge</p>
+      <h3 class="finding-title">You are the most credentialed, best-branded local LO in a market that is not paying attention yet.</h3>
+      <p class="finding-body">Guaranteed Rate Affinity has volume. They do not have a personal brand, a local website, a dedicated team page, or a wealth-building lane. You have all of that — plus 12 years of experience, a professional personal site, an actual Pickerington office, and Chamber membership. You are already the most visible independent LO in this market. A few targeted moves — local reviews, one Chamber feature, and Pickerington-specific language on your profiles — and AI will be naming you first for nearly every relevant search in this zip code. The window is open. Nobody else is running through it.</p>
+    </div>
+
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--navy);margin-top:44px;margin-bottom:8px;">Three Moves. In This Order.</h3>
+    <p style="font-size:14px;color:var(--mid-gray);margin-bottom:24px;">Pickerington-specific. These are faster wins than the Columbus-market version.</p>
+
+    <div class="moves-grid">
+      <div class="move-card">
+        <div class="move-rank">01</div>
+        <h4 class="move-title">Put "Pickerington" next to your lane on every profile.</h4>
+        <p class="move-body">Every profile that says "Central Ohio" or "Columbus area" should also say "Pickerington" specifically. Your UHM bio, LinkedIn, Yelp, and your Pickerington Chamber listing should all include: "Helping Pickerington families build wealth through homeownership." That phrase, on four platforms, is enough for AI to start connecting you to this specific city.</p>
+        <p class="move-timeline">Timeline: Week 1</p>
+      </div>
+      <div class="move-card">
+        <div class="move-rank">02</div>
+        <h4 class="move-title">Get 10 Google reviews that mention Pickerington.</h4>
+        <p class="move-body">When you ask borrowers for a Google review, add one line to the ask: "If you want to help other Pickerington buyers find us, mentioning the city in your review really helps." Reviews that say "Pickerington" near your name are a direct signal AI reads for local searches. This is the single fastest way to move the heatmap from "seen" to "named" for this market.</p>
+        <p class="move-timeline">Timeline: Weeks 1–4</p>
+      </div>
+      <div class="move-card">
+        <div class="move-rank">03</div>
+        <h4 class="move-title">Activate your Chamber membership and earn one local mention.</h4>
+        <p class="move-body">Fill out your Pickerington Chamber profile completely. Then pitch one local story: a Pickerington community publication feature, a Chamber newsletter mention, or a quote in a local homebuying article. One well-placed local mention in a trusted Pickerington source is worth more to AI than twenty posts on your own social media.</p>
+        <p class="move-timeline">Timeline: Days 14–45</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THE BIG CHANGE -->
+<div class="section-marker">04 · The Big Change</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">What Is Happening Right Now</p>
+    <h2 class="section-title">The Sale You Never See</h2>
+    <div class="divider-bar"></div>
+
+    <div class="content-block">
+      <p>Right now, people in Pickerington are using AI apps to shop for a home loan. They ask a question, they get an answer, and they pick a loan officer — often without visiting a single website. You never see it happen. To you, it looks like the person just typed your name into Google and called. But the real choice was made earlier, inside the AI app. By the time you get the call, the contest is already over.</p>
+      <p><strong>Buyers pick their loan officer while talking to AI. By the time you hear from them, the choice is already made.</strong></p>
+    </div>
+
+    <div class="engines-grid">
+      <div class="engine-card" style="text-align:center;">
+        <div class="engine-icon">📉</div>
+        <div class="engine-name" style="font-size:32px;color:var(--navy);">8 in 10</div>
+        <div class="engine-desc">Google searches that show an AI answer end with no click. People read it and stop.</div>
+      </div>
+      <div class="engine-card" style="text-align:center;">
+        <div class="engine-icon">🏘️</div>
+        <div class="engine-name" style="font-size:32px;color:var(--navy);">Small Town</div>
+        <div class="engine-desc">In a market Pickerington's size, owning the AI answer for local searches takes a fraction of the effort it takes in Columbus.</div>
+      </div>
+      <div class="engine-card" style="text-align:center;">
+        <div class="engine-icon">🏆</div>
+        <div class="engine-name" style="font-size:32px;color:var(--navy);">1st</div>
+        <div class="engine-desc">No Pickerington LO has a brand, a personal website, and a local lane like yours. The AI answer for this market is up for grabs right now.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Small market, first-mover advantage.</strong> This is not like trying to rank first in Columbus against hundreds of LOs. This is a community of 40,000 people where you already have your name on four local platforms, a physical office, and a distinctive brand. A little focused work and you own it.
+    </div>
+  </div>
+</section>
+
+<!-- HOW AI PICKS -->
+<div class="section-marker">05 · How AI Picks</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Understanding the Machine</p>
+    <h2 class="section-title">How AI Decides Who to Recommend</h2>
+    <div class="divider-bar"></div>
+
+    <div class="content-block">
+      <p>When someone asks an AI app "best loan officer in Pickerington," it does not guess. It does two things at once.</p>
+      <h3>1. What it already learned</h3>
+      <p>The app was trained on huge parts of the internet. It already has an idea of who you are — but only if enough places online talk about you in the context of Pickerington specifically. Right now, AI knows Mitchell Severance is a loan officer in Pickerington. It does not yet consistently know you are the go-to wealth-building LO for this community.</p>
+      <h3>2. What it finds right now</h3>
+      <p>It searches the web, reads many pages, and pulls together what they say. Then it looks for one thing above all: <strong>agreement</strong>. Do multiple independent sources say Mitchell Severance is a Pickerington loan officer? Do any of them say what he is known for? Yelp and the Chamber say you are in Pickerington. Your website does not say "Pickerington" in the headline. That gap is exactly what to close.</p>
+    </div>
+
+    <div class="callout">
+      <strong>Three words that change your score:</strong> Add "Pickerington, Ohio" to your UHM bio headline, your LinkedIn headline, and your Wealth Builder page title. That single change, across three pages, immediately strengthens AI's local connection between your name and this city.
+    </div>
+
+    <h3 style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--navy);font-size:20px;margin:32px 0 16px;">The Three Engines</h3>
+    <p style="font-size:14px;color:var(--mid-gray);margin-bottom:20px;">Everything in this playbook drives one of three engines. In a small market, the third engine — being talked about locally — matters most.</p>
+
+    <div class="engines-grid">
+      <div class="engine-card">
+        <div class="engine-icon">🔍</div>
+        <div class="engine-name">Be Found</div>
+        <div class="engine-desc">AI searches the web to answer. Your Yelp and Chamber listings already help here for Pickerington. The fix is making sure every page says "Pickerington" near your name and your lane.</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-icon">✍️</div>
+        <div class="engine-name">Be Quotable</div>
+        <div class="engine-desc">Write your pages with Pickerington-specific content. Local market data, neighborhood references, stories from Pickerington buyers who built equity. Specificity is what AI quotes.</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-icon">💬</div>
+        <div class="engine-name">Be Talked About</div>
+        <div class="engine-desc">In a small market, one local news mention, one Chamber feature, or ten Google reviews that say "Pickerington" is enough to move the needle dramatically. This is your fastest engine here.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PYRAMID -->
+<div class="section-marker">06 · The Visibility Pyramid</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">The Five-Layer Plan</p>
+    <h2 class="section-title">The AI Visibility Pyramid</h2>
+    <p class="section-sub">Same five layers as the Columbus audit — different status in each one when the market is Pickerington specifically.</p>
+    <div class="divider-bar"></div>
+
+    <div class="pyramid-layers">
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-amber">1</div>
+        <div class="layer-content">
+          <div class="layer-title">Your Loans &amp; Service</div>
+          <div class="layer-desc">Your service story is strong and your client testimonials are excellent. The fix here is the same as the Columbus audit: get those reviews onto Google and Zillow, and ask borrowers to mention Pickerington specifically. Ten local Google reviews mentioning this city will move your discovery presence in this market faster than almost any other single action.</div>
+          <span class="layer-status status-amber">⚡ Strong Story, Needs Local Review Volume on Google</span>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-amber">2</div>
+        <div class="layer-content">
+          <div class="layer-title">Your Name &amp; Brand</div>
+          <div class="layer-desc">The Wealth Builder lane is your differentiator here just as much as in Columbus. But in Pickerington it needs to be paired with the city name. "Helping Pickerington families build wealth through homeownership" is a phrase no other LO in this market is using — or can use as credibly. Get that phrase on four platforms and AI starts to own the association.</div>
+          <span class="layer-status status-amber">⚡ Strong Lane — Add Pickerington to Every Version of It</span>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-amber">3</div>
+        <div class="layer-content">
+          <div class="layer-title">Outside Proof</div>
+          <div class="layer-desc">In Columbus, this layer is a critical gap. In Pickerington, it is an amber — a real gap, but a more manageable one. Your Yelp listing, Yahoo Local page, Findglocal entry, and Chamber membership are all Pickerington-indexed third-party sources. They are thin, but they exist. Filling out the Chamber profile and earning one community mention turns this layer from amber to green faster than it would in a larger market.</div>
+          <span class="layer-status status-amber">⚡ Partial Foundation — Chamber and One Local Mention Will Close This</span>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-green">4</div>
+        <div class="layer-content">
+          <div class="layer-title">Your Own Pages</div>
+          <div class="layer-desc">themortgagemitch.com is strong, and your UHM bio is indexed. The primary Pickerington fix is adding the city name to your headlines and adding a section or page specifically about serving the Pickerington community — local market data, neighborhood specifics, a sentence about your office on Hill Road North. AI reads those geographic signals and uses them to place you in local results.</div>
+          <span class="layer-status status-green">✓ Strong Pages — Add Pickerington Specificity to Headlines and Content</span>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-green">5</div>
+        <div class="layer-content">
+          <div class="layer-title">Getting It Done</div>
+          <div class="layer-desc">You have a marketing assistant, a team, and a 12-year track record of running a real business. The Pickerington playbook is a shorter to-do list than the Columbus version. Most of it is language updates and one targeted community outreach effort. This is 30 days of focused work, not a 90-day rebuild.</div>
+          <span class="layer-status status-green">✓ Team in Place — Pickerington Moves Are Fast and Focused</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 1 -->
+<div class="section-marker">Layer 1 · Your Service</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer One</p>
+    <h2 class="section-title">Your Loans &amp; Service</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>In a market Pickerington's size, ten strong Google reviews with the city name in them can move you from invisible to recommended in a matter of weeks. The service reputation you have already earned is the raw material. The job is getting it onto the platforms AI reads.</p>
+      <h3>What Helps</h3>
+      <ul class="check-list">
+        <li>Claim and activate your Google Business Profile with the Pickerington address. This is the single most important platform for local AI search.</li>
+        <li>Ask every borrower for a Google review after close. Add: "If you are comfortable mentioning Pickerington in your review, that helps other local families find us."</li>
+        <li>Respond to every review — AI sees that you are active, not just listed.</li>
+        <li>Get on Zillow's Pickerington directory with at least a few active reviews.</li>
+        <li>Make sure your loan types are clearly listed somewhere: first-time buyers, wealth-building strategy, new construction, refinance.</li>
+      </ul>
+    </div>
+    <div class="callout"><strong>Compliance note:</strong> Never pay for reviews or give gifts in exchange for them. Ask honestly after every close and make it easy with a direct Google review link.</div>
+  </div>
+</section>
+
+<!-- LAYER 2 -->
+<div class="section-marker">Layer 2 · Your Brand</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer Two</p>
+    <h2 class="section-title">Your Name &amp; Brand</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>The Wealth Builder lane is even more powerful in Pickerington than it is in Columbus — because the competition in this specific market is almost entirely generic. Guaranteed Rate Affinity LOs are defined by their company, not by any personal lane. You have a brand. Use it with the city name attached.</p>
+      <h3>The Phrase to Plant Everywhere</h3>
+      <p>One sentence. Said the same way. On every platform.</p>
+      <ul class="check-list">
+        <li><strong>LinkedIn headline:</strong> "Helping Pickerington Families Build Wealth Through Homeownership | NMLS 493686"</li>
+        <li><strong>UHM bio opening:</strong> "I help Pickerington and Central Ohio families turn a home purchase into a long-term wealth strategy."</li>
+        <li><strong>Pickerington Chamber profile:</strong> Same opening. Add the Hill Road North address prominently.</li>
+        <li><strong>Yelp description update:</strong> Lead with the wealth-building lane and Pickerington, not the multi-state licensing bullet points.</li>
+        <li><strong>themortgagemitch.com homepage:</strong> Add "Pickerington, Ohio" to the headline or sub-headline so it is visible above the fold.</li>
+      </ul>
+    </div>
+    <div class="callout"><strong>Quick test:</strong> Google "best loan officer Pickerington OH" right now. Note what comes up and what does not. That is your current standing. Run the same search in 60 days after these moves. The change will be visible.</div>
+  </div>
+</section>
+
+<!-- LAYER 3 -->
+<div class="section-marker">Layer 3 · Outside Proof</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer Three</p>
+    <h2 class="section-title">Outside Proof</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>In a small market, outside proof is faster to earn and more impactful per mention than in a large one. One credible Pickerington-specific source mentioning you by name can move the discovery heatmap. You do not need twenty.</p>
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>Type of Site</th>
+            <th>Pickerington-Specific Targets for Mitchell</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Review sites</td><td>Google Business Profile (Pickerington address), Zillow, Yelp update</td><td>Start Now</td></tr>
+          <tr><td>Chamber profile</td><td>Pickerington Area Chamber of Commerce — fill out completely, add bio, add photo</td><td>Start Now</td></tr>
+          <tr><td>Community</td><td>Nextdoor Pickerington, local Facebook groups (Pickerington community groups, PLSD parent groups)</td><td>Start Now</td></tr>
+          <tr><td>Local news</td><td>Pickerington Times, Canal Winchester Times, Southeast Messenger — pitch a homebuying or wealth-building story</td><td>Build Up</td></tr>
+          <tr><td>School / community</td><td>PLSD already mentioned Mortgage Mitch in a community post — build on that. Sponsor a community event and get listed on a local org's site.</td><td>Build Up</td></tr>
+          <tr><td>Partner pages</td><td>Pickerington-area Realtors who list you as their preferred lender on their sites</td><td>Pursue</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><strong>Note:</strong> Research found a PLSD (Pickerington Local School District) social post that thanked Mortgage Mitch for supporting a student attendance program. That is exactly the kind of community signal AI values. Find that post, get it cited, and do more of it. Community involvement in a small market is one of the strongest outside-proof signals you can earn.</div>
+  </div>
+</section>
+
+<!-- LAYER 4 -->
+<div class="section-marker">Layer 4 · Your Own Pages</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer Four</p>
+    <h2 class="section-title">Your Own Pages</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>Your site is strong. The Pickerington-specific fixes are small — mostly adding geographic signals and local content that AI can use to place you in community-specific searches.</p>
+      <h3>Pages to Update for Pickerington</h3>
+      <table class="score-table">
+        <thead><tr><th>Page</th><th>What to Fix or Add</th></tr></thead>
+        <tbody>
+          <tr><td>themortgagemitch.com homepage</td><td>Add "Pickerington, Ohio" visibly near your name in the hero section. One mention above the fold is enough to register with AI.</td></tr>
+          <tr><td>themortgagemitch.com/wealth-builder</td><td>Add a Pickerington-specific section: local home values, typical equity growth in the 43147 zip code, real buyer examples from this community.</td></tr>
+          <tr><td>UHM bio page</td><td>First sentence should reference Pickerington specifically. Add "Serving Pickerington, Reynoldsburg, Canal Winchester, and surrounding communities."</td></tr>
+          <tr><td>Google Business Profile</td><td>Confirm the Hill Road North address is correct and complete. Add photos of the office. Fill in every category and service field.</td></tr>
+          <tr><td>LinkedIn</td><td>Add Pickerington to your location field and to your About section. Reference your Pickerington office specifically.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 5 -->
+<div class="section-marker">Layer 5 · Getting It Done</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer Five</p>
+    <h2 class="section-title">Getting It Done</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>The Pickerington plan is shorter than the Columbus plan. Most of it is language changes and one community outreach push. Here is how to make it happen without it sitting on a list for six months.</p>
+      <ul class="check-list">
+        <li><strong>Week 1 is all rewrites.</strong> Give Samantha the profile update list from Layer 2. These are copy changes — no design, no rebuild. Most can be done in an afternoon.</li>
+        <li><strong>Set up the review ask.</strong> Create a direct Google review link and add it to the post-close follow-up email Shawn sends. One link, one ask, every time.</li>
+        <li><strong>Own the Chamber profile.</strong> Log in, fill out every field, add your photo, add your bio with the lane language. Takes an hour.</li>
+        <li><strong>One community move per month.</strong> Sponsor a local event. Write a guest post for a Pickerington community blog. Show up in the Nextdoor mortgage questions thread with real help. Small market visibility compounds fast.</li>
+      </ul>
+    </div>
+    <div class="callout"><strong>Timeline reality:</strong> The Columbus playbook is a 90-day plan. The Pickerington version is a 30-day plan with a 60-day sustain. The market is small enough that focused effort shows up in AI results quickly. You could realistically own the Pickerington answer within two months.</div>
+  </div>
+</section>
+
+<!-- KEEP SCORE -->
+<div class="section-marker">07 · Keep Score</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Measure It</p>
+    <h2 class="section-title">If You Cannot See It, You Cannot Win It</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <h3>1. Ask Where They Came From</h3>
+      <p>Add one question to your intake and every first call: "Quick question: where did you first hear about me?" When someone says "I found you on Google" or "Gemini suggested you" — you know the plan is working. Track it. Do more of what is working.</p>
+      <h3 style="margin-top:20px;">2. Do a Monthly Pickerington AI Check</h3>
+      <p>Once a month, run these specific queries across all five tools. Takes 20 minutes. Free. It is your report card.</p>
+      <ul class="check-list">
+        <li>Open ChatGPT, Gemini, Perplexity, Google AI, and Claude — fresh windows each time.</li>
+        <li>Ask: "Best loan officer in Pickerington OH" and "Best mortgage lender in Pickerington OH" and "Mortgage Mitch Pickerington Ohio."</li>
+        <li>For each: did you show up? What did it say? Which platforms did it cite?</li>
+        <li>Note which outside sources AI used — those are your Layer 3 targets for next month.</li>
+        <li>Compare month over month. The direction is what matters. Every "seen" that becomes "named" is a win.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUERY BANK -->
+<div class="section-marker">08 · Your Questions</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Toolkit A</p>
+    <h2 class="section-title">The Questions You Need to Win</h2>
+    <p class="section-sub">Pickerington-specific. Run these monthly. Win the local ones first — they are closer than you think.</p>
+    <div class="divider-bar"></div>
+    <table class="query-table">
+      <thead>
+        <tr><th>Type</th><th>Example Queries for Pickerington</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ready to Buy</td><td>"Best loan officer in Pickerington OH" · "Best mortgage lender in Pickerington Ohio" · "Local lender Pickerington OH" · "Who is the best mortgage lender near Pickerington?"</td></tr>
+        <tr><td>Wealth Building</td><td>"Loan officer who helps build wealth Pickerington OH" · "Mortgage as a wealth strategy Pickerington Ohio" · "How do I build equity buying a home in Pickerington?"</td></tr>
+        <tr><td>Comparing</td><td>"Local lender vs big bank Pickerington OH" · "Best independent mortgage lender near Pickerington" · "Who do Pickerington Realtors recommend for a lender?"</td></tr>
+        <tr><td>Just Learning</td><td>"First-time homebuyer help Pickerington OH" · "How much do homes cost in Pickerington Ohio?" · "Is Pickerington OH a good place to buy a home?"</td></tr>
+        <tr><td>Looking You Up</td><td>"Mitchell Severance Pickerington Ohio" · "Mortgage Mitch Pickerington reviews" · "Is Mitchell Severance a good loan officer?" · "Mitchell Severance NMLS 493686"</td></tr>
+        <tr><td>Nearby Markets</td><td>Also run these for nearby communities you serve: "Best loan officer Canal Winchester OH" · "Best loan officer Reynoldsburg OH" · "Best loan officer Gahanna OH"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RULES -->
+<div class="section-marker">09 · Rules to Follow</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Toolkit B</p>
+    <h2 class="section-title">Rules to Follow</h2>
+    <p class="section-sub">General guidance — not legal advice. Check your plans with your compliance team.</p>
+    <div class="divider-bar"></div>
+    <table class="rules-table">
+      <thead><tr><th>Area</th><th>What to Keep in Mind</th></tr></thead>
+      <tbody>
+        <tr><td>NMLS License</td><td>Show your NMLS number in ads where required. Keep your name, company, and license consistent everywhere. Only advertise in states where you are licensed.</td></tr>
+        <tr><td>RESPA</td><td>Do not pay, or get paid, just for referrals. Shared ads with agents or builders must be paid for fairly, for real work. Get co-marketing reviewed before it goes live.</td></tr>
+        <tr><td>Loan Ads (TILA)</td><td>If you list a specific rate or term, you may need to add disclosures. Avoid rate claims that cannot be substantiated.</td></tr>
+        <tr><td>Fair Lending</td><td>Add "Equal Housing" where it fits. Never target or exclude people based on protected characteristics.</td></tr>
+        <tr><td>Reviews</td><td>Honest only. Never buy, fake, or pay for reviews. Asking borrowers to mention Pickerington is fine — asking them to say specific things is not.</td></tr>
+        <tr><td>Wealth Claims</td><td>The Wealth Builder lane is powerful. Any content implying investment returns or guaranteed equity growth should be reviewed by compliance before publishing.</td></tr>
+        <tr><td>AI-Written Content</td><td>You are responsible for anything posted under your name, even if AI wrote it. Check every number before it goes live.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>One rule that covers most of this:</strong> True keeps you legal. Clear is what AI copies. Same everywhere is what AI trusts.</div>
+  </div>
+</section>
+
+<!-- 90-DAY PLAN -->
+<div class="section-marker">10 · 60-Day Plan</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Toolkit C</p>
+    <h2 class="section-title">Your 60-Day Pickerington Plan</h2>
+    <p class="section-sub">Smaller market, shorter timeline. This is not a 90-day rebuild. It is a 60-day sprint with a monthly check-in after that.</p>
+    <div class="divider-bar"></div>
+    <div class="plan-phases">
+      <div class="phase-card">
+        <div class="phase-label">Days 1–30</div>
+        <div class="phase-title">Language and Baseline</div>
+        <ul class="phase-items">
+          <li>Run your first Pickerington AI check across all five tools. Screenshot every result. Save it as your starting point.</li>
+          <li>Assign Samantha to update all profiles with Pickerington-specific lane language by end of week one.</li>
+          <li>Confirm Google Business Profile is claimed and complete with the Hill Road North address.</li>
+          <li>Fill out your Pickerington Chamber profile completely.</li>
+          <li>Start asking every borrower for a Google review — with the Pickerington ask included.</li>
+          <li>Add "where did you first hear about me?" to your intake process.</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Days 31–60</div>
+        <div class="phase-title">Community and Proof</div>
+        <ul class="phase-items">
+          <li>Add Pickerington-specific content to themortgagemitch.com — local home data, a community section, the Hill Road North office reference.</li>
+          <li>Pitch one local story: Pickerington Times, Canal Winchester Times, or Southeast Messenger.</li>
+          <li>Activate the PLSD community connection — find out if there are more community sponsorship or feature opportunities.</li>
+          <li>Start showing up in Nextdoor Pickerington and local Facebook groups where homebuying questions come up.</li>
+          <li>Run the monthly check. Compare to your starting screenshot. Note every shift.</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Day 61 Onward</div>
+        <div class="phase-title">Monthly Sustain</div>
+        <ul class="phase-items">
+          <li>Run the Pickerington AI check every month — same queries, fresh windows.</li>
+          <li>Keep the Google review cadence steady: 2–4 new reviews per month minimum.</li>
+          <li>One community or press action per month: a sponsorship, a guest post, a Chamber event.</li>
+          <li>Ask 2–3 Pickerington-area Realtor partners to add a preferred lender mention on their sites.</li>
+          <li>Do more of what is moving the heatmap. Stop doing what is not.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><strong>Be the name AI gives first in Pickerington</strong> — before any of the Guaranteed Rate LOs in this market even know this game exists.</div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<div class="section-marker">11 · Glossary</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Plain-English Reference</p>
+    <h2 class="section-title">Words to Know</h2>
+    <div class="divider-bar"></div>
+    <div style="background:var(--white);border:1px solid var(--light-gray);border-radius:12px;overflow:hidden;">
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">AI search apps</div>
+          <div class="glossary-def">ChatGPT, Gemini, Perplexity, Claude, and Google's AI — tools that answer questions in plain words instead of just showing links.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">AI Overview / AI Mode</div>
+          <div class="glossary-def">The AI-written answer at the top of Google, above the normal search results.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">SEO</div>
+          <div class="glossary-def">Search engine optimization. The work of helping your pages show up in Google results. Still matters — it is the floor, not the ceiling.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">AI Visibility</div>
+          <div class="glossary-def">How often, and how well, AI apps mention and recommend you when buyers ask about loan officers in your market.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Zero-Click Search</div>
+          <div class="glossary-def">When someone reads the AI answer and stops, without clicking any website. 8 in 10 AI-answered searches end this way.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Branded Search</div>
+          <div class="glossary-def">When someone searches for you by name. Strong across all five AI tools already.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Discovery Search</div>
+          <div class="glossary-def">When a stranger searches for help without knowing your name — like "best loan officer in Pickerington." This is the gap. The Pickerington version is closable fast.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Sentiment</div>
+          <div class="glossary-def">The overall feeling — good or bad — that the web shows about you, mostly from reviews.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Citation</div>
+          <div class="glossary-def">A website AI used and points to as its source. Being cited means AI trusted your page enough to reference it.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Third-Party Site</div>
+          <div class="glossary-def">Any website that is not yours — Yelp, Zillow, the Pickerington Chamber, a local news site. AI trusts these more than your own pages.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Google Business Profile</div>
+          <div class="glossary-def">Your free Google listing with your info, map pin, and reviews. The most important platform for Pickerington-specific local AI search.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">NMLS / Consumer Access</div>
+          <div class="glossary-def">The national license system for loan officers. NMLS 493686 is your official ID. AI uses it to verify you.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Your Lane</div>
+          <div class="glossary-def">The one thing you want AI to associate with your name in Pickerington: "Helping Pickerington families build wealth through homeownership."</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Answer-First</div>
+          <div class="glossary-def">Writing a page so the clear answer comes first, then the details. AI prefers to quote pages written this way.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">RESPA</div>
+          <div class="glossary-def">Federal law banning paying for referrals. Key when co-marketing with Pickerington Realtors. Shared marketing must reflect fair value for real work.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">First-Mover Advantage</div>
+          <div class="glossary-def">In a small market, whoever builds AI visibility first tends to hold it. Pickerington has no LO running this playbook yet. That window is open right now.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK COVER -->
+<div class="back-cover">
+  <h2>Own Pickerington.<br><span>Before Anyone Else Does.</span></h2>
+  <p>You are already the most visible independent loan officer in this market. Your name is indexed locally, your brand is built, and your competition is generic. The gap between where you are and owning the AI answer for Pickerington is 30 days of focused work.</p>
+  <p>Add the city to every profile. Get ten Google reviews. Earn one local mention. That is it. Do those three things and AI starts naming you first — in a market where nobody else is even trying yet.</p>
+  <div class="cover-divider" style="margin:32px auto;"></div>
+  <div class="back-cover-branding">Brian Snyder · Union Home Mortgage</div>
+  <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:12px;margin-bottom:0;">Building Better Businesses. Building Better Lives.</p>
+  <p style="font-size:11px;color:rgba(255,255,255,0.2);margin-top:8px;margin-bottom:0;">614-306-3051 · bsnyder@uhm.com</p>
+</div>
+
+</body>
+</html>
