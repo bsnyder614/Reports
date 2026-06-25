@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10-Minute AI Win: The Closing Table Review Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #1B2A4A;
+    --navy-mid:   #243660;
+    --gold:       #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale:  #F5EDD6;
+    --white:      #FFFFFF;
+    --off-white:  #F7F8FA;
+    --light-gray: #E8ECF2;
+    --mid-gray:   #8492A6;
+    --dark-gray:  #2D3748;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--dark-gray);
+    line-height: 1.6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--navy);
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.06);
+  }
+
+  .cover-icon {
+    width: 64px; height: 64px;
+    background: rgba(201,168,76,0.12);
+    border: 2px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+    font-size: 28px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-title span { color: var(--gold); }
+
+  .cover-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 36px;
+    letter-spacing: 1px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-divider {
+    width: 60px; height: 3px;
+    background: var(--gold);
+    margin: 0 auto 32px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-lede {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 700;
+    color: var(--white);
+    max-width: 620px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    max-width: 520px;
+    line-height: 1.75;
+    position: relative; z-index: 1;
+  }
+
+  /* ── SECTION MARKER ── */
+  .section-marker {
+    background: var(--navy-mid);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 10px 40px;
+  }
+
+  /* ── PAGE SECTION ── */
+  .page-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 56px 40px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--mid-gray);
+    max-width: 620px;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .divider-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border-radius: 2px;
+    margin-bottom: 36px;
+  }
+
+  p { margin-bottom: 14px; }
+
+  /* ── SIGNAL GRID ── */
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 8px 0 28px;
+  }
+
+  .signal-item {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--navy);
+  }
+
+  .signal-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.7;
+  }
+
+  .callout strong { color: var(--navy); }
+
+  /* ── SCRIPT BLOCK ── */
+  .script-block {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 28px 30px;
+    margin: 20px 0;
+  }
+
+  .script-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .script-block p {
+    color: rgba(255,255,255,0.75);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  .script-block p:last-child { margin-bottom: 0; }
+  .script-block strong { color: var(--white); }
+
+  .script-action {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 6px;
+    padding: 8px 16px;
+    color: var(--gold-light);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+
+  /* ── STEP CARDS ── */
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 14px;
+  }
+
+  .step-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .step-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px; font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .step-body {
+    font-size: 14px;
+    color: var(--mid-gray);
+    line-height: 1.7;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    list-style: none;
+    counter-reset: steps;
+    margin: 8px 0;
+  }
+
+  .checklist li {
+    counter-increment: steps;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--light-gray);
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.6;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist li::before {
+    content: counter(steps);
+    min-width: 30px; height: 30px;
+    background: var(--gold);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* Light variant for use on navy backgrounds */
+  .checklist-light li {
+    color: var(--white);
+    border-bottom-color: rgba(255,255,255,0.12);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .checklist-light li:last-child { border-bottom: none; }
+
+  /* ── BACK COVER ── */
+  .back-cover {
+    background: var(--navy);
+    padding: 64px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .back-cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.07);
+  }
+
+  .back-cover h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+
+  .back-cover h2 span { color: var(--gold); }
+
+  .back-cover p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    margin: 0 auto 14px;
+    line-height: 1.75;
+    position: relative; z-index: 1;
+  }
+
+  .back-cover-branding {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; font-weight: 800;
+    color: var(--white);
+    position: relative; z-index: 1;
+  }
+
+  @media (max-width: 520px) {
+    .page-section { padding: 40px 24px; }
+    .signal-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-icon">⭐</div>
+  <div class="cover-eyebrow">10-Minute AI Win · Recruiting Playbook</div>
+  <h1 class="cover-title">The <span>Closing Table</span><br>Review Strategy</h1>
+  <p class="cover-subtitle">One Habit &nbsp;·&nbsp; Compounding Visibility</p>
+  <div class="cover-divider"></div>
+  <p class="cover-lede">Most loan officers ask for reviews too late.<br>The best moment is right after signing.</p>
+  <p class="cover-sub">When the buyer has the keys in their hand, they are at peak excitement. That is the moment to ask — not hours later, not the next day.</p>
+</section>
+
+<!-- WHY IT MATTERS -->
+<div class="section-marker">01 · Why This Matters</div>
+<section style="background: var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">The Opportunity</p>
+    <h2 class="section-title">AI and Search Look for Trust Signals</h2>
+    <p class="section-sub">Google reviews are one of the clearest public signals that buyers trust you. More reviews can improve all of the following:</p>
+    <div class="divider-bar"></div>
+
+    <div class="signal-grid">
+      <div class="signal-item"><div class="signal-dot"></div>Google Visibility</div>
+      <div class="signal-item"><div class="signal-dot"></div>Local Search Ranking</div>
+      <div class="signal-item"><div class="signal-dot"></div>AI Search Results</div>
+      <div class="signal-item"><div class="signal-dot"></div>Consumer Confidence</div>
+      <div class="signal-item"><div class="signal-dot"></div>Online-to-Lead Conversion</div>
+      <div class="signal-item"><div class="signal-dot"></div>Referral Credibility</div>
+    </div>
+
+    <div class="callout">
+      <strong>The window is short.</strong> Excitement fades within hours. Capture the review while the buyer is still in the room — before life gets in the way.
+    </div>
+  </div>
+</section>
+
+<!-- THE SETUP -->
+<div class="section-marker">02 · The Setup</div>
+<section style="background: var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Simple Execution</p>
+    <h2 class="section-title">Remove Every Obstacle</h2>
+    <p class="section-sub">The fewer steps between the buyer and the review, the higher the completion rate. Friction kills follow-through.</p>
+    <div class="divider-bar"></div>
+
+    <div class="step-card">
+      <div class="step-number">Before You Walk In</div>
+      <div class="step-title">Bring a Tablet. Load the Page.</div>
+      <div class="step-body">Have your Google review page already open on an iPad or tablet before the closing starts. Do not make the buyer search for a link or navigate to anything. Hand them a device that is ready to go.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">Backup Option</div>
+      <div class="step-title">Create a QR Code</div>
+      <div class="step-body">Print a small QR code card that goes directly to your review page. If the buyer prefers their own phone, this eliminates every additional step. One scan. Done.</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SCRIPT -->
+<div class="section-marker">03 · The Script</div>
+<section style="background: var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Word for Word</p>
+    <h2 class="section-title">What to Say at the Table</h2>
+    <p class="section-sub">Practice this until it feels natural. The ask should feel like a genuine favor request, not a sales move.</p>
+    <div class="divider-bar"></div>
+
+    <div class="script-block">
+      <div class="script-label">The Ask · Say This After Signing</div>
+      <p>"Congratulations again — I'm really excited for you."</p>
+      <p>"Before we wrap up, could I ask one quick favor?"</p>
+      <p>"A lot of buyers today research their loan officer online before they ever reach out. If you feel like we did a good job for you, would you mind taking two minutes to share your experience?"</p>
+      <p>"I have the review page pulled up right here to make it easy."</p>
+      <div class="script-action">→ Hand them the tablet</div>
+    </div>
+
+    <div class="script-block" style="margin-top: 12px;">
+      <div class="script-label">After They Finish</div>
+      <p>"Thank you. I really appreciate that. It means a lot — and it helps future buyers know who they can trust."</p>
+      <p style="color: rgba(255,255,255,0.45); font-size: 13px; font-style: italic;">Then present the closing gift. Keep the gift separate from the review — it is part of the closing experience, not a reward for leaving one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM HABIT -->
+<div class="section-marker">04 · Team Execution</div>
+<section style="background: var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">System Thinking</p>
+    <h2 class="section-title">One Review Is a Moment.<br>A System Is an Advantage.</h2>
+    <p class="section-sub">The goal is not a single five-star review. The goal is consistent execution that compounds over time into a profile your competitors cannot match.</p>
+    <div class="divider-bar"></div>
+
+    <div class="step-card">
+      <div class="step-number">Every Closing</div>
+      <div class="step-title">No Exceptions</div>
+      <div class="step-body">Every buyer. Every closing. Every time. Designate one person at each closing to own the review ask so there is no ambiguity about whose job it is.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">The Compounding Effect</div>
+      <div class="step-title">Six Months From Now</div>
+      <div class="step-body">A steady cadence of authentic reviews builds a visibility profile that referral partners and future buyers notice. The loan officers with 200 reviews did not do 200 different things. They did one thing, 200 times.</div>
+    </div>
+
+    <div class="callout">
+      <strong>Track it.</strong> Add a simple checkbox to your closing checklist: Review asked? Yes / No. Measure the habit before you measure the results.
+    </div>
+  </div>
+</section>
+
+<!-- ACTION STEPS -->
+<div class="section-marker">05 · Action Steps</div>
+<section style="background: var(--navy); padding: 60px 0;">
+  <div style="max-width:860px; margin:0 auto; padding:0 40px;">
+    <p style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Before Your Next Closing</p>
+    <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,36px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:12px;">5 Steps to Start Today</h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:32px;max-width:560px;line-height:1.75;">You do not need a perfect system to begin. You need your review link and the script. That is enough to start.</p>
+    <div style="height:3px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:36px;border-radius:2px;"></div>
+
+    <ol class="checklist checklist-light">
+      <li>Copy your Google review link and save it to your phone and tablet browser favorites.</li>
+      <li>Load the review page on your tablet before you walk into every closing.</li>
+      <li>Create a QR code as a backup — print it on a small card to keep in your closing folder.</li>
+      <li>Practice the script out loud twice. It should feel natural, not rehearsed.</li>
+      <li>Ask at every closing. No exceptions. Consistency is the strategy.</li>
+    </ol>
+
+    <div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:12px;padding:24px 28px;margin-top:32px;">
+      <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin:0;"><strong style="color:var(--gold);">Small habit. Big visibility.</strong> &nbsp;The review page takes 90 seconds to load. The script takes 30 seconds to deliver. The compounding visibility lasts for years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BACK COVER -->
+<section class="back-cover">
+  <h2>Build Trust<br><span>Before They Search.</span></h2>
+  <p>Every closing is a chance to extend your reputation beyond the room. The buyers who find you next year will find your reviews first.</p>
+  <p>Ask every time. The habit compounds. The results follow.</p>
+  <div class="cover-divider" style="margin:32px auto;"></div>
+  <div class="back-cover-branding">Brian Snyder</div>
+  <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:12px;margin-bottom:0;">614-306-3051 &nbsp;·&nbsp; bsnyder@uhm.com</p>
+</section>
+
+</body>
+</html>
