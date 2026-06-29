@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Visibility Playbook – Rachel Latin</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-mid: #243660;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale: #F5EDD6;
+    --white: #FFFFFF;
+    --off-white: #F7F8FA;
+    --light-gray: #E8ECF2;
+    --mid-gray: #8492A6;
+    --dark-gray: #2D3748;
+    --green: #2E7D5B;
+    --amber: #B45309;
+    --red: #C0392B;
+    --green-bg: #D1FAE5;
+    --amber-bg: #FEF3C7;
+    --red-bg: #FEE2E2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--dark-gray);
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.06);
+  }
+
+  .cover-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .cover-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(52px, 9vw, 88px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+
+  .cover-name span { color: var(--gold); }
+
+  .cover-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+  }
+
+  .cover-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    color: var(--white);
+    max-width: 680px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+
+  .cover-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    margin-bottom: 50px;
+    line-height: 1.7;
+  }
+
+  .cover-score-pill {
+    background: rgba(201,168,76,0.15);
+    border: 2px solid var(--gold);
+    border-radius: 50px;
+    padding: 14px 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 50px;
+  }
+
+  .cover-score-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .cover-score-label { text-align: left; }
+
+  .cover-score-label .band {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    display: block;
+  }
+
+  .cover-score-label .out-of {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    display: block;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .cover-branding {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* PAGE SECTIONS */
+  .page-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--mid-gray);
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .divider-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+
+  /* SCORECARD */
+  .scorecard-section {
+    background: var(--navy);
+    padding: 60px 0;
+  }
+
+  .scorecard-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .scorecard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .scorecard-left .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .scorecard-left h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .scorecard-left p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    max-width: 420px;
+    line-height: 1.65;
+  }
+
+  .big-score {
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .big-score-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .big-score-band {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    display: block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .big-score-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .score-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .score-tile {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .score-tile .tile-value {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .score-tile .tile-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+
+  .tile-green .tile-value { color: #4ADE80; }
+  .tile-amber .tile-value { color: #FCD34D; }
+  .tile-red .tile-value { color: #F87171; }
+
+  /* HEATMAP */
+  .heatmap {
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .heatmap-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .heatmap-table { width: 100%; border-collapse: collapse; }
+
+  .heatmap-table th {
+    background: rgba(255,255,255,0.04);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding: 10px 12px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .heatmap-table th:first-child { text-align: left; width: 40%; }
+
+  .heatmap-table td {
+    padding: 10px 12px;
+    font-size: 12px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .heatmap-table td:first-child {
+    text-align: left;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+
+  .cell-named {
+    background: rgba(74,222,128,0.2);
+    color: #4ADE80;
+    font-weight: 700;
+    font-size: 11px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+  }
+
+  .cell-mentioned {
+    background: rgba(252,211,77,0.18);
+    color: #FCD34D;
+    font-weight: 700;
+    font-size: 11px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+  }
+
+  .cell-absent {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.25);
+    font-weight: 600;
+    font-size: 11px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+  }
+
+  /* FINDINGS */
+  .findings-section { background: var(--white); }
+
+  .finding-card {
+    border-left: 4px solid var(--gold);
+    background: var(--off-white);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+
+  .finding-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .finding-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .finding-body {
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.7;
+  }
+
+  .finding-card.finding-edge {
+    border-left-color: var(--navy);
+    background: var(--navy);
+  }
+
+  .finding-card.finding-edge .finding-number { color: var(--gold); }
+  .finding-card.finding-edge .finding-title { color: var(--white); }
+  .finding-card.finding-edge .finding-body { color: rgba(255,255,255,0.75); }
+
+  /* MOVES */
+  .moves-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 36px;
+  }
+
+  .move-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .move-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .move-rank {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .move-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .move-body {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+  }
+
+  .move-timeline {
+    margin-top: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* PYRAMID */
+  .pyramid-layers { display: flex; flex-direction: column; gap: 16px; }
+
+  .layer-row { display: flex; gap: 20px; align-items: flex-start; }
+
+  .layer-indicator {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .layer-green { background: var(--green-bg); color: var(--green); }
+  .layer-amber { background: var(--amber-bg); color: var(--amber); }
+  .layer-red { background: var(--red-bg); color: var(--red); }
+
+  .layer-content { flex: 1; }
+
+  .layer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .layer-desc {
+    font-size: 14px;
+    color: var(--mid-gray);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .layer-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 3px 12px;
+  }
+
+  .status-green { background: var(--green-bg); color: var(--green); }
+  .status-amber { background: var(--amber-bg); color: var(--amber); }
+  .status-red { background: var(--red-bg); color: var(--red); }
+
+  /* CONTENT BLOCKS */
+  .content-block {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .content-block h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .content-block p {
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  .check-list { list-style: none; margin-top: 12px; }
+
+  .check-list li {
+    font-size: 14px;
+    color: var(--dark-gray);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light-gray);
+    padding-left: 28px;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .check-list li:last-child { border-bottom: none; }
+
+  .check-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ENGINES */
+  .engines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 28px 0;
+  }
+
+  .engine-card {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 24px;
+    border-top: 3px solid var(--navy);
+  }
+
+  .engine-icon { font-size: 28px; margin-bottom: 12px; }
+
+  .engine-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .engine-desc { font-size: 13px; color: var(--mid-gray); line-height: 1.6; }
+
+  /* 90-DAY PLAN */
+  .plan-phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 28px 0;
+  }
+
+  .phase-card {
+    border-radius: 12px;
+    padding: 28px 24px;
+    background: var(--navy);
+  }
+
+  .phase-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .phase-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .phase-items { list-style: none; }
+
+  .phase-items li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .phase-items li:last-child { border-bottom: none; }
+
+  .phase-items li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* SCORE TABLE */
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .score-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .score-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--white);
+    vertical-align: middle;
+  }
+
+  .score-table td:first-child { font-weight: 600; color: var(--navy); }
+
+  /* RULES TABLE */
+  .rules-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .rules-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .rules-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  .rules-table td:first-child {
+    font-weight: 700;
+    color: var(--navy);
+    white-space: nowrap;
+    width: 160px;
+  }
+
+  /* GLOSSARY */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+  }
+
+  .glossary-item {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--light-gray);
+    border-right: 1px solid var(--light-gray);
+  }
+
+  .glossary-term {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .glossary-def { font-size: 13px; color: var(--mid-gray); line-height: 1.55; }
+
+  /* BACK COVER */
+  .back-cover {
+    background: var(--navy);
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .back-cover h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .back-cover h2 span { color: var(--gold); }
+
+  .back-cover p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.75;
+  }
+
+  .back-cover-branding {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* SECTION MARKER */
+  .section-marker {
+    background: var(--light-gray);
+    padding: 10px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-marker::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.65;
+  }
+
+  .callout strong { color: var(--navy); }
+
+  /* QUERY TABLE */
+  .query-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .query-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .query-table td {
+    padding: 11px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--white);
+    line-height: 1.55;
+  }
+
+  .query-table td:first-child {
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 130px;
+  }
+
+  @media (max-width: 600px) {
+    .page-section { padding: 40px 20px; }
+    .scorecard-inner { padding: 0 20px; }
+    .scorecard-header { flex-direction: column; }
+    .cover { padding: 40px 24px; }
+    .cover-footer { padding: 0 20px; }
+  }
+
+  @media print {
+    .cover { page-break-after: always; }
+    .scorecard-section { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <p class="cover-eyebrow">AI Visibility Playbook · Personalized for</p>
+  <h1 class="cover-name">RACHEL<br><span>LATIN</span></h1>
+  <p class="cover-title">Loan Officer · Wadsworth, Ohio · NMLS #542872</p>
+  <div class="cover-divider"></div>
+  <h2 class="cover-headline">What AI says about you today — and how to become the #1 recommendation in Wadsworth.</h2>
+  <p class="cover-sub">A personalized audit, honest score, and three moves that will change what AI says about you.</p>
+  <div class="cover-score-pill">
+    <div class="cover-score-number">31</div>
+    <div class="cover-score-label">
+      <span class="band">EMERGING</span>
+      <span class="out-of">out of 100 · AI Visibility Score</span>
+    </div>
+  </div>
+  <p class="cover-branding">Presented by Brian Snyder</p>
+  <div class="cover-footer">
+    <span>Building Better Businesses. Building Better Lives.</span>
+    <span>Confidential · June 2026</span>
+  </div>
+</section>
+
+<!-- SCORECARD -->
+<div class="section-marker">01 · Your Scorecard</div>
+<section class="scorecard-section">
+  <div class="scorecard-inner">
+
+    <div class="scorecard-header">
+      <div class="scorecard-left">
+        <p class="eyebrow">AI Visibility Audit · Wadsworth, Ohio</p>
+        <h2>Your Score.<br>Your Starting Point.</h2>
+        <p>This is a snapshot of where you stand right now across AI search tools. The score is not a grade — it is a map. Buyers in Wadsworth are using ChatGPT, Gemini, and Perplexity to pick their loan officer. Here is what those tools say when they look for you.</p>
+      </div>
+      <div class="big-score">
+        <span class="big-score-number">31</span>
+        <span class="big-score-band">Emerging</span>
+        <span class="big-score-sub">out of 100</span>
+      </div>
+    </div>
+
+    <!-- Score tiles -->
+    <div class="score-tiles">
+      <div class="score-tile tile-red">
+        <div class="tile-value">5%</div>
+        <div class="tile-label">Discovery<br>Presence</div>
+      </div>
+      <div class="score-tile tile-amber">
+        <div class="tile-value">75%</div>
+        <div class="tile-label">Branded<br>Presence</div>
+      </div>
+      <div class="score-tile tile-amber">
+        <div class="tile-value">55</div>
+        <div class="tile-label">Reviews &amp;<br>Service</div>
+      </div>
+      <div class="score-tile tile-amber">
+        <div class="tile-value">40</div>
+        <div class="tile-label">Brand<br>Clarity</div>
+      </div>
+      <div class="score-tile tile-red">
+        <div class="tile-value">18</div>
+        <div class="tile-label">Third-Party<br>Proof</div>
+      </div>
+      <div class="score-tile tile-amber">
+        <div class="tile-value">38</div>
+        <div class="tile-label">Owned<br>Pages</div>
+      </div>
+    </div>
+
+    <!-- Heatmap -->
+    <div class="heatmap">
+      <div class="heatmap-title">Query x Tool Heatmap — Wadsworth, Ohio</div>
+      <table class="heatmap-table">
+        <thead>
+          <tr>
+            <th>Search Query</th>
+            <th>ChatGPT</th>
+            <th>Gemini</th>
+            <th>Perplexity</th>
+            <th>Google AI</th>
+            <th>Claude</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Best loan officer in Wadsworth OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>Best mortgage lender in Wadsworth OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>First-time homebuyer help Wadsworth OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>OHFA down payment assistance Ohio loan officer</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>FHA VA USDA loan officer near Wadsworth OH</td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+          <tr>
+            <td>Rachel Latin Fairway Mortgage</td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+          </tr>
+          <tr>
+            <td>Rachel Latin NMLS 542872</td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-named">named</span></td>
+          </tr>
+          <tr>
+            <td>Is Rachel Latin a good loan officer</td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-mentioned">seen</span></td>
+            <td><span class="cell-named">named</span></td>
+            <td><span class="cell-absent">—</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:12px;font-style:italic;">Heatmap results are directional estimates based on indexed web presence. Verify with live queries before delivery.</p>
+  </div>
+</section>
+
+<!-- FINDINGS & NEXT MOVES -->
+<div class="section-marker">02 · Findings &amp; Next Moves</div>
+<section class="findings-section">
+  <div class="page-section">
+    <p class="section-eyebrow">Your Personalized Diagnosis</p>
+    <h2 class="section-title">What the Audit Found</h2>
+    <p class="section-sub">Four plain-language findings, then three moves to make — in order.</p>
+    <div class="divider-bar"></div>
+
+    <div class="finding-card">
+      <p class="finding-number">Finding 01</p>
+      <h3 class="finding-title">Strong when found, invisible when searched.</h3>
+      <p class="finding-body">When someone already knows your name, AI confirms you well. NMLS lookup, direct name searches, and reputation queries return consistent results across most tools. But when a Wadsworth buyer opens ChatGPT and types "best loan officer near me" — your name does not appear. Discovery presence sits at roughly 5%. That is the contest you are not yet in, and it is where buyers make their first decision.</p>
+    </div>
+
+    <div class="finding-card">
+      <p class="finding-number">Finding 02</p>
+      <h3 class="finding-title">Your reviews live in the wrong places.</h3>
+      <p class="finding-body">You have real proof of performance: 42 reviews on Birdeye at 4.9 stars, over 130 on SocialSurvey, and multiple 5-star Experience.com reviews visible on LinkedIn. That is genuinely strong. The problem is that AI does not weight these platforms heavily. The reviews are real, but they are siloed on proprietary systems that AI largely ignores. Google reviews and Zillow reviews — the two platforms AI pulls from most often — show limited confirmed activity. Moving even a fraction of your review volume to Google would change your score significantly.</p>
+    </div>
+
+    <div class="finding-card">
+      <p class="finding-number">Finding 03</p>
+      <h3 class="finding-title">Your location signal is blurred across multiple cities.</h3>
+      <p class="finding-body">Your Fairway profile pages list Uniontown as your primary office city, while your Facebook page and LinkedIn profile reference Wadsworth. Your personal website (rachellatinloans.com) carries Uniontown branding. When AI looks for a "Wadsworth loan officer," it does not confidently connect you to Wadsworth — because most of your content points to Uniontown or North Canton. This is not a dealbreaker, but it is costing you local discovery. Consistently adding "Wadsworth, Ohio" across your bios, LinkedIn headline, and web content would close this gap fast.</p>
+    </div>
+
+    <div class="finding-card">
+      <p class="finding-number">Finding 04</p>
+      <h3 class="finding-title">Your specialty lane is real — but not loud enough.</h3>
+      <p class="finding-body">You have a clear and genuinely compelling lane: first-time homebuyers, OHFA down payment assistance, FHA, VA, USDA, and the OHFA Heroes program for teachers, nurses, and first responders. That is a defined audience with a real need. The challenge is that AI sees "FHA, VA, USDA, OHFA, first-time buyers" scattered across a few pages — it does not yet see a single sentence that says this is your thing, everywhere you appear online. The lane exists. The signal does not yet match.</p>
+    </div>
+
+    <div class="finding-card finding-edge">
+      <p class="finding-number">Your Edge</p>
+      <h3 class="finding-title">Small market. First-mover advantage. A lane buyers actually search for.</h3>
+      <p class="finding-body">Wadsworth is not Columbus. There are not 200 loan officers competing for AI's attention in this market — there are a handful, and most have not thought about this at all. More importantly, your specialty serves the buyers who lean on AI the most. First-time homebuyers, OHFA-eligible buyers, and public servants shopping for down payment help are doing their research on ChatGPT and Google AI before they ever call a loan officer. You are built for exactly that buyer. The first LO in Wadsworth to claim this lane in the AI layer owns it.</p>
+    </div>
+
+    <!-- Three Moves -->
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--navy);margin-top:44px;margin-bottom:8px;">Three Moves. In This Order.</h3>
+    <p style="font-size:14px;color:var(--mid-gray);margin-bottom:24px;">Do not do all three at once. Finish Move 1 before starting Move 2.</p>
+
+    <div class="moves-grid">
+      <div class="move-card">
+        <div class="move-rank">01</div>
+        <h4 class="move-title">Anchor Wadsworth to your name everywhere.</h4>
+        <p class="move-body">Update your LinkedIn headline, your rachellatinloans.com homepage, your Fairway bio, and your Facebook page to consistently say "Serving Wadsworth, Ohio and surrounding communities." One city. Said the same way everywhere. AI will start connecting you to the market within weeks.</p>
+        <p class="move-timeline">Timeline: Week 1</p>
+      </div>
+      <div class="move-card">
+        <div class="move-rank">02</div>
+        <h4 class="move-title">Move your reviews to Google.</h4>
+        <p class="move-body">You have the review volume — it is just in the wrong place. Claim and complete your Google Business Profile if you have not already. Then send every new borrower a direct Google review link after close. Aim for 10 new Google reviews in the next 90 days. That alone would push your score past 45.</p>
+        <p class="move-timeline">Timeline: Weeks 1–2</p>
+      </div>
+      <div class="move-card">
+        <div class="move-rank">03</div>
+        <h4 class="move-title">Pick a lane sentence and say it everywhere.</h4>
+        <p class="move-body">Write one sentence that captures your specialty. Something like: "I help first-time homebuyers in Wadsworth use OHFA programs and government loans to buy with less down." Then put that sentence — or a version of it — in your LinkedIn headline, bio pages, Facebook description, and website homepage. AI needs consensus to recommend someone.</p>
+        <p class="move-timeline">Timeline: Days 30–60</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THE BIG CHANGE -->
+<div class="section-marker">03 · The Big Change</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">What's Happening Right Now</p>
+    <h2 class="section-title">The Sale You Never See</h2>
+    <div class="divider-bar"></div>
+
+    <div class="content-block">
+      <p>Right now, people in Wadsworth are using AI apps to shop for a home loan. They ask a question, they get an answer, and they pick a loan officer — often without visiting a single website. You never see it happen. To you, it looks like the person just found your number and called. But the real decision was made earlier, inside the AI app. By the time you hear from them, the contest is already over.</p>
+      <p><strong>Buyers pick their loan officer while talking to AI. By the time you hear from them, the choice is already made.</strong></p>
+    </div>
+
+    <div class="engines-grid">
+      <div class="engine-card" style="text-align:center;">
+        <div class="engine-icon">📉</div>
+        <div class="engine-name" style="font-size:32px;color:var(--navy);">8 in 10</div>
+        <div class="engine-desc">Google searches that show an AI answer end with no click. People read it and stop.</div>
+      </div>
+      <div class="engine-card" style="text-align:center;">
+        <div class="engine-icon">🔗</div>
+        <div class="engine-name" style="font-size:32px;color:var(--navy);">1 in 8</div>
+        <div class="engine-desc">Pages AI points to also show on Google's first page. Being number one on Google is not enough anymore.</div>
+      </div>
+      <div class="engine-card" style="text-align:center;">
+        <div class="engine-icon">🏆</div>
+        <div class="engine-name" style="font-size:32px;color:var(--navy);">1st</div>
+        <div class="engine-desc">Almost no loan officers in Wadsworth are doing this. You can be the first.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>This is like the early days of Google.</strong> The businesses that learned it early got ahead — and stayed ahead. AI search is that same chance, open right now, and almost no one in your market has noticed yet.
+    </div>
+  </div>
+</section>
+
+<!-- HOW AI PICKS -->
+<div class="section-marker">04 · How AI Picks</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Understanding the Machine</p>
+    <h2 class="section-title">How AI Decides Who to Recommend</h2>
+    <div class="divider-bar"></div>
+
+    <div class="content-block">
+      <p>When someone asks an AI app "best loan officer in Wadsworth," it does not guess. It does two things at once.</p>
+      <h3>1. What it already learned</h3>
+      <p>The app was trained on large portions of the internet. It already has an idea of who you are — but only if enough places online talk about you. Right now, AI knows Rachel Latin exists. It does not yet know she is Wadsworth's go-to loan officer for first-time buyers and OHFA programs.</p>
+      <h3>2. What it finds right now</h3>
+      <p>It searches the web, reads many pages at once, and pulls together what they say about you into one answer. Then it looks for one thing above all: <strong>agreement</strong>. Do lots of websites say the same thing about you?</p>
+    </div>
+
+    <div class="callout">
+      <strong>You do not win by writing one great page about yourself.</strong> You win when the whole internet says the same true thing about you.
+    </div>
+
+    <h3 style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--navy);font-size:20px;margin:32px 0 16px;">The Three Engines</h3>
+    <p style="font-size:14px;color:var(--mid-gray);margin-bottom:20px;">Everything in this playbook drives one of three engines. Skip one and the machine stalls.</p>
+
+    <div class="engines-grid">
+      <div class="engine-card">
+        <div class="engine-icon">🔍</div>
+        <div class="engine-name">Be Found</div>
+        <div class="engine-desc">AI searches the web to answer. If you are not in the results, you are not in the answer. Traditional SEO still matters — it is the floor, not the ceiling.</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-icon">✍️</div>
+        <div class="engine-name">Be Quotable</div>
+        <div class="engine-desc">Write your pages the way AI likes to copy: clear, short lines, real numbers, and true stories from Wadsworth buyers.</div>
+      </div>
+      <div class="engine-card">
+        <div class="engine-icon">💬</div>
+        <div class="engine-name">Be Talked About</div>
+        <div class="engine-desc">How much the web talks about you, and whether it is positive — Google reviews, Zillow, local news, partner pages. Almost no loan officer works on this. It is the strongest engine.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PYRAMID -->
+<div class="section-marker">05 · The Visibility Pyramid</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">The Five-Layer Plan</p>
+    <h2 class="section-title">The AI Visibility Pyramid</h2>
+    <p class="section-sub">Five layers. Build from the bottom. But a buyer — and AI — sees it from the top down.</p>
+    <div class="divider-bar"></div>
+
+    <div class="pyramid-layers">
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-amber">1</div>
+        <div class="layer-content">
+          <div class="layer-title">Your Loans &amp; Service</div>
+          <div class="layer-desc">You have excellent proof here — 130-plus SocialSurvey reviews, 42 Birdeye reviews at 4.9 stars, and consistent 5-star Experience.com results. The issue is platform: AI trusts Google and Zillow far more than proprietary review systems. A redirect of your post-close review ask to Google would make this your strongest layer.</div>
+          <span class="layer-status status-amber">⚡ Proof Exists — Wrong Platform</span>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-amber">2</div>
+        <div class="layer-content">
+          <div class="layer-title">Your Name &amp; Brand</div>
+          <div class="layer-desc">Your specialty is real and specific: first-time buyers, OHFA Heroes, FHA, VA, USDA, down payment assistance. But no single clear sentence captures it consistently across all your profiles. LinkedIn bio leads with Fairway boilerplate. Your personal site does not prominently call out Wadsworth. Pick one sentence. Put it everywhere.</div>
+          <span class="layer-status status-amber">⚡ Needs Clarity — One Lane Sentence Missing</span>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-red">3</div>
+        <div class="layer-content">
+          <div class="layer-title">Outside Proof</div>
+          <div class="layer-desc">AI trusts what other websites say about you more than what you say about yourself. Right now your third-party footprint is thin: iPaydayLoans and WeLoans aggregate pages exist, but no local news features, no Realtor partner pages, and no community-facing mentions connecting you specifically to Wadsworth. This is the widest-open opportunity in your market.</div>
+          <span class="layer-status status-red">🔴 Critical Gap — Build This</span>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-amber">4</div>
+        <div class="layer-content">
+          <div class="layer-title">Your Own Pages</div>
+          <div class="layer-desc">Your personal site (rachellatinloans.com) exists and is indexed. LinkedIn is active. Fairway bio pages for Uniontown and North Canton are live. The gap: these pages lead with Fairway company messaging, not Rachel Latin's story. None prominently answers a buyer's first question — "Can you help me buy a home in Wadsworth with limited savings?" A few targeted rewrites would close this fast.</div>
+          <span class="layer-status status-amber">⚡ Present, Needs Optimization</span>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-indicator layer-green">5</div>
+        <div class="layer-content">
+          <div class="layer-title">Getting It Done</div>
+          <div class="layer-desc">You already operate a review-gathering system — that is evident from your volume on SocialSurvey and Birdeye. The discipline is there. The 90-day plan below simply redirects what you are already doing toward platforms AI actually uses.</div>
+          <span class="layer-status status-green">✓ Strength — Systems Already Exist</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 1 -->
+<div class="section-marker">Layer 1 · Your Service</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer One</p>
+    <h2 class="section-title">Your Loans &amp; Service</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>AI does not read your rate sheet. It reads your reviews — and so does every buyer who asks about you. Before AI talks about your name, it forms an opinion about what you actually do and what it is like to work with you.</p>
+      <h3>What Helps</h3>
+      <ul class="check-list">
+        <li>Send every borrower a direct Google review link after close. That is the single highest-leverage action in this playbook.</li>
+        <li>Keep the ask consistent: same message, every time, after every close.</li>
+        <li>Request reviews on Google Business Profile and Zillow — the two platforms AI uses most.</li>
+        <li>Ask for details, not just stars. "Rachel got us into our first home with OHFA help — we were approved in under 30 days" is worth ten five-star ratings with no text.</li>
+        <li>Reply to every review. AI sees that you are real, active, and engaged.</li>
+        <li>Make sure your loan types appear by name in reviews: FHA, VA, USDA, OHFA, first-time buyers, Heroes program.</li>
+      </ul>
+    </div>
+    <div class="callout"><strong>Compliance note:</strong> Never pay for reviews or give gifts in exchange for them. No fake reviews. Ask honestly and make it easy for borrowers to say yes.</div>
+  </div>
+</section>
+
+<!-- LAYER 2 -->
+<div class="section-marker">Layer 2 · Your Brand</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer Two</p>
+    <h2 class="section-title">Your Name &amp; Brand</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>Ask AI about a loan officer and it will not just list their loans. It will tell the buyer what that person stands for. If you stand for nothing specific, AI has nothing to say — so it says someone else's name.</p>
+      <h3>Your Lane Is Already Built</h3>
+      <p>You do not need to pick something new. You already specialize in exactly the right things. Here is the lane sentence that could appear on every profile you own:</p>
+      <ul class="check-list">
+        <li><strong>Option A:</strong> "I help first-time homebuyers in Wadsworth, Ohio use OHFA grants and government loans to buy a home with less down."</li>
+        <li><strong>Option B:</strong> "Wadsworth's go-to loan officer for FHA, VA, USDA, and OHFA down payment assistance — serving buyers who need a patient guide through the process."</li>
+        <li><strong>Option C:</strong> "I specialize in OHFA Heroes loans for teachers, nurses, and first responders buying homes in and around Wadsworth, Ohio."</li>
+      </ul>
+      <h3 style="margin-top:20px;">Then Say It the Same Way Everywhere</h3>
+      <p>Pick one option. Then put a version of that sentence in your LinkedIn headline, your personal site homepage, your Fairway bio, and your Facebook description. The signal is repetition. Saying the same thing is what AI trusts.</p>
+    </div>
+    <div class="callout"><strong>Quick test:</strong> If you asked a past client, a Realtor partner, and an AI app "what is Rachel Latin known for?" — would all three give the same answer? If not, this is the fix.</div>
+  </div>
+</section>
+
+<!-- LAYER 3 -->
+<div class="section-marker">Layer 3 · Outside Proof</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer Three</p>
+    <h2 class="section-title">Outside Proof</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>AI trusts what other websites say about you more than what you say about yourself. Almost no loan officer works on this layer — which makes it the most wide-open opportunity in Wadsworth right now.</p>
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>Type of Site</th>
+            <th>Examples for Rachel</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Review sites</td><td>Google Business Profile, Zillow, BBB</td><td>Start Now</td></tr>
+          <tr><td>License listing</td><td>NMLS Consumer Access, Fairway bio, LinkedIn</td><td>Start Now</td></tr>
+          <tr><td>Community</td><td>Wadsworth Facebook groups, Nextdoor, Summit County homebuyer groups</td><td>Start Now</td></tr>
+          <tr><td>Local news</td><td>Wadsworth Post, Medina Gazette, Akron Beacon Journal feature</td><td>Build Up</td></tr>
+          <tr><td>Partner pages</td><td>Realtor "preferred lender" bios, builder partner pages in Summit County</td><td>Build Up</td></tr>
+          <tr><td>Earned media</td><td>OHFA-focused article, podcast guest, local homebuyer workshop mentions</td><td>Pursue</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><strong>RESPA reminder:</strong> No paying or receiving value for referrals. Shared marketing must reflect fair value for real work. Run partner plans through your compliance team first.</div>
+  </div>
+</section>
+
+<!-- LAYER 4 -->
+<div class="section-marker">Layer 4 · Your Own Pages</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer Four</p>
+    <h2 class="section-title">Your Own Pages</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>All that attention is wasted if there is nowhere good to send the buyer. Your own pages are still some of the most-quoted sources in an AI answer. The goal: AI names you and links to your page. That is the mention and the click.</p>
+      <h3>Write the Way AI Likes to Quote</h3>
+      <ul class="check-list">
+        <li><strong>Answer first.</strong> Start each page with a clear plain answer, then add more detail below it.</li>
+        <li><strong>Break it up.</strong> Short lines, clear headings. No giant blocks of text.</li>
+        <li><strong>Add a Q&amp;A.</strong> Real buyer questions with short answers. "Can I buy a home in Wadsworth with no down payment?" AI loves to copy these.</li>
+        <li><strong>Use real numbers.</strong> Local facts, typical close times, Wadsworth and Summit County market specifics.</li>
+        <li><strong>Tell your own stories.</strong> "I have helped dozens of Wadsworth-area buyers use OHFA assistance to get into their first home."</li>
+        <li><strong>Show your credentials.</strong> Photo, NMLS number, years of experience — prominently, above the fold.</li>
+      </ul>
+      <h3 style="margin-top:20px;">The Pages to Fix First</h3>
+      <table class="score-table">
+        <thead><tr><th>Page</th><th>What to Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Google Business Profile</td><td>Confirm it is claimed and set to Wadsworth area, fill every field, start collecting Google reviews immediately</td></tr>
+          <tr><td>rachellatinloans.com homepage</td><td>Lead with Wadsworth, Ohio prominently; add your lane sentence; add a Q&amp;A section for first-time buyers</td></tr>
+          <tr><td>LinkedIn profile</td><td>Headline should name Wadsworth and your lane. Move away from Fairway boilerplate to Rachel Latin's story.</td></tr>
+          <tr><td>Fairway bio pages</td><td>Request an update from corporate to add Wadsworth service area language and OHFA specialty language</td></tr>
+          <tr><td>NMLS Consumer Access</td><td>Confirm it matches your current office and contact info exactly</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 5 -->
+<div class="section-marker">Layer 5 · Getting It Done</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Layer Five</p>
+    <h2 class="section-title">Getting It Done</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <p>The top reason this plan fails is not the plan. It is the everyday friction of actually doing it. Four points of friction, and how to beat each one.</p>
+      <ul class="check-list">
+        <li><strong>Time.</strong> You close loans — you do not run a marketing team. The fix is a small repeatable routine, not one big push you will never maintain.</li>
+        <li><strong>Approval.</strong> Some posts and content need a compliance review. Build that relationship now. Create approved templates once so you are not re-checking every single post.</li>
+        <li><strong>Company pages.</strong> Know what you can update yourself on rachellatinloans.com and LinkedIn versus what requires a request through Fairway corporate. Prioritize the pages you control.</li>
+        <li><strong>Sticking with it.</strong> Some wins are fast — update a page and AI may quote it within days. But Google reviews and reputation compound over months. The people who win do not quit in week three.</li>
+      </ul>
+    </div>
+    <div class="callout"><strong>Your edge:</strong> You already have a review-gathering system that produced 130-plus reviews. That discipline is the hardest part. Redirect it to Google and Zillow and the results follow.</div>
+  </div>
+</section>
+
+<!-- KEEP SCORE -->
+<div class="section-marker">06 · Keep Score</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Measure It</p>
+    <h2 class="section-title">If You Can't See It, You Can't Win It</h2>
+    <div class="divider-bar"></div>
+    <div class="content-block">
+      <h3>1. Ask Where They Came From</h3>
+      <p>Add one question everywhere — on your intake forms and out loud on discovery calls: "Quick question: where did you first hear about me?" When someone says "I found you on ChatGPT" or "Google AI mentioned you" — you know it is working. Do more of that.</p>
+      <h3 style="margin-top:20px;">2. Do a Monthly AI Check</h3>
+      <p>Once a month, open each AI app fresh and run your key queries. Write down what you see. It takes 20 minutes and it is free.</p>
+      <ul class="check-list">
+        <li>Open ChatGPT, Gemini, Perplexity, Google AI, and Claude — fresh sessions each time.</li>
+        <li>Ask: "Best loan officer in Wadsworth OH," "OHFA loan officer near Wadsworth," and "first-time homebuyer help Wadsworth Ohio."</li>
+        <li>For each, note: Did you show up? Where? What did it say about you?</li>
+        <li>Note which websites the AI cited — those are your next targets for Layer 3.</li>
+        <li>Track the trend month over month. Direction is what matters, not a single snapshot.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUERY BANK -->
+<div class="section-marker">07 · Your Questions</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Toolkit A</p>
+    <h2 class="section-title">The Questions You Need to Win</h2>
+    <p class="section-sub">Run these every month across all five AI tools. Win the "ready to buy" ones first.</p>
+    <div class="divider-bar"></div>
+    <table class="query-table">
+      <thead>
+        <tr><th>Type</th><th>Example Queries for Wadsworth</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ready to Buy</td><td>"Best mortgage lender in Wadsworth OH" · "Best loan officer in Wadsworth for first-time buyers" · "Local lender or big bank in Wadsworth?"</td></tr>
+        <tr><td>Comparing</td><td>"Top-rated mortgage broker near Wadsworth OH" · "Best lender for FHA loans near Wadsworth" · "Who helps with OHFA down payment assistance near me?"</td></tr>
+        <tr><td>Just Learning</td><td>"First-time homebuyer help Wadsworth Ohio" · "How does OHFA down payment assistance work?" · "OHFA Heroes program for teachers Ohio"</td></tr>
+        <tr><td>Looking You Up</td><td>"Is Rachel Latin a good loan officer?" · "Rachel Latin Fairway Mortgage reviews" · "Rachel Latin NMLS 542872"</td></tr>
+        <tr><td>Your Lane</td><td>"Best OHFA loan officer in Summit County" · "FHA VA USDA loan officer Wadsworth Ohio" · "Down payment help for first-time buyers Wadsworth"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RULES -->
+<div class="section-marker">08 · Rules to Follow</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Toolkit B</p>
+    <h2 class="section-title">Rules to Follow</h2>
+    <p class="section-sub">AI visibility is marketing, and you work in a regulated field. General guidance — not legal advice. Check your plans with your compliance team.</p>
+    <div class="divider-bar"></div>
+    <table class="rules-table">
+      <thead><tr><th>Area</th><th>What to Keep in Mind</th></tr></thead>
+      <tbody>
+        <tr><td>NMLS License</td><td>Show your NMLS number in ads where required. Keep your name, company, and license consistent everywhere. Only advertise in states where you are licensed.</td></tr>
+        <tr><td>RESPA</td><td>Do not pay, or get paid, just for referrals. Shared ads with agents or builders must be paid for fairly, for real work. This area is watched closely — get it reviewed.</td></tr>
+        <tr><td>Loan Ads (TILA)</td><td>If you list a specific rate or term, you may need to add more disclosures. Avoid "too good to be true" rate claims.</td></tr>
+        <tr><td>Fair Lending</td><td>Add "Equal Housing" where it fits. Never target or exclude people based on protected characteristics.</td></tr>
+        <tr><td>Reviews</td><td>Honest only. Never buy, fake, or pay for reviews. Some states have extra rules. Ask genuinely; make it easy.</td></tr>
+        <tr><td>Accuracy</td><td>Keep your numbers, program details, and OHFA limits up to date. Old claims can create liability.</td></tr>
+        <tr><td>AI-Written Content</td><td>You are responsible for anything posted under your name, even if AI wrote it. Check every number and program claim before it goes live.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>One rule that covers most of this:</strong> Build your name on things that are true, clear, and said the same way everywhere. True keeps you legal. Clear is what AI copies. Same everywhere is what AI trusts.</div>
+  </div>
+</section>
+
+<!-- 90-DAY PLAN -->
+<div class="section-marker">09 · 90-Day Plan</div>
+<section style="background:var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Toolkit C</p>
+    <h2 class="section-title">Your 90-Day Plan</h2>
+    <p class="section-sub">You do not need a marketing team. You need a routine. Here is the smallest version that actually changes what AI says about you.</p>
+    <div class="divider-bar"></div>
+    <div class="plan-phases">
+      <div class="phase-card">
+        <div class="phase-label">Days 1–30</div>
+        <div class="phase-title">Anchor Wadsworth and Fix Your Foundation</div>
+        <ul class="phase-items">
+          <li>Run your first AI check across all five apps. Save it as your starting point.</li>
+          <li>Update LinkedIn, rachellatinloans.com, Facebook, and Fairway bio to consistently say "Wadsworth, Ohio."</li>
+          <li>Claim and complete your Google Business Profile with Wadsworth area focus.</li>
+          <li>Write your lane sentence. Put it in your LinkedIn headline and website homepage.</li>
+          <li>Start sending every borrower a direct Google review link after close.</li>
+          <li>Add "where did you hear about me?" to your intake process and closing calls.</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Days 31–60</div>
+        <div class="phase-title">Build Your OHFA Content Layer</div>
+        <ul class="phase-items">
+          <li>Rewrite your personal site homepage answer-first, with a first-time buyer Q&amp;A section.</li>
+          <li>Create one page specifically for OHFA and first-time buyer help in Wadsworth.</li>
+          <li>Make 3–5 short videos answering common questions: "What is the OHFA Heroes program?" "Do I need 20% down in Ohio?" Post on Facebook and LinkedIn.</li>
+          <li>Start answering mortgage questions in Wadsworth-area Facebook groups and Nextdoor.</li>
+          <li>Run the monthly AI check. Note what moved since Day 1.</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Days 61–90</div>
+        <div class="phase-title">Earn Outside Proof</div>
+        <ul class="phase-items">
+          <li>Target 2–3 mentions on outside sites AI actually uses.</li>
+          <li>Pitch a local feature: Wadsworth Post, a community Facebook page, or a Wadsworth Chamber profile.</li>
+          <li>Ask a Realtor partner to list you as their preferred lender on their website.</li>
+          <li>Keep the Google review cadence steady: 2–3 new reviews per month minimum.</li>
+          <li>Run the check, compare to Day 1. Do more of what worked. Repeat.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><strong>Be the name AI gives first</strong> — while everyone else still thinks AI is someone else's problem.</div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<div class="section-marker">10 · Glossary</div>
+<section style="background:var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Plain-English Reference</p>
+    <h2 class="section-title">Words to Know</h2>
+    <div class="divider-bar"></div>
+    <div style="background:var(--white);border:1px solid var(--light-gray);border-radius:12px;overflow:hidden;">
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">AI search apps</div>
+          <div class="glossary-def">ChatGPT, Gemini, Perplexity, Claude, and Google's AI — tools that answer questions in plain words instead of just showing links.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">AI Overview / AI Mode</div>
+          <div class="glossary-def">The AI-written answer at the top of Google, above the normal search results.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">SEO</div>
+          <div class="glossary-def">Search engine optimization. The work of helping your pages show up high in normal Google results. Still matters — it is the floor, not the ceiling.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">AI Visibility</div>
+          <div class="glossary-def">How often, and how well, AI apps mention and recommend you when buyers ask about loan officers in your market.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Zero-Click Search</div>
+          <div class="glossary-def">When someone reads the AI answer and stops, without clicking any website. 8 in 10 AI-answered searches end this way.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Branded Search</div>
+          <div class="glossary-def">When someone searches for you by name. They already know you exist. Your score here is solid.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Discovery Search</div>
+          <div class="glossary-def">When a stranger searches for a type of help, not a name — like "best loan officer near me." This is where your gap is.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Sentiment</div>
+          <div class="glossary-def">The overall feeling — good or bad — that the web shows about you, mostly from reviews.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Citation</div>
+          <div class="glossary-def">A website AI used and points to as its source. Being cited means AI trusted your page enough to reference it.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Third-Party Site</div>
+          <div class="glossary-def">Any website that is not yours — like Zillow, Nextdoor, or a local news site. AI trusts these more than your own pages.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Google Business Profile</div>
+          <div class="glossary-def">Your free Google listing with your info, map pin, and reviews. One of the most important things for local AI search.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">NMLS / Consumer Access</div>
+          <div class="glossary-def">The national license system for loan officers. NMLS 542872 is your official ID. Consumer Access is the public lookup AI uses to verify you.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Your Lane / Niche</div>
+          <div class="glossary-def">The one main thing you want to be known for. Picking a lane gives AI a reason to name you over a generalist.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Answer-First</div>
+          <div class="glossary-def">Writing a page so the clear answer comes first, then the details. AI prefers to quote pages written this way.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">OHFA</div>
+          <div class="glossary-def">Ohio Housing Finance Agency. The state program that provides down payment assistance, reduced rates, and special programs like OHFA Heroes for first-time buyers.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">RESPA</div>
+          <div class="glossary-def">Federal law banning paying for referrals. Key when working with agent partners. Shared marketing must reflect fair value.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK COVER -->
+<div class="back-cover">
+  <h2>Be the Name<br><span>AI Says First.</span></h2>
+  <p>Buyers near Wadsworth are already picking their loan officer while talking to AI — a conversation you will never see. The only question is whether the app says your name, or someone else's.</p>
+  <p>Pick your lane sentence. Anchor Wadsworth to your name. Get the whole web to say the same true thing about you. Check your score every month. The first to act wins.</p>
+  <div class="cover-divider" style="margin:32px auto;"></div>
+  <div class="back-cover-branding">Brian Snyder</div>
+  <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:12px;margin-bottom:0;">Building Better Businesses. Building Better Lives.</p>
+  <p style="font-size:11px;color:rgba(255,255,255,0.2);margin-top:8px;margin-bottom:0;">614-306-3051 · bsnyder@uhm.com</p>
+</div>
+
+</body>
+</html>
