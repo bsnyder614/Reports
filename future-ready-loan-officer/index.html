@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Future-Ready Loan Officer — Brian Snyder</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #1B2A4A;
+    --navy-mid: #243660;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale: #F5EDD6;
+    --white: #FFFFFF;
+    --cream: #F7F4EC;
+    --paper: #FCFAF5;
+    --light-gray: #E8ECF2;
+    --mid-gray: #8492A6;
+    --ink: #2D3748;
+    --line: #DAD2BE;
+    --line-dark: rgba(255,255,255,0.14);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:#3a3a3a;
+    font-family:'Open Sans', sans-serif;
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    width:8.5in;
+    min-height:11in;
+    margin:0.35in auto;
+    background:var(--paper);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,0.35);
+    padding:0.75in 0.85in;
+    display:flex;
+    flex-direction:column;
+  }
+
+  h1,h2,h3{ font-family:'Montserrat', sans-serif; color:var(--navy); }
+
+  .rule{ height:1px; background:var(--line); width:100%; }
+
+  /* ================= COVER ================= */
+  .cover{
+    background: var(--navy);
+    color:var(--white);
+    padding:0;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+  }
+  .cover::before{
+    content:'';
+    position:absolute;
+    top:-100px; right:-100px;
+    width:420px; height:420px;
+    border-radius:50%;
+    background:rgba(201,168,76,0.08);
+  }
+  .cover::after{
+    content:'';
+    position:absolute;
+    bottom:-120px; left:-80px;
+    width:340px; height:340px;
+    border-radius:50%;
+    background:rgba(201,168,76,0.06);
+  }
+  .cover-inner{
+    position:relative;
+    z-index:2;
+    max-width:5.9in;
+    margin:0 auto;
+  }
+  .cover-eyebrow{
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:22px;
+  }
+  .cover-title{
+    font-family:'Montserrat', sans-serif;
+    font-size:60px;
+    font-weight:900;
+    line-height:1.03;
+    letter-spacing:-1px;
+    color:var(--white);
+    margin-bottom:10px;
+  }
+  .cover-title span{ color:var(--gold); }
+  .cover-divider{
+    width:60px; height:3px;
+    background:var(--gold);
+    margin:28px auto;
+  }
+  .cover-sub{
+    font-family:'Montserrat', sans-serif;
+    font-size:19px;
+    font-weight:600;
+    color:rgba(255,255,255,0.82);
+    max-width:5in;
+    margin:0 auto 50px auto;
+    line-height:1.4;
+  }
+  .cover-byline{
+    margin-top:20px;
+  }
+  .cover-byline .name{
+    font-family:'Montserrat', sans-serif;
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:var(--white);
+  }
+  .cover-byline .tag{
+    font-size:11.5px;
+    color:rgba(255,255,255,0.5);
+    margin-top:4px;
+    letter-spacing:0.5px;
+  }
+  .cover-footer{
+    position:absolute;
+    bottom:34px;
+    left:0; right:0;
+    display:flex;
+    justify-content:space-between;
+    padding:0 0.85in;
+    font-size:10.5px;
+    color:rgba(255,255,255,0.28);
+    font-family:'Montserrat', sans-serif;
+    letter-spacing:1px;
+    z-index:2;
+  }
+
+  /* ================= INNER PAGES ================= */
+  .page-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding-bottom:0.18in;
+    border-bottom:1px solid var(--line);
+    margin-bottom:0.4in;
+  }
+  .page-head .eyebrow-dark{
+    font-family:'Montserrat', sans-serif;
+    font-size:9.5px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--mid-gray);
+  }
+  .page-num{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:10px;
+    color:var(--mid-gray);
+    letter-spacing:1px;
+  }
+
+  .headline{
+    font-size:32px;
+    font-weight:900;
+    line-height:1.1;
+    color:var(--navy);
+    margin-bottom:0.05in;
+  }
+  .headline .accent{ color:var(--gold); }
+  .kicker{
+    font-family:'Montserrat', sans-serif;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:0.14in;
+  }
+
+  .lede{
+    font-family:'Open Sans', sans-serif;
+    font-size:16px;
+    font-weight:600;
+    color:var(--navy-mid);
+    line-height:1.55;
+    margin:0.22in 0 0.3in 0;
+    max-width:5.9in;
+  }
+
+  p.body-text{
+    font-size:13.5px;
+    line-height:1.75;
+    color:var(--ink);
+    margin-bottom:0.16in;
+    max-width:6.1in;
+  }
+  p.body-text.tight{ margin-bottom:0.05in; }
+  p.body-text strong{ color:var(--navy); font-weight:700; }
+
+  .pull{
+    font-family:'Montserrat', sans-serif;
+    font-size:20px;
+    font-weight:800;
+    line-height:1.35;
+    color:var(--navy);
+    margin:0.15in 0;
+    max-width:5.4in;
+  }
+
+  .footer-strip{
+    margin-top:auto;
+    padding-top:0.22in;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .footer-strip .tag{
+    font-family:'Montserrat', sans-serif;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    color:var(--mid-gray);
+    text-transform:uppercase;
+  }
+  .footer-strip .mark{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-size:12px;
+    color:var(--navy);
+  }
+  .footer-strip .mark span{ color:var(--gold); }
+
+  /* ---- shared components ---- */
+  .tier-stack{ display:flex; flex-direction:column; gap:0.15in; margin:0.3in 0; }
+  .tier{
+    display:grid;
+    grid-template-columns:1.9in 1fr;
+    align-items:center;
+    gap:0.3in;
+    padding:0.18in 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .tier:last-child{ border-bottom:none; }
+  .tier .tier-label{
+    font-family:'Montserrat', sans-serif;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--mid-gray);
+  }
+  .tier .tier-q{
+    font-family:'Montserrat', sans-serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--navy);
+  }
+  .tier .tier-q em{ color:var(--gold); font-style:normal; font-weight:800;}
+
+  blockquote.big-quote{
+    font-family:'Montserrat', sans-serif;
+    font-size:26px;
+    font-weight:800;
+    line-height:1.3;
+    color:var(--navy);
+    max-width:6in;
+    margin:0.3in 0 0.15in 0;
+    position:relative;
+    padding-left:0.35in;
+    border-left:3px solid var(--gold);
+  }
+  .attribution{
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:var(--mid-gray);
+    padding-left:0.38in;
+    margin-bottom:0.3in;
+  }
+
+  .checklist{ list-style:none; margin:0.2in 0; }
+  .checklist li{
+    font-size:13.5px;
+    line-height:1.6;
+    padding:0.08in 0 0.08in 0.32in;
+    position:relative;
+    color:var(--ink);
+    max-width:5.8in;
+  }
+  .checklist li::before{
+    content:"";
+    position:absolute;
+    left:0; top:0.16in;
+    width:9px; height:9px;
+    background:var(--gold);
+    border-radius:2px;
+    transform:rotate(45deg);
+  }
+
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:0.45in; }
+
+  .stat-row{ display:flex; gap:0.35in; margin:0.28in 0; }
+  .stat-box{
+    flex:1;
+    background:var(--gold-pale);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:0.22in 0.24in;
+  }
+  .stat-box .num{
+    font-family:'Montserrat', sans-serif;
+    font-size:28px;
+    font-weight:900;
+    color:var(--navy);
+    line-height:1;
+  }
+  .stat-box .lbl{
+    font-size:11.5px;
+    color:var(--mid-gray);
+    margin-top:0.08in;
+    line-height:1.4;
+  }
+
+  table.scorecard{ width:100%; border-collapse:collapse; margin:0.2in 0; font-size:12px; }
+  table.scorecard th{
+    font-family:'Montserrat', sans-serif;
+    font-size:9.5px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--white);
+    background:var(--navy);
+    text-align:left;
+    padding:0.09in 0.12in;
+  }
+  table.scorecard th.num, table.scorecard td.num{ text-align:right; }
+  table.scorecard td{
+    padding:0.1in 0.12in;
+    border-bottom:1px solid var(--line);
+    color:var(--ink);
+    vertical-align:top;
+  }
+  table.scorecard tr:nth-child(even) td{ background:rgba(201,168,76,0.06); }
+  table.scorecard td.rank{ font-family:'Montserrat', sans-serif; font-weight:800; color:var(--gold); }
+  table.scorecard td.score{ font-family:'Montserrat', sans-serif; font-weight:700; color:var(--navy); }
+  table.scorecard td.name{ font-weight:700; color:var(--navy); }
+  table.scorecard td.note{ color:var(--mid-gray); font-size:11px; }
+
+  .profile-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0.3in; margin:0.24in 0; }
+  .profile-card{
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:0.22in;
+    background:var(--paper);
+    border-top:3px solid var(--gold);
+  }
+  .profile-card .p-rank{
+    font-family:'Montserrat', sans-serif;
+    font-size:10px;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:1px;
+  }
+  .profile-card .p-name{
+    font-family:'Montserrat', sans-serif;
+    font-size:18px;
+    font-weight:800;
+    color:var(--navy);
+    margin:0.03in 0 0.01in 0;
+  }
+  .profile-card .p-meta{
+    font-size:11px;
+    color:var(--mid-gray);
+    margin-bottom:0.1in;
+  }
+  .profile-card .p-body{ font-size:12px; line-height:1.6; color:var(--ink); margin-bottom:0.08in; }
+  .profile-card .p-lesson{
+    font-size:11.5px;
+    line-height:1.55;
+    color:var(--navy-mid);
+    font-weight:600;
+    padding-top:0.08in;
+    border-top:1px dashed var(--line);
+  }
+
+  .funnel{ display:flex; flex-direction:column; align-items:center; margin:0.28in 0; gap:0; }
+  .funnel-step{
+    font-family:'Montserrat', sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--navy);
+    background:var(--gold-pale);
+    border:1px solid var(--gold-light);
+    padding:0.09in 0.28in;
+    border-radius:20px;
+    text-align:center;
+  }
+  .funnel-step.strong{ background:var(--navy); color:var(--white); border-color:var(--navy); }
+  .funnel-arrow{
+    font-size:16px;
+    color:var(--gold);
+    line-height:0.5;
+    margin:0.03in 0;
+  }
+
+  .whatif-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:0.4in; margin-top:0.15in; align-items:start;}
+
+  .signoff{
+    display:flex;
+    gap:0.28in;
+    align-items:center;
+    background:var(--navy);
+    border-radius:8px;
+    padding:0.3in 0.32in;
+    margin-top:0.25in;
+    border-left:4px solid var(--gold);
+  }
+  .signoff .monogram{
+    width:0.95in;
+    height:0.95in;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    font-family:'Montserrat', sans-serif;
+    font-weight:900;
+    font-size:26px;
+    color:var(--gold);
+    letter-spacing:1px;
+  }
+  .signoff .bio-name{ font-family:'Montserrat', sans-serif; font-size:17px; font-weight:800; color:var(--white); }
+  .signoff .bio-role{ font-size:11.5px; color:var(--gold-light); margin-top:2px; font-weight:600; }
+  .signoff .bio-contact{ font-size:11px; color:rgba(255,255,255,0.65); margin-top:0.08in; line-height:1.6; }
+
+  .final-tagline{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--gold);
+    text-align:center;
+    margin-top:0.3in;
+  }
+
+  /* ---- icon tiers (page 3) ---- */
+  .tier-icon{
+    width:40px; height:40px;
+    border-radius:50%;
+    background:var(--gold-pale);
+    border:1px solid var(--gold-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    flex-shrink:0;
+  }
+  .tier-with-icon{
+    display:grid;
+    grid-template-columns:40px 1.6in 1fr;
+    align-items:center;
+    gap:0.22in;
+    padding:0.18in 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .tier-with-icon:last-child{ border-bottom:none; }
+
+  /* ---- background trajectory watermark (page 4) ---- */
+  .bg-trajectory{
+    position:absolute;
+    right:-0.4in; bottom:-0.4in;
+    width:4.2in;
+    opacity:0.55;
+    z-index:0;
+    pointer-events:none;
+  }
+
+  /* ---- methodology icon grid (page 5) ---- */
+  .icon-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:0.18in;
+    margin:0.24in 0;
+  }
+  .icon-card{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:0.18in 0.16in;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0.06in;
+  }
+  .icon-card .ic{
+    width:34px; height:34px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:15px;
+    margin-bottom:0.04in;
+  }
+  .icon-card .ic-label{
+    font-family:'Montserrat', sans-serif;
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--navy);
+    line-height:1.3;
+  }
+
+  /* ---- stat box icon ---- */
+  .stat-box .stat-icon{
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    margin-bottom:0.09in;
+  }
+
+  /* ---- score bar chart (page 7) ---- */
+  .bar-chart{ margin:0.22in 0 0.3in 0; }
+  .bar-row{
+    display:grid;
+    grid-template-columns:1.5in 1fr 0.5in;
+    align-items:center;
+    gap:0.14in;
+    margin-bottom:0.08in;
+  }
+  .bar-row .bar-name{
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    color:var(--navy);
+    text-align:right;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .bar-track{
+    background:var(--light-gray);
+    border-radius:3px;
+    height:12px;
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius:3px;
+  }
+  .bar-row .bar-val{
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    font-weight:800;
+    color:var(--navy);
+  }
+
+  /* ---- profile avatar monograms (page 8) ---- */
+  .profile-card{ display:flex; flex-direction:column; }
+  .p-top{ display:flex; align-items:center; gap:0.14in; margin-bottom:0.1in; }
+  .p-avatar{
+    width:0.55in; height:0.55in;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-size:16px;
+    flex-shrink:0;
+    border:2px solid var(--gold);
+  }
+
+  /* ---- funnel icons (page 9) ---- */
+  .funnel-step{ display:flex; align-items:center; gap:0.1in; }
+  .funnel-step .fi{ font-size:14px; }
+
+  @media print{
+    body{ background:none; }
+    .page{ box-shadow:none; margin:0; page-break-after:always; width:100%; min-height:100vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1: COVER ============ -->
+<div class="page cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">A Research Report &nbsp;&middot;&nbsp; Issue One</div>
+    <div class="cover-title">THE FUTURE-READY<br>LOAN <span>OFFICER</span></div>
+    <div class="cover-divider"></div>
+    <div class="cover-sub">Preparing today for the next era of mortgage lending.</div>
+    <div class="cover-byline">
+      <div class="name">Brian Snyder</div>
+      <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span>bsnyder@uhm.com &nbsp;&middot;&nbsp; 614-306-3051</span>
+    <span>The Future-Ready Loan Officer&trade; Series</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 2: WHY I WROTE THIS ============ -->
+<div class="page">
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">02</div></div>
+  <div class="kicker">Introduction</div>
+  <h1 class="headline">Why I Wrote<br>This <span class="accent">Report</span></h1>
+  <p class="lede">Over the last several months, I've spent hundreds of hours studying one question: how will the next generation of homebuyers find and choose a loan officer?</p>
+  <p class="body-text">That question led me down a path I wasn't expecting. I began researching artificial intelligence, digital marketing, online reviews, search behavior, and the digital footprints of many of Ohio's top-producing loan officers.</p>
+  <p class="body-text">The more I learned, the more convinced I became that our industry is approaching another inflection point.</p>
+  <p class="pull">I don't believe loan officers need to panic. I don't believe traditional relationships are disappearing. I do believe the definition of visibility is changing.</p>
+  <p class="body-text">And I believe the loan officers who begin preparing today will have a meaningful advantage over those who wait.</p>
+  <p class="body-text"><strong>This report isn't intended to predict the future. It's intended to help us prepare for it.</strong></p>
+  <div class="footer-strip">
+    <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    <div class="mark">Brian<span>Snyder</span></div>
+  </div>
+</div>
+
+<!-- ============ PAGE 3: THE QUESTION ============ -->
+<div class="page">
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">03</div></div>
+  <div class="kicker">A Shift In Consumer Behavior</div>
+  <h1 class="headline">The Question That<br>Changed My <span class="accent">Thinking</span></h1>
+  <div class="tier-stack">
+    <div class="tier-with-icon">
+      <div class="tier-icon">&#129309;</div>
+      <div class="tier-label">Twenty Years Ago</div>
+      <div class="tier-q">People asked, <em>&ldquo;Who do you know?&rdquo;</em></div>
+    </div>
+    <div class="tier-with-icon">
+      <div class="tier-icon">&#128269;</div>
+      <div class="tier-label">Ten Years Ago</div>
+      <div class="tier-q">People asked Google, <em>&ldquo;Mortgage lender near me.&rdquo;</em></div>
+    </div>
+    <div class="tier-with-icon">
+      <div class="tier-icon">&#128172;</div>
+      <div class="tier-label">Today</div>
+      <div class="tier-q">Consumers increasingly ask, <em>&ldquo;Who is the best loan officer in Columbus?&rdquo;</em></div>
+    </div>
+  </div>
+  <p class="body-text tight">...to ChatGPT. To Google AI. To Gemini. To Perplexity.</p>
+  <p class="pull">The difference? AI doesn't return ten blue links. It gives a recommendation.</p>
+  <div class="footer-strip">
+    <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    <div class="mark">Brian<span>Snyder</span></div>
+  </div>
+</div>
+
+<!-- ============ PAGE 4: SKATING TO WHERE THE PUCK IS GOING ============ -->
+<div class="page">
+  <svg class="bg-trajectory" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+    <path d="M -20 480 C 150 460, 280 420, 380 330 C 460 260, 500 180, 560 60" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity="0.4"/>
+    <circle cx="560" cy="60" r="5" fill="#C9A84C" opacity="0.5"/>
+  </svg>
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">04</div></div>
+  <div class="kicker">A Guiding Principle</div>
+  <h1 class="headline">Skating To Where<br>The Puck Is <span class="accent">Going</span></h1>
+  <blockquote class="big-quote">&ldquo;I skate to where the puck is going, not where it has been.&rdquo;</blockquote>
+  <div class="attribution">&mdash; Wayne Gretzky</div>
+  <p class="body-text">Whether he said those exact words has been debated for years. The principle hasn't. The greatest competitors don't simply react to change. They prepare for it before everyone else recognizes it.</p>
+  <p class="body-text">Today's loan officers still build their businesses primarily through referrals. Tomorrow's top producers will almost certainly continue to build relationships. But they may also need to build something else: <strong>digital authority.</strong></p>
+  <p class="pull">The goal isn't chasing technology. The goal is preparing before preparation becomes mandatory.</p>
+  <div class="footer-strip">
+    <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    <div class="mark">Brian<span>Snyder</span></div>
+  </div>
+</div>
+
+<!-- ============ PAGE 5: WHAT WE STUDIED ============ -->
+<div class="page">
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">05</div></div>
+  <div class="kicker">Methodology</div>
+  <h1 class="headline">What We <span class="accent">Studied</span></h1>
+  <p class="lede">This report analyzed the public digital footprint of 20 of Ohio's highest-producing purchase loan officers, based on publicly available production rankings and online presence.</p>
+  <p class="body-text"><strong>The purpose was not to rank individuals.</strong> It was to identify the common behaviors and patterns among top performers &mdash; what they're consistently doing online that others aren't.</p>
+  <p class="body-text">Each producer was evaluated across the following public signals:</p>
+  <div class="icon-grid">
+    <div class="icon-card"><div class="ic">&#11088;</div><div class="ic-label">Reviews<br>(Experience.com, Zillow, Birdeye)</div></div>
+    <div class="icon-card"><div class="ic">&#127760;</div><div class="ic-label">Personal or<br>team website</div></div>
+    <div class="icon-card"><div class="ic">&#128205;</div><div class="ic-label">Local SEO &amp;<br>search presence</div></div>
+    <div class="icon-card"><div class="ic">&#128188;</div><div class="ic-label">LinkedIn activity<br>&amp; following</div></div>
+    <div class="icon-card"><div class="ic">&#128241;</div><div class="ic-label">Facebook &amp;<br>Instagram</div></div>
+    <div class="icon-card"><div class="ic">&#127909;</div><div class="ic-label">Video &amp;<br>long-form content</div></div>
+    <div class="icon-card"><div class="ic">&#127908;</div><div class="ic-label">Podcast or original<br>content</div></div>
+    <div class="icon-card"><div class="ic">&#128240;</div><div class="ic-label">Third-party authority<br>(press, rankings)</div></div>
+    <div class="icon-card"><div class="ic">&#129302;</div><div class="ic-label">AI visibility &mdash; how<br>easily AI finds them</div></div>
+  </div>
+  <p class="body-text">This is a living research project, and the group studied will grow over time. What follows is what the patterns show so far &mdash; not a list of who's winning, but a look at why.</p>
+  <div class="footer-strip">
+    <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    <div class="mark">Brian<span>Snyder</span></div>
+  </div>
+</div>
+
+<!-- ============ PAGE 6: THREE PATTERNS ============ -->
+<div class="page">
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">06</div></div>
+  <div class="kicker">Findings</div>
+  <h1 class="headline">Three Patterns <span class="accent">Emerged</span></h1>
+  <p class="lede">The highest-producing loan officers in Ohio aren't all using the same digital strategy. Some win through content. Some win through reviews. Some win through team branding. Here's why the top scorers, as a group, are winning.</p>
+  <div class="two-col">
+    <div>
+      <p class="body-text"><strong>Pattern One &mdash; Trust is becoming visible.</strong> Consumers don't just hear about your reputation anymore. They can see it. Among the strongest scorers in our study, review counts ranged from the hundreds into the thousands, almost always above a 4.8 average.</p>
+      <p class="body-text"><strong>Pattern Two &mdash; Content compounds.</strong> Nearly every producer with a strong digital footprint published content consistently rather than occasionally &mdash; a lender profile, an active LinkedIn presence, Facebook, Instagram, and video, all reinforcing the same identity.</p>
+    </div>
+    <div>
+      <p class="body-text"><strong>Pattern Three &mdash; Personal brand outperforms company brand.</strong> The strongest footprints in our study read like a personal team brand, not a corporate logo. Consumers remember people.</p>
+      <p class="body-text">The strongest digital footprints combine <strong>reviews, local authority, and repeatable content</strong> &mdash; not just one of the three.</p>
+    </div>
+  </div>
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-icon">&#11088;</div><div class="num">100s&ndash;1,000s</div><div class="lbl">Review count range among our top-scoring producers</div></div>
+    <div class="stat-box"><div class="stat-icon">&#127775;</div><div class="num">4.8+</div><div class="lbl">Typical review average among the strongest footprints</div></div>
+    <div class="stat-box"><div class="stat-icon">&#128241;</div><div class="num">5&ndash;6</div><div class="lbl">Active public platforms maintained by our top scorers</div></div>
+  </div>
+  <div class="footer-strip">
+    <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    <div class="mark">Brian<span>Snyder</span></div>
+  </div>
+</div>
+
+<!-- ============ PAGE 7: SCORE DISTRIBUTION ============ -->
+<div class="page">
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">07</div></div>
+  <div class="kicker">The Ohio AI Visibility Index &mdash; Preliminary</div>
+  <h1 class="headline">The Digital<br>Footprint <span class="accent">Distribution</span></h1>
+  <p class="lede">Scored 1&ndash;5 across reviews, website, social presence, content, and AI visibility. This reflects the spread across the full group studied &mdash; not a ranked list of individuals.</p>
+  <div class="bar-chart" style="margin-top:0.35in;">
+    <div class="bar-row"><div class="bar-name">Strong (4.0&ndash;5.0)</div><div class="bar-track"><div class="bar-fill" style="width:60%;"></div></div><div class="bar-val">6</div></div>
+    <div class="bar-row"><div class="bar-name">Solid (3.0&ndash;3.9)</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div><div class="bar-val">10</div></div>
+    <div class="bar-row"><div class="bar-name">Underdeveloped (&lt;3.0)</div><div class="bar-track"><div class="bar-fill" style="width:40%;"></div></div><div class="bar-val">4</div></div>
+  </div>
+  <p class="body-text" style="font-size:11px;color:var(--mid-gray);">Producer count by score band, across the 20 producers studied.</p>
+
+  <div class="stat-row" style="margin-top:0.3in;">
+    <div class="stat-box"><div class="stat-icon">&#128200;</div><div class="num">5.0</div><div class="lbl">Highest score recorded in the study</div></div>
+    <div class="stat-box"><div class="stat-icon">&#128202;</div><div class="num">3.6</div><div class="lbl">Average score across all producers studied</div></div>
+    <div class="stat-box"><div class="stat-icon">&#128201;</div><div class="num">2.6</div><div class="lbl">Lowest score recorded in the study</div></div>
+  </div>
+
+  <p class="pull" style="margin-top:0.3in;">Only 6 of 20 producers studied &mdash; less than a third &mdash; currently score as digitally strong. The gap is real, and it's still wide open.</p>
+
+  <div class="footer-strip">
+    <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    <div class="mark">Brian<span>Snyder</span></div>
+  </div>
+</div>
+
+<!-- ============ PAGE 8: SPOTLIGHT PROFILES ============ -->
+<div class="page">
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">08</div></div>
+  <div class="kicker">Case Studies</div>
+  <h1 class="headline">Four Approaches<br>Worth <span class="accent">Studying</span></h1>
+  <p class="body-text tight">Four composite profiles built from patterns that repeated across the strongest scorers in our study. These aren't individuals &mdash; they're the shape of what's working. The tactics are what's worth borrowing.</p>
+  <div class="profile-grid" style="margin-top:0.2in;">
+    <div class="profile-card">
+      <div class="p-top"><div class="p-avatar">A</div><div><div class="p-rank">Case Study A</div><div class="p-name">The Content Engine</div></div></div>
+      <div class="p-meta">$100M+ purchase producer &nbsp;&middot;&nbsp; independent local brand</div>
+      <div class="p-body">A lender profile, an active LinkedIn presence, Facebook, Instagram, a Zillow listing, and consistent video content, all reinforcing one identity across every platform.</div>
+      <div class="p-lesson">The clearest example that consistent digital presence compounds over time.</div>
+    </div>
+    <div class="profile-card">
+      <div class="p-top"><div class="p-avatar">B</div><div><div class="p-rank">Case Study B</div><div class="p-name">The Authority Builder</div></div></div>
+      <div class="p-meta">$100M+ purchase producer &nbsp;&middot;&nbsp; leadership brand</div>
+      <div class="p-body">A leadership brand backed by national industry recognition and reviews in the thousands at a 4.8+ average &mdash; a major trust signal for both consumers and AI search.</div>
+      <div class="p-lesson">Reviews plus leadership authority create strong, AI-readable trust signals.</div>
+    </div>
+    <div class="profile-card">
+      <div class="p-top"><div class="p-avatar">C</div><div><div class="p-rank">Case Study C</div><div class="p-name">The Review Magnet</div></div></div>
+      <div class="p-meta">$200M+ purchase producer &nbsp;&middot;&nbsp; high review volume</div>
+      <div class="p-body">A lender profile, Zillow profile, and Facebook team page, backed by reviews in the hundreds at a perfect 5.0 average across platforms.</div>
+      <div class="p-lesson">Review volume alone can be a major visibility advantage.</div>
+    </div>
+    <div class="profile-card">
+      <div class="p-top"><div class="p-avatar">D</div><div><div class="p-rank">Case Study D</div><div class="p-name">The Team Brand</div></div></div>
+      <div class="p-meta">$100M+ purchase producer &nbsp;&middot;&nbsp; team-branded office</div>
+      <div class="p-body">A branded team profile, LinkedIn presence, Zillow profile, and reviews in the thousands, reinforced by a public leadership promotion.</div>
+      <div class="p-lesson">Team identity plus reviews creates a footprint that scales.</div>
+    </div>
+  </div>
+  <div class="footer-strip">
+    <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    <div class="mark">Brian<span>Snyder</span></div>
+
+  </div>
+</div>
+
+<!-- ============ PAGE 9: WHY IT MATTERS + WHAT IF I'M WRONG ============ -->
+<div class="page">
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">09</div></div>
+  <div class="kicker">The Bigger Picture</div>
+  <h1 class="headline">Why AI Visibility <span class="accent">Matters</span></h1>
+  <div class="funnel">
+    <div class="funnel-step"><span class="fi">&#127942;</span>Great Service</div><div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step"><span class="fi">&#128578;</span>Happy Clients</div><div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step"><span class="fi">&#11088;</span>Reviews &amp; Educational Content</div><div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step"><span class="fi">&#128205;</span>Local Authority</div><div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step strong"><span class="fi">&#129302;</span>AI Understands Your Expertise</div><div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step strong"><span class="fi">&#9989;</span>Consumers Trust You Faster</div>
+  </div>
+  <p class="body-text" style="margin-top:0.1in;">AI isn't replacing relationships. It's helping consumers decide which relationships to pursue.</p>
+  <div class="whatif-grid">
+    <div>
+      <div class="kicker" style="margin-top:0.15in;">What If I'm Wrong?</div>
+      <p class="body-text tight">Suppose AI develops much more slowly than expected. What happens?</p>
+      <p class="body-text">You still end up with more reviews, better content, stronger Google rankings, greater Realtor credibility, better branding, and more referral opportunities.</p>
+    </div>
+    <div>
+      <p class="pull" style="font-size:19px;margin-top:0.55in;">The downside is remarkably small. The upside could be enormous.</p>
+    </div>
+  </div>
+  <div class="footer-strip">
+    <div class="tag">Building Better Businesses. Building Better Lives.</div>
+    <div class="mark">Brian<span>Snyder</span></div>
+  </div>
+</div>
+
+<!-- ============ PAGE 10: FINAL THOUGHT + SIGN-OFF ============ -->
+<div class="page">
+  <div class="page-head"><div class="eyebrow-dark">The Future-Ready Loan Officer &nbsp;/&nbsp; Issue One</div><div class="page-num">10</div></div>
+  <div class="kicker">Closing Thought</div>
+  <h1 class="headline">What Future-Ready<br>Loan Officers Are <span class="accent">Doing</span></h1>
+  <ul class="checklist">
+    <li>Building trust before they need it</li>
+    <li>Creating educational content consistently</li>
+    <li>Becoming known locally before someone else does</li>
+    <li>Thinking like a media company, not just a mortgage company</li>
+    <li>Investing in visibility while most competitors are still debating it</li>
+  </ul>
+  <p class="pull">No one knows exactly how AI will reshape mortgage lending, or precisely when consumer behavior will shift. But history consistently rewards those who prepare before change becomes obvious.</p>
+  <p class="body-text">The best loan officers have always earned trust. The next generation of elite loan officers will earn trust <strong>and</strong> build digital authority.</p>
+  <p class="body-text">The opportunity isn't to chase technology. The opportunity is to remain the trusted professional consumers choose, regardless of how they search.</p>
+  <div class="signoff">
+    <div>
+      <div class="bio-name">Brian Snyder</div>
+      <div class="bio-role">The Future-Ready Loan Officer&trade; Series</div>
+      <div class="bio-contact">614-306-3051 &nbsp;&middot;&nbsp; bsnyder@uhm.com</div>
+    </div>
+  </div>
+  <div class="final-tagline">Building Better Businesses. Building Better Lives.</div>
+</div>
+
+
+</body>
+</html>
