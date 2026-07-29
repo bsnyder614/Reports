@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Google Visibility Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #1B2A4A;
+    --navy-mid:   #243660;
+    --gold:       #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale:  #F5EDD6;
+    --white:      #FFFFFF;
+    --off-white:  #F7F8FA;
+    --light-gray: #E8ECF2;
+    --mid-gray:   #8492A6;
+    --dark-gray:  #2D3748;
+    --green:      #2E7D5B;
+    --green-bg:   #D1FAE5;
+    --red:        #C0392B;
+    --red-bg:     #FEE2E2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--dark-gray);
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.06);
+  }
+
+  .cover-icon {
+    width: 64px; height: 64px;
+    background: rgba(201,168,76,0.12);
+    border: 2px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+    font-size: 28px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-title span { color: var(--gold); }
+
+  .cover-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(16px, 2.2vw, 19px);
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    max-width: 620px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    position: relative; z-index: 1;
+  }
+
+  .cover-divider {
+    width: 60px; height: 3px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-pillars {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-pillar {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 40px;
+    padding: 8px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.28);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    z-index: 1;
+  }
+
+  /* SECTION MARKER */
+  .section-marker {
+    background: var(--navy-mid);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 10px 40px;
+  }
+
+  /* PAGE SECTION */
+  .page-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--mid-gray);
+    max-width: 620px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .divider-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border-radius: 2px;
+    margin-bottom: 36px;
+  }
+
+  p { margin-bottom: 14px; }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.7;
+  }
+
+  .callout strong { color: var(--navy); }
+
+  /* FLOW DIAGRAM */
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 32px 0;
+  }
+
+  .flow-node {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 18px 32px;
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .flow-node-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .flow-node-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 3px;
+  }
+
+  .flow-arrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--gold);
+    padding: 8px 0;
+  }
+
+  /* COMPARISON */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0 8px;
+  }
+
+  .compare-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 12px;
+    padding: 26px 24px;
+  }
+
+  .compare-card.compare-dark {
+    background: var(--navy);
+    border: none;
+  }
+
+  .compare-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .compare-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px; font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+
+  .compare-dark .compare-title { color: var(--white); }
+
+  .compare-list {
+    list-style: none;
+  }
+
+  .compare-list li {
+    font-size: 13px;
+    color: var(--dark-gray);
+    padding: 7px 0;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .compare-list li:last-child { border-bottom: none; }
+
+  .compare-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .compare-dark .compare-list li {
+    color: rgba(255,255,255,0.7);
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+
+  /* STEP CARDS */
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 14px;
+  }
+
+  .step-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .step-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px; font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .step-body {
+    font-size: 14px;
+    color: var(--mid-gray);
+    line-height: 1.7;
+  }
+
+  .step-card.step-dark {
+    background: var(--navy);
+  }
+  .step-card.step-dark .step-title { color: var(--white); }
+  .step-card.step-dark .step-body { color: rgba(255,255,255,0.65); }
+
+  /* PROFILE FIELD CHECKLIST */
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 8px 0 8px;
+  }
+
+  .field-item {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .field-check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--white);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    margin-top: 1px;
+  }
+
+  .field-content .field-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .field-content .field-desc {
+    font-size: 12.5px;
+    color: var(--mid-gray);
+    line-height: 1.5;
+  }
+
+  /* FRAMEWORK LETTERS (WHO/WHERE/WHAT/WHY) */
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .framework-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 26px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .framework-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .framework-letter {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.25);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .framework-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .framework-desc {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* SAMPLE BOX */
+  .sample-box {
+    background: var(--gold-pale);
+    border: 1px dashed var(--gold);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  .sample-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 10px;
+    font-style: normal;
+  }
+
+  /* SERVICE ICON GRID */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 8px 0 28px;
+  }
+
+  .service-item {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+
+  .service-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .service-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* SCRIPT BLOCK */
+  .script-block {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 26px 28px;
+    margin: 20px 0;
+  }
+
+  .script-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .script-block p {
+    color: rgba(255,255,255,0.75);
+    font-size: 14.5px;
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+
+  .script-block p:last-child { margin-bottom: 0; }
+
+  /* PHOTO GRID */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 8px 0 8px;
+  }
+
+  .photo-item {
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 20px 14px;
+    text-align: center;
+  }
+
+  .photo-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .photo-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .photo-desc {
+    font-size: 11.5px;
+    color: var(--mid-gray);
+    line-height: 1.4;
+  }
+
+  /* CALENDAR TABLE */
+  .cal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+  }
+
+  .cal-table th {
+    background: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .cal-table td {
+    padding: 13px 16px;
+    font-size: 13px;
+    color: var(--dark-gray);
+    border-bottom: 1px solid var(--light-gray);
+    line-height: 1.6;
+    vertical-align: top;
+  }
+
+  .cal-table tr:nth-child(even) td { background: var(--white); }
+  .cal-table tr:nth-child(odd) td { background: var(--off-white); }
+
+  .cal-table td:first-child {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--navy);
+    width: 22%;
+  }
+
+  /* Q&A LIST */
+  .qa-item {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+  }
+
+  .qa-q {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .qa-a {
+    font-size: 13.5px;
+    color: var(--mid-gray);
+    line-height: 1.65;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    counter-reset: steps;
+    margin: 8px 0;
+  }
+
+  .checklist li {
+    counter-increment: steps;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--light-gray);
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.6;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist li::before {
+    content: counter(steps);
+    min-width: 30px; height: 30px;
+    background: var(--gold);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .checklist-light li {
+    color: var(--white);
+    border-bottom-color: rgba(255,255,255,0.12);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .checklist-light li:last-child { border-bottom: none; }
+
+  /* BEFORE/AFTER */
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .ba-card {
+    border-radius: 12px;
+    padding: 26px 24px;
+    border: 2px solid;
+  }
+
+  .ba-card.ba-before {
+    background: var(--red-bg);
+    border-color: rgba(192,57,43,0.25);
+  }
+
+  .ba-card.ba-after {
+    background: var(--green-bg);
+    border-color: rgba(46,125,91,0.25);
+  }
+
+  .ba-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .ba-before .ba-label { color: var(--red); }
+  .ba-after .ba-label { color: var(--green); }
+
+  .ba-list {
+    list-style: none;
+  }
+
+  .ba-list li {
+    font-size: 13px;
+    padding: 7px 0;
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.55;
+    color: var(--dark-gray);
+  }
+
+  .ba-before .ba-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .ba-after .ba-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* 30-DAY PLAN */
+  .plan-phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .phase-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 26px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .phase-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .phase-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px; font-weight: 800;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.35;
+  }
+
+  .phase-items { list-style: none; }
+
+  .phase-items li {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .phase-items li:last-child { border-bottom: none; }
+
+  .phase-items li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* BACK COVER */
+  .back-cover {
+    background: var(--navy);
+    padding: 72px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .back-cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.07);
+  }
+
+  .back-cover h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+
+  .back-cover h2 span { color: var(--gold); }
+
+  .back-cover p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    max-width: 540px;
+    margin: 0 auto 14px;
+    line-height: 1.75;
+    position: relative; z-index: 1;
+  }
+
+  .back-cover-branding {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px; font-weight: 800;
+    color: var(--white);
+    position: relative; z-index: 1;
+  }
+
+  @media (max-width: 620px) {
+    .page-section { padding: 44px 24px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .ba-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-icon">📍</div>
+  <p class="cover-eyebrow">Business Growth Library · Local Visibility Playbook</p>
+  <h1 class="cover-title">The <span>Google Visibility</span><br>Blueprint</h1>
+  <p class="cover-subtitle">Build a Google Business Profile that earns trust, improves local search visibility, and helps AI understand who you are.</p>
+  <div class="cover-divider"></div>
+  <div class="cover-pillars">
+    <span class="cover-pillar">Profile Setup</span>
+    <span class="cover-pillar">Description</span>
+    <span class="cover-pillar">Reviews</span>
+    <span class="cover-pillar">Photos</span>
+    <span class="cover-pillar">Posts</span>
+    <span class="cover-pillar">30-Day Plan</span>
+  </div>
+  <div class="cover-footer">
+    <span>BRIAN SNYDER</span>
+    <span>614-306-3051 · BSNYDER@UHM.COM</span>
+  </div>
+</section>
+
+<!-- WHY GOOGLE MATTERS -->
+<div class="section-marker">01 · Why Google Matters</div>
+<section style="background: var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">The Foundation</p>
+    <h2 class="section-title">Before They Call You, They Google You</h2>
+    <p class="section-sub">Consumers search Google before they ever contact a lender. AI search tools rely heavily on the same information to decide who to recommend. A complete, well-built Google Business Profile is now doing two jobs at once.</p>
+    <div class="divider-bar"></div>
+
+    <p>A Google Business Profile is no longer just an online listing. It is the primary source of truth Google — and increasingly AI — uses to understand who you are, where you work, what you offer, and whether people trust you. An incomplete or missing profile does not just look unfinished. It leaves a gap that AI fills with silence, or worse, with someone else's name.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-node">
+        <div class="flow-node-label">Google Business Profile</div>
+        <div class="flow-node-sub">Your information, structured and verified</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">
+        <div class="flow-node-label">Google Search</div>
+        <div class="flow-node-sub">You appear in local results and the map pack</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">
+        <div class="flow-node-label">AI Understanding</div>
+        <div class="flow-node-sub">AI tools read your profile to describe you accurately</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">
+        <div class="flow-node-label">Consumer Trust</div>
+        <div class="flow-node-sub">Reviews, photos, and details build confidence</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">
+        <div class="flow-node-label">More Conversations</div>
+        <div class="flow-node-sub">The natural result of being found and trusted</div>
+      </div>
+    </div>
+
+    <div class="callout"><strong>The profile is the input.</strong> Everything downstream — search visibility, AI accuracy, consumer trust — starts with how complete and accurate your Google Business Profile is today.</div>
+  </div>
+</section>
+
+<!-- INDIVIDUAL VS BRANCH -->
+<div class="section-marker">02 · Individual vs. Branch Profiles</div>
+<section style="background: var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">A Key Distinction</p>
+    <h2 class="section-title">Your Branch Has One. You Need Your Own.</h2>
+    <p class="section-sub">A branch profile and an individual profile serve different purposes. Most loan officers only have access to the first one — and are missing the second entirely.</p>
+    <div class="divider-bar"></div>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-label">Branch Profile</div>
+        <div class="compare-title">Represents the Office</div>
+        <ul class="compare-list">
+          <li>Builds visibility and reviews for the company location</li>
+          <li>Shared across every loan officer at that branch</li>
+          <li>Good for general company search visibility</li>
+          <li>Does not build authority around any one individual</li>
+        </ul>
+      </div>
+      <div class="compare-card compare-dark">
+        <div class="compare-label">Individual Profile</div>
+        <div class="compare-title">Represents You</div>
+        <ul class="compare-list">
+          <li>Builds reviews and authority around your name specifically</li>
+          <li>Appears when someone searches for you directly</li>
+          <li>Gives AI a clear, individual record to reference</li>
+          <li>Yours to build, maintain, and grow over your career</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow-diagram" style="margin-top:12px;">
+      <div class="flow-node" style="max-width:520px;">
+        <div class="flow-node-label">Union Home Mortgage — Dublin Branch</div>
+        <div class="flow-node-sub">The company profile</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node" style="max-width:520px;">
+        <div class="flow-node-label">Brian Snyder</div>
+        <div class="flow-node-sub">The individual profile</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node" style="max-width:520px;">
+        <div class="flow-node-label">Google Understands Both</div>
+        <div class="flow-node-sub">The branch and the individual reinforce each other</div>
+      </div>
+    </div>
+
+    <div class="callout"><strong>Both matter.</strong> But only one of them is yours to build and grow personally over the course of your career. That is the one this playbook focuses on.</div>
+  </div>
+</section>
+
+<!-- BUILDING YOUR PROFILE -->
+<div class="section-marker">03 · Building Your Profile</div>
+<section style="background: var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">The Fields That Matter</p>
+    <h2 class="section-title">Building Your Profile</h2>
+    <p class="section-sub">Every field below should be filled out completely and accurately. An incomplete profile signals to both Google and AI that something is unfinished.</p>
+    <div class="divider-bar"></div>
+
+    <div class="field-grid">
+      <div class="field-item"><div class="field-check">✓</div><div class="field-content"><div class="field-name">Business Name</div><div class="field-desc">Use your full name exactly as licensed. Avoid keyword-stuffed variations.</div></div></div>
+      <div class="field-item"><div class="field-check">✓</div><div class="field-content"><div class="field-name">Primary Category</div><div class="field-desc">Select "Mortgage Lender" or the closest available category.</div></div></div>
+      <div class="field-item"><div class="field-check">✓</div><div class="field-content"><div class="field-name">Address</div><div class="field-desc">Use your branch address, or a service-area setup if you work remotely.</div></div></div>
+      <div class="field-item"><div class="field-check">✓</div><div class="field-content"><div class="field-name">Service Areas</div><div class="field-desc">List every city or county you actually serve — not just where you sit.</div></div></div>
+      <div class="field-item"><div class="field-check">✓</div><div class="field-content"><div class="field-name">Phone</div><div class="field-desc">Use a direct number you actually answer, not a general branch line.</div></div></div>
+      <div class="field-item"><div class="field-check">✓</div><div class="field-content"><div class="field-name">Website</div><div class="field-desc">Link to your personal page if you have one, or your branded lender profile.</div></div></div>
+      <div class="field-item"><div class="field-check">✓</div><div class="field-content"><div class="field-name">Business Hours</div><div class="field-desc">Keep them realistic and current. Update around holidays.</div></div></div>
+      <div class="field-item"><div class="field-check">✓</div><div class="field-content"><div class="field-name">Profile Verification</div><div class="field-desc">Complete Google's verification process fully — an unverified profile carries far less weight.</div></div></div>
+    </div>
+
+    <div class="callout"><strong>Best practice:</strong> Fill out every available field, even the optional ones. Google rewards completeness, and AI treats a fully completed profile as a stronger, more trustworthy source.</div>
+  </div>
+</section>
+
+<!-- WRITING A GREAT DESCRIPTION -->
+<div class="section-marker">04 · Writing a Great Description</div>
+<section style="background: var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">The WHO / WHERE / WHAT / WHY Framework</p>
+    <h2 class="section-title">Writing a Great Business Description</h2>
+    <p class="section-sub">Write naturally, for a real reader. Avoid keyword stuffing — Google and AI both favor descriptions that read like a person wrote them, not an algorithm.</p>
+    <div class="divider-bar"></div>
+
+    <div class="framework-grid">
+      <div class="framework-card">
+        <div class="framework-letter">W</div>
+        <div class="framework-title">WHO</div>
+        <div class="framework-desc">Your name, title, and years of experience in the industry.</div>
+      </div>
+      <div class="framework-card">
+        <div class="framework-letter">W</div>
+        <div class="framework-title">WHERE</div>
+        <div class="framework-desc">The markets, cities, or counties you actually serve.</div>
+      </div>
+      <div class="framework-card">
+        <div class="framework-letter">W</div>
+        <div class="framework-title">WHAT</div>
+        <div class="framework-desc">The loan programs and services you offer.</div>
+      </div>
+      <div class="framework-card">
+        <div class="framework-letter">W</div>
+        <div class="framework-title">WHY</div>
+        <div class="framework-desc">What makes you different — your differentiator or approach.</div>
+      </div>
+    </div>
+
+    <div class="sample-box">
+      <div class="sample-label">Sample Description</div>
+      "I'm a mortgage loan officer with over eight years of experience helping families across Central Ohio buy and refinance homes. I specialize in first-time buyer programs, FHA, VA, and conventional loans, and I pride myself on clear communication from application to closing. Whether you're buying your first home or your fifth, I'll walk you through every step in plain language."
+    </div>
+
+    <div class="callout"><strong>Keep it natural.</strong> Include your markets, your programs, and your experience — but write it the way you would say it out loud to a client, not the way you would write it for a search engine.</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div class="section-marker">05 · Services to Include</div>
+<section style="background: var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Completeness Matters</p>
+    <h2 class="section-title">Services That Should Be Included</h2>
+    <p class="section-sub">List every loan program you actually offer. A complete services list helps Google — and AI — match you to the specific question a borrower is asking.</p>
+    <div class="divider-bar"></div>
+
+    <div class="service-grid">
+      <div class="service-item"><div class="service-icon">🏠</div><div class="service-name">Conventional</div></div>
+      <div class="service-item"><div class="service-icon">🏛️</div><div class="service-name">FHA</div></div>
+      <div class="service-item"><div class="service-icon">🎖️</div><div class="service-name">VA</div></div>
+      <div class="service-item"><div class="service-icon">🌾</div><div class="service-name">USDA</div></div>
+      <div class="service-item"><div class="service-icon">🧱</div><div class="service-name">Construction</div></div>
+      <div class="service-item"><div class="service-icon">💎</div><div class="service-name">Jumbo</div></div>
+      <div class="service-item"><div class="service-icon">🔨</div><div class="service-name">Renovation</div></div>
+      <div class="service-item"><div class="service-icon">🔑</div><div class="service-name">First-Time Buyer</div></div>
+      <div class="service-item"><div class="service-icon">📈</div><div class="service-name">Investment</div></div>
+      <div class="service-item"><div class="service-icon">🩺</div><div class="service-name">Doctor Loans</div></div>
+      <div class="service-item"><div class="service-icon">💰</div><div class="service-name">Down Payment Assistance</div></div>
+    </div>
+
+    <div class="callout"><strong>Only list what you offer.</strong> Accuracy matters more than volume — an inflated list erodes trust the first time a client asks about a program you don't actually provide.</div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<div class="section-marker">06 · Reviews as Digital Trust</div>
+<section style="background: var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">The Strongest Signal</p>
+    <h2 class="section-title">Reviews Become Digital Trust</h2>
+    <p class="section-sub">Reviews are the single strongest trust signal on your profile. They tell Google, AI, and future clients that real people had a good experience working with you.</p>
+    <div class="divider-bar"></div>
+
+    <div class="step-card">
+      <div class="step-number">Who to Ask</div>
+      <div class="step-title">New Clients and Past Clients</div>
+      <div class="step-body">Ask every new client right after closing, while the experience is fresh. Then go back through your past client list — those closings still count, and many past clients are happy to help if you simply ask.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">Timing</div>
+      <div class="step-title">Ask at the Moment of Excitement</div>
+      <div class="step-body">The best moment is right after closing, when the client is celebrating. Waiting even a few days lowers the response rate significantly.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">Responding</div>
+      <div class="step-title">Reply to Every Review</div>
+      <div class="step-body">Thank every reviewer by name and reference something specific about their transaction. Responding shows you are active and engaged — Google and AI both notice.</div>
+    </div>
+
+    <div class="script-block">
+      <div class="script-label">Sample Review Request</div>
+      <p>"Congratulations again on your new home! If you have two minutes, a Google review would mean a lot to me and helps other buyers know what to expect when they work with me. Here's the link: [your review link]."</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<div class="section-marker">07 · Photos Build Confidence</div>
+<section style="background: var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Show, Don't Just Tell</p>
+    <h2 class="section-title">Photos Build Confidence</h2>
+    <p class="section-sub">Profiles with real, current photos get more engagement and feel more trustworthy. Update these regularly rather than uploading once and forgetting.</p>
+    <div class="divider-bar"></div>
+
+    <div class="photo-grid">
+      <div class="photo-item"><div class="photo-icon">🙂</div><div class="photo-name">Headshot</div><div class="photo-desc">Professional, current, well-lit</div></div>
+      <div class="photo-item"><div class="photo-icon">🏢</div><div class="photo-name">Office</div><div class="photo-desc">Where clients meet you</div></div>
+      <div class="photo-item"><div class="photo-icon">👥</div><div class="photo-name">Team</div><div class="photo-desc">The people behind the process</div></div>
+      <div class="photo-item"><div class="photo-icon">🎉</div><div class="photo-name">Community Events</div><div class="photo-desc">Local involvement and presence</div></div>
+      <div class="photo-item"><div class="photo-icon">🔑</div><div class="photo-name">Closing Celebrations</div><div class="photo-desc">Real clients, real moments</div></div>
+      <div class="photo-item"><div class="photo-icon">🤝</div><div class="photo-name">Volunteer Work</div><div class="photo-desc">Community trust signals</div></div>
+      <div class="photo-item"><div class="photo-icon">🏆</div><div class="photo-name">Awards</div><div class="photo-desc">Recognition and credibility</div></div>
+      <div class="photo-item"><div class="photo-icon">🌆</div><div class="photo-name">Local Landmarks</div><div class="photo-desc">Reinforces your local market</div></div>
+    </div>
+
+    <div class="callout"><strong>Fresh beats perfect.</strong> A steady stream of real, recent photos outperforms a handful of polished ones that never change.</div>
+  </div>
+</section>
+
+<!-- GOOGLE POSTS -->
+<div class="section-marker">08 · Google Posts</div>
+<section style="background: var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Stay Active</p>
+    <h2 class="section-title">Google Posts</h2>
+    <p class="section-sub">One useful post per week keeps your profile active in Google's eyes and gives potential clients a reason to keep engaging.</p>
+    <div class="divider-bar"></div>
+
+    <table class="cal-table">
+      <thead>
+        <tr><th>Week</th><th>Post Idea</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Week 1</td><td>Market update — a short, plain-language summary of current rates or local trends.</td></tr>
+        <tr><td>Week 2</td><td>Neighborhood spotlight — highlight a community you serve and what makes it appealing to buyers.</td></tr>
+        <tr><td>Week 3</td><td>Buying tip — one practical piece of advice for first-time or repeat buyers.</td></tr>
+        <tr><td>Week 4</td><td>Community event or realtor interview — feature a local partnership or upcoming event.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout"><strong>Consistency over volume.</strong> A short, useful post published every week outperforms an occasional long one. Rotate through market updates, neighborhood spotlights, buying tips, community events, FAQs, builder updates, and realtor interviews.</div>
+  </div>
+</section>
+
+<!-- Q&A -->
+<div class="section-marker">09 · Questions & Answers</div>
+<section style="background: var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">Answer Before They Ask</p>
+    <h2 class="section-title">Questions &amp; Answers</h2>
+    <p class="section-sub">Answering common borrower questions directly on your profile helps real people — and gives AI clear, quotable language to pull from when it describes you.</p>
+    <div class="divider-bar"></div>
+
+    <div class="qa-item">
+      <div class="qa-q">How much down payment is required?</div>
+      <div class="qa-a">Down payment requirements vary by loan program — some options allow as little as 0% to 3.5% down. I can walk you through what fits your situation.</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">What credit score do I need?</div>
+      <div class="qa-a">Minimum credit score requirements depend on the loan program. I work with buyers across a range of credit profiles and can help you understand your options.</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">Do you offer VA loans?</div>
+      <div class="qa-a">Yes — I offer VA loans for eligible veterans and active-duty service members, often with no down payment required.</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">How long does pre-approval take?</div>
+      <div class="qa-a">Most pre-approvals can be completed within 24 to 48 hours once I have your basic financial information.</div>
+    </div>
+
+    <div class="callout"><strong>Why this matters twice.</strong> A real borrower gets a fast, useful answer. AI gets clear, factual language it can quote confidently when someone asks it a similar question.</div>
+  </div>
+</section>
+
+<!-- BEFORE & AFTER -->
+<div class="section-marker">10 · Before &amp; After</div>
+<section style="background: var(--white);">
+  <div class="page-section">
+    <p class="section-eyebrow">See the Difference</p>
+    <h2 class="section-title">A Strong Google Business Profile</h2>
+    <p class="section-sub">The contrast between a bare-bones profile and a fully optimized one is stark — and it's exactly what a borrower or AI tool sees the moment they look you up.</p>
+    <div class="divider-bar"></div>
+
+    <div class="ba-grid">
+      <div class="ba-card ba-before">
+        <div class="ba-label">Before</div>
+        <ul class="ba-list">
+          <li>No business description</li>
+          <li>Only one or two services listed</li>
+          <li>No photos, or a single outdated headshot</li>
+          <li>Zero or very few reviews</li>
+          <li>No posts in months</li>
+          <li>No FAQ section</li>
+          <li>Profile unverified or incomplete</li>
+        </ul>
+      </div>
+      <div class="ba-card ba-after">
+        <div class="ba-label">After</div>
+        <ul class="ba-list">
+          <li>Clear WHO / WHERE / WHAT / WHY description</li>
+          <li>Full list of loan programs offered</li>
+          <li>Headshot, office, team, and event photos</li>
+          <li>A steady, growing base of detailed reviews</li>
+          <li>Weekly posts covering rates, tips, and community</li>
+          <li>Common borrower questions answered directly</li>
+          <li>Fully verified and complete</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout"><strong>The difference is obvious in seconds.</strong> One profile looks abandoned. The other looks like a trusted, active professional — and that impression forms before a single conversation ever happens.</div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<div class="section-marker">11 · The Google Visibility Checklist</div>
+<section style="background: var(--off-white);">
+  <div class="page-section">
+    <p class="section-eyebrow">One-Page Reference</p>
+    <h2 class="section-title">The Google Visibility Checklist</h2>
+    <p class="section-sub">Use this as your working checklist. Check off each item as you complete it.</p>
+    <div class="divider-bar"></div>
+
+    <ol class="checklist">
+      <li>Profile completed — every field filled out</li>
+      <li>Description written using the WHO / WHERE / WHAT / WHY framework</li>
+      <li>Services added — every loan program you actually offer</li>
+      <li>Photos uploaded — headshot, office, team, events</li>
+      <li>Review link saved to your phone for easy access</li>
+      <li>Five reviews requested from recent or past clients</li>
+      <li>First Google Post published</li>
+      <li>Common borrower questions answered</li>
+      <li>Profile fully verified with Google</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 30-DAY CHALLENGE -->
+<div class="section-marker">12 · Your 30-Day Challenge</div>
+<section style="background: var(--navy); padding: 60px 0;">
+  <div style="max-width:900px; margin:0 auto; padding:0 40px;">
+    <p style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">One Month to a Complete Profile</p>
+    <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,36px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:12px;">Your 30-Day Google Visibility Challenge</h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:32px;max-width:580px;line-height:1.75;">You do not need a marketing team to do this. You need one afternoon to start, and four short weeks to finish.</p>
+    <div style="height:3px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:36px;border-radius:2px;"></div>
+
+    <div class="plan-phases">
+      <div class="phase-card">
+        <div class="phase-label">Week One</div>
+        <div class="phase-title">Claim or Create Your Profile</div>
+        <ul class="phase-items">
+          <li>Search Google for your name to see if a profile already exists.</li>
+          <li>Claim it, or create a new individual profile if none exists.</li>
+          <li>Begin the verification process right away.</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Week Two</div>
+        <div class="phase-title">Complete Every Field</div>
+        <ul class="phase-items">
+          <li>Write your description using the WHO / WHERE / WHAT / WHY framework.</li>
+          <li>Add every service and loan program you offer.</li>
+          <li>Upload your headshot and at least four other photos.</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Week Three</div>
+        <div class="phase-title">Request Five Reviews</div>
+        <ul class="phase-items">
+          <li>Send your review link to five recent or past clients.</li>
+          <li>Reply to each review as it comes in.</li>
+          <li>Save your review link somewhere you can access it instantly.</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Week Four</div>
+        <div class="phase-title">Publish Your First Post</div>
+        <ul class="phase-items">
+          <li>Write and publish your first Google Post.</li>
+          <li>Answer two or three common borrower questions on your profile.</li>
+          <li>Set a recurring weekly reminder to keep posting.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:12px;padding:24px 28px;margin-top:32px;">
+      <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin:0;"><strong style="color:var(--gold);">Small improvements create lasting visibility.</strong> &nbsp;Consistency compounds. The loan officers with the strongest profiles a year from now are the ones who started this week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BACK COVER -->
+<section class="back-cover">
+  <h2>Be Found.<br><span>Be Trusted.</span></h2>
+  <p>Every borrower searching Google — and every AI tool answering a question about a loan officer near them — is reading the same profile. Make sure it tells the right story.</p>
+  <p>Complete it. Keep it active. Let it compound.</p>
+  <div class="cover-divider" style="margin:32px auto;"></div>
+  <div class="back-cover-branding">Brian Snyder</div>
+  <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:12px;margin-bottom:0;">614-306-3051 &nbsp;·&nbsp; bsnyder@uhm.com</p>
+</section>
+
+</body>
+</html>
