@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Visibility Index — Jacqui Bowman, REALTOR® | Business Growth Library</title>
+<meta name="description" content="AI Visibility Index, Realtor Edition — a consulting analysis of how AI currently sees Jacqui Bowman, REALTOR®, and what to do about it.">
+<style>
+  :root{
+    --navy:#0B1F3A;
+    --navy-2:#16305A;
+    --navy-3:#234173;
+    --gold:#C9A227;
+    --gold-l:#E4C669;
+    --paper:#FBFBFA;
+    --ink:#1F2937;
+    --slate:#5B6472;
+    --hair:#E4E1D8;
+    --opp:#A9A296;
+    --build:#234173;
+    --strong:#C9A227;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; font-family:var(--sans); color:var(--ink); background:#fff;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  section{padding:88px 0;}
+  section + section{border-top:1px solid var(--hair);}
+  .kicker{
+    font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--gold); margin:0 0 14px;
+  }
+  .kicker.on-dark{color:var(--gold-l);}
+  h1,h2,h3{font-family:var(--serif); color:var(--navy); margin:0; font-weight:700;}
+  h2{font-size:clamp(28px,4vw,38px); line-height:1.15; margin-bottom:10px;}
+  .sub{font-family:var(--sans); font-style:italic; color:var(--slate); font-size:17px; margin:14px 0 0; max-width:640px;}
+  p{line-height:1.65; font-size:16px; color:var(--ink);}
+  .lede{font-size:18px; max-width:680px;}
+
+  /* ---------- Cover ---------- */
+  .cover{
+    background:radial-gradient(circle at 82% -10%, var(--navy-2), var(--navy) 45%);
+    color:#fff; padding:96px 0 80px; position:relative; overflow:hidden;
+  }
+  .cover::before{
+    content:""; position:absolute; left:-120px; bottom:-140px; width:340px; height:340px;
+    border-radius:50%; background:var(--navy-2); opacity:.7;
+  }
+  .cover .wrap{position:relative; z-index:1;}
+  .brand{font-weight:700; letter-spacing:.2em; font-size:12px; color:var(--gold); text-transform:uppercase;}
+  .cover h1{
+    font-family:var(--serif); color:#fff; font-size:clamp(40px,7vw,64px); line-height:1.05;
+    margin:22px 0 6px;
+  }
+  .cover .edition{font-family:var(--serif); font-style:italic; color:var(--gold-l); font-size:22px; margin-bottom:22px;}
+  .rule{width:56px; height:2px; background:var(--gold); border:0; margin:22px 0;}
+  .cover .question{font-style:italic; color:#c9d2e0; font-size:18px; max-width:520px; line-height:1.5;}
+  .prepared{
+    margin-top:56px; background:var(--navy-2); border:1px solid rgba(255,255,255,.12);
+    border-radius:14px; padding:28px 30px; max-width:560px;
+  }
+  .prepared .k{font-size:11px; letter-spacing:.16em; color:var(--gold); text-transform:uppercase; font-weight:700;}
+  .prepared h3{color:#fff; font-size:26px; margin:8px 0 6px;}
+  .prepared .role{color:#c9d2e0; font-size:15px;}
+  .prepared .area{color:#9fadc4; font-size:13.5px; margin-top:10px; line-height:1.5;}
+  .meta{margin-top:40px; color:#8593ac; font-size:13px;}
+
+  /* ---------- Badges / circles (no chart engine — see build notes) ---------- */
+  .badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    border-radius:50%; font-family:var(--serif); font-weight:700; color:var(--navy);
+    border:3px solid #fff; flex:none;
+  }
+  .badge.on-navy{border-color:var(--navy);}
+  .b-strong{background:var(--strong); color:var(--navy);}
+  .b-build{background:var(--build); color:#fff;}
+  .b-opp{background:var(--opp); color:var(--navy);}
+  .b-lg{width:150px; height:150px; font-size:50px;}
+  .b-md{width:96px; height:96px; font-size:30px;}
+  .b-sm{width:78px; height:78px; font-size:24px;}
+
+  /* ---------- Scorecard ---------- */
+  .score-hero{
+    background:var(--navy); border-radius:18px; padding:36px; color:#fff;
+    display:flex; gap:34px; align-items:center; flex-wrap:wrap; margin:34px 0 44px;
+  }
+  .score-hero .label{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#9fadc4; margin-top:10px;}
+  .score-hero .band{font-weight:700; color:var(--gold-l); margin-top:2px;}
+  .score-hero blockquote{margin:0; font-style:italic; font-size:19px; line-height:1.5; color:#fff; max-width:440px;}
+  .layer-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:18px; margin:28px 0 8px; text-align:center;}
+  .layer-grid figcaption{margin-top:10px; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--slate); text-transform:uppercase;}
+  .key{display:flex; gap:28px; flex-wrap:wrap; margin:26px 0; font-size:14px; color:var(--ink);}
+  .key span{display:inline-flex; align-items:center; gap:8px;}
+  .dot{width:13px; height:13px; border-radius:50%; display:inline-block;}
+  .callout{background:var(--paper); border:1px solid var(--hair); border-radius:14px; padding:24px 26px;}
+  .callout p{font-style:italic; margin:0; color:var(--ink);}
+  .footnote{font-size:13px; color:var(--slate); font-style:italic; margin-top:14px;}
+
+  /* ---------- Findings ---------- */
+  ul.findings{list-style:none; margin:24px 0; padding:0;}
+  ul.findings li{
+    padding-left:22px; position:relative; margin-bottom:16px; line-height:1.6; font-size:16px;
+  }
+  ul.findings li::before{content:"■"; color:var(--gold); font-size:9px; position:absolute; left:0; top:7px;}
+  .moves{display:flex; flex-direction:column; gap:16px; margin-top:28px;}
+  .move{
+    display:flex; gap:20px; align-items:flex-start; border:1px solid var(--hair); border-radius:14px;
+    padding:22px 24px; background:var(--paper);
+  }
+  .move .num{
+    width:44px; height:44px; border-radius:50%; background:var(--navy); color:var(--gold);
+    font-family:var(--serif); font-weight:700; font-size:19px; display:flex; align-items:center; justify-content:center;
+    flex:none;
+  }
+  .move h4{font-family:var(--serif); margin:0 0 4px; color:var(--navy); font-size:18px;}
+  .move p{margin:0; font-size:14.5px; color:var(--slate);}
+  .tag{
+    background:var(--navy-3); color:#fff; font-size:12px; font-weight:700; border-radius:20px;
+    padding:5px 14px; white-space:nowrap; align-self:center; margin-left:auto;
+  }
+
+  /* ---------- Chat bubbles ---------- */
+  .bubble{
+    background:var(--paper); border:1px solid var(--hair); border-radius:12px; padding:16px 20px;
+    font-style:italic; color:var(--navy); margin-bottom:12px; font-size:16px;
+  }
+
+  /* ---------- Two-col cards ---------- */
+  .cards2{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:26px;}
+  .card{border:1px solid var(--hair); border-radius:14px; padding:24px; background:var(--paper);}
+  .card h4{font-family:var(--serif); color:var(--navy); font-size:18px; margin:0 0 8px;}
+  .card p{margin:0; font-size:14.5px; color:var(--ink);}
+
+  /* ---------- Pyramid ---------- */
+  .pyramid{display:flex; flex-direction:column; align-items:center; gap:8px; margin:34px 0;}
+  .pyr-layer{
+    height:56px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;
+    font-size:15px; border-radius:4px; width:100%;
+  }
+  .pyr-layer.light{color:var(--navy);}
+  .glossary-line{margin-bottom:10px; font-size:15px; line-height:1.5;}
+  .glossary-line b{color:var(--navy);}
+
+  /* ---------- Status rows ---------- */
+  .status-row{
+    display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid var(--hair);
+    flex-wrap:wrap;
+  }
+  .status-row:last-child{border-bottom:0;}
+  .status-row .name{flex:1 1 260px; font-size:15px;}
+  .pill{
+    font-size:12px; font-weight:700; color:#fff; border-radius:20px; padding:6px 16px; flex:none;
+  }
+  .pill.opp{background:var(--opp); color:var(--navy);}
+  .pill.build{background:var(--build);}
+  .pill.strong{background:var(--strong); color:var(--navy);}
+  .status-row .note{color:var(--slate); font-style:italic; font-size:13.5px; flex:1 1 240px;}
+
+  /* ---------- Do This ---------- */
+  .do-this{background:var(--navy); color:#fff; border-radius:14px; padding:24px 26px; margin-top:24px;}
+  .do-this .k{color:var(--gold); font-size:11px; letter-spacing:.14em; font-weight:700; text-transform:uppercase; margin-bottom:8px;}
+  .do-this p{margin:0; font-style:italic; color:#fff; font-size:15.5px;}
+
+  /* ---------- Reviews platform row ---------- */
+  .platform-row{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:26px 0;}
+  .platform-card{border:1px solid var(--hair); border-radius:14px; background:var(--paper); padding:22px 10px; text-align:center;}
+  .platform-card .badge{margin:0 auto 10px;}
+  .platform-card .pname{font-weight:700; font-size:14px;}
+
+  /* ---------- topic grid ---------- */
+  .topic-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:24px 0;}
+  .topic{
+    border:1px solid var(--hair); border-radius:10px; padding:14px 16px; font-size:14.5px;
+    display:flex; align-items:center; gap:10px; background:var(--paper);
+  }
+  .topic .dot{background:var(--opp); flex:none;}
+
+  /* ---------- Community footprint ---------- */
+  .community-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:20px 0 30px;}
+  .community-grid .item{border:1px solid var(--hair); border-radius:10px; padding:14px 16px; font-size:14.5px; background:var(--paper);}
+  .flow{display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:16px;}
+  .flow .step{
+    width:100%; max-width:520px; padding:16px; border-radius:10px; text-align:center; color:#fff; font-weight:700;
+  }
+  .flow .arrow{color:var(--gold); font-size:13px;}
+
+  /* ---------- 90-day plan ---------- */
+  .plan{display:flex; flex-direction:column; gap:18px; margin-top:26px;}
+  .plan .month{border:1px solid var(--hair); border-left:6px solid var(--navy); border-radius:12px; padding:22px 26px; background:var(--paper);}
+  .plan .month:nth-child(2){border-left-color:var(--navy-3);}
+  .plan .month:nth-child(3){border-left-color:var(--gold);}
+  .plan h4{font-family:var(--serif); color:var(--navy); font-size:19px; margin:0 0 10px;}
+  .plan ul{margin:0; padding-left:20px; color:var(--ink);}
+  .plan li{margin-bottom:6px; font-size:15px;}
+
+  /* ---------- Roadmap ---------- */
+  .roadmap-wrap{background:var(--navy); color:#fff; padding:88px 0;}
+  .roadmap-flow{display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:36px;}
+  .roadmap-flow .step{
+    width:100%; max-width:520px; padding:18px; border-radius:10px; text-align:center; font-weight:700; font-size:16px;
+  }
+
+  /* ---------- resources ---------- */
+  .resource{border:1px solid var(--hair); border-radius:12px; padding:20px 24px; margin-bottom:14px; background:var(--paper);}
+  .resource h4{font-family:var(--serif); color:var(--navy); margin:0 0 4px; font-size:17px;}
+  .resource p{margin:0; font-size:14.5px; color:var(--slate);}
+  .terms b{color:var(--navy);}
+  .terms p{margin:0 0 10px; font-size:14.5px;}
+  .closer{background:var(--navy); color:#fff; border-radius:14px; padding:26px; margin-top:30px;}
+  .closer p{color:#fff; font-style:italic; margin:0 0 10px; font-size:15px;}
+  .closer .who{color:var(--gold-l); font-size:13.5px;}
+
+  footer{padding:40px 0 60px; text-align:center; color:var(--slate); font-size:13px;}
+
+  @media (max-width:720px){
+    section{padding:56px 0;}
+    .layer-grid{grid-template-columns:repeat(3,1fr); gap:22px 14px;}
+    .cards2, .platform-row, .topic-grid, .community-grid{grid-template-columns:1fr;}
+    .score-hero{flex-direction:column; align-items:flex-start;}
+    .tag{margin-left:0;}
+  }
+  @media print{
+    section{padding:32px 0; break-inside:avoid;}
+    .cover, .roadmap-wrap{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <div class="wrap">
+    <div class="brand">Business Growth Library</div>
+    <h1>AI Visibility Index</h1>
+    <div class="edition">Realtor Edition</div>
+    <hr class="rule">
+    <p class="question">How visible is your business when consumers ask AI to recommend a Realtor?</p>
+
+    <div class="prepared">
+      <div class="k">Prepared for</div>
+      <h3>Jacqueline &ldquo;Jacqui&rdquo; Bowman</h3>
+      <div class="role">REALTOR® · Team Manager, The Summit Group at eXp Realty</div>
+      <div class="area">Serving Stow, Munroe Falls, Cuyahoga Falls, Akron &amp; the greater Summit, Portage and Stark County region</div>
+    </div>
+    <div class="meta">Prepared August 2026 · A confidential consulting analysis</div>
+  </div>
+</header>
+
+<!-- ============ SCORECARD ============ -->
+<section id="scorecard">
+  <div class="wrap">
+    <div class="kicker">AI Visibility Index</div>
+    <h2>Your Scorecard</h2>
+
+    <div class="score-hero">
+      <div>
+        <div class="badge b-strong b-lg">21</div>
+        <div class="label">Overall score</div>
+        <div class="band">Invisible</div>
+      </div>
+      <blockquote>Strong the moment AI is asked about her by name. Not yet found when AI is asked a cold, no-name question like &ldquo;best Realtor near me.&rdquo;</blockquote>
+    </div>
+
+    <div class="kicker" style="margin-bottom:6px;">Score by layer</div>
+    <div class="layer-grid">
+      <figure><div class="badge b-opp b-md">17</div><figcaption>Discovery</figcaption></figure>
+      <figure><div class="badge b-opp b-md">25</div><figcaption>Reviews</figcaption></figure>
+      <figure><div class="badge b-opp b-md">30</div><figcaption>Brand</figcaption></figure>
+      <figure><div class="badge b-opp b-md">20</div><figcaption>Outside Authority</figcaption></figure>
+      <figure><div class="badge b-opp b-md">15</div><figcaption>Local Content</figcaption></figure>
+      <figure><div class="badge b-opp b-md">25</div><figcaption>Technical Fdn.</figcaption></figure>
+    </div>
+
+    <div class="key">
+      <span><i class="dot" style="background:var(--strong)"></i>Strong (70+)</span>
+      <span><i class="dot" style="background:var(--build)"></i>Building (45–69)</span>
+      <span><i class="dot" style="background:var(--opp)"></i>Opportunity (&lt;45)</span>
+    </div>
+
+    <div class="callout">
+      <p>This score isn&rsquo;t a grade on Jacqui&rsquo;s business — it&rsquo;s a grade on how well AI can currently find and repeat her story. Every layer below is fixable, and most of the work is turning things Jacqui already has (20 years of production, real community leadership) into content AI can read. The rest of this report is that plan.</p>
+    </div>
+    <p class="footnote">Scored with the AI Visibility Index Realtor Edition rubric — a query-bank audit run via the web-search proxy method. Full methodology available on request.</p>
+  </div>
+</section>
+
+<!-- ============ FINDINGS & NEXT MOVES ============ -->
+<section id="findings">
+  <div class="wrap">
+    <div class="kicker">AI Visibility Index</div>
+    <h2>Findings &amp; Next Moves</h2>
+
+    <div class="kicker" style="margin-top:30px;">What we found</div>
+    <ul class="findings">
+      <li>When AI is asked Jacqui&rsquo;s name directly, it finds her right away. When AI is asked a no-name question like &ldquo;best Realtor near me,&rdquo; it doesn&rsquo;t.</li>
+      <li>Her name is spread across three separate websites — a coaching brand and two team-branded sites — so AI can&rsquo;t fully connect them into one trusted profile.</li>
+      <li>Reviews exist, but aren&rsquo;t gathered on the platforms AI checks first (Google, Zillow, Realtor.com).</li>
+      <li>Twenty years of local transactions haven&rsquo;t yet become the neighborhood and market content that proves that experience to AI.</li>
+    </ul>
+
+    <div class="callout" style="margin-top:10px;">
+      <div class="kicker" style="margin-bottom:8px;">The edge</div>
+      <p>None of this is a reputation problem. CRS® and REALTOR® designations, an OAR Award of Distinction, and genuine, documented community leadership across Stow and Munroe Falls are real differentiators — they just aren&rsquo;t organized under one name yet.</p>
+    </div>
+
+    <div class="kicker" style="margin-top:36px;">Three moves, in order</div>
+    <div class="moves">
+      <div class="move">
+        <div class="num">1</div>
+        <div style="flex:1;">
+          <h4>Bring her name home</h4>
+          <p>One Realtor-facing identity, anchored to her own name — not a team or coaching brand.</p>
+        </div>
+        <div class="tag">2–4 wks</div>
+      </div>
+      <div class="move">
+        <div class="num">2</div>
+        <div style="flex:1;">
+          <h4>Turn trust into reviews</h4>
+          <p>Same-week Google / Zillow / Realtor.com review requests after every closing.</p>
+        </div>
+        <div class="tag">30–60 days</div>
+      </div>
+      <div class="move">
+        <div class="num">3</div>
+        <div style="flex:1;">
+          <h4>Publish the local knowledge</h4>
+          <p>Neighborhood, school and market content from 20 years of real transactions.</p>
+        </div>
+        <div class="tag">60–90 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY THIS MATTERS ============ -->
+<section id="why">
+  <div class="wrap">
+    <div class="kicker">AI Visibility Index</div>
+    <h2>Why This Matters</h2>
+    <p class="lede">Homebuyers and sellers no longer start their search with a single Google query. Increasingly, they ask AI a direct question — and expect a confident, specific answer. AI can only recommend the Realtors it can clearly understand.</p>
+
+    <div class="kicker" style="margin-top:32px;">Questions today&rsquo;s consumers ask AI</div>
+    <div class="bubble">&ldquo;Who&rsquo;s the best Realtor in Stow, Ohio?&rdquo;</div>
+    <div class="bubble">&ldquo;Best listing agent near Munroe Falls&rdquo;</div>
+    <div class="bubble">&ldquo;Who should I use to sell my home in Cuyahoga Falls?&rdquo;</div>
+    <div class="bubble">&ldquo;Realtor for first-time homebuyers in Summit County&rdquo;</div>
+    <div class="bubble">&ldquo;Realtor who helps with relocation to Northeast Ohio&rdquo;</div>
+
+    <div class="do-this" style="margin-top:26px;">
+      <p>AI builds its answers from what&rsquo;s published, consistent, and confirmed across the web — website, Google Business Profile, reviews, local content and community mentions. When that&rsquo;s thin, outdated or split across identities, AI fills the gap with a competitor whose story is easier to read.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW AI PICKS ============ -->
+<section id="how-ai-picks">
+  <div class="wrap">
+    <div class="kicker">AI Visibility Index</div>
+    <h2>How AI Picks Who to Recommend</h2>
+    <p class="sub">When someone asks AI &ldquo;best Realtor in [town],&rdquo; it does two things at once, then looks for one thing above all.</p>
+
+    <div class="cards2">
+      <div class="card">
+        <h4>What it already learned</h4>
+        <p>Its training already has an impression of the Realtor — if enough places talk about them.</p>
+      </div>
+      <div class="card">
+        <h4>What it finds live</h4>
+        <p>It runs background web searches and reads what the web currently says, good and bad.</p>
+      </div>
+    </div>
+
+    <div class="do-this" style="margin-top:22px;">
+      <div class="k">Then it looks for one thing: consensus</div>
+      <p>Does the whole web say the same true thing about this person? That agreement is what AI repeats back to the consumer. You don&rsquo;t win by writing one great page about yourself — you win when the internet says the same true thing about you, everywhere.</p>
+    </div>
+
+    <div class="kicker" style="margin-top:34px;">The three engines</div>
+    <div class="card" style="margin-bottom:14px;">
+      <h4>Be Found</h4>
+      <p>Basic search visibility — the price of admission. If you&rsquo;re not in results, you&rsquo;re not in the answer.</p>
+    </div>
+    <div class="card" style="margin-bottom:14px;">
+      <h4>Be Quotable</h4>
+      <p>Content written the way AI likes to copy: answer-first, short, real local numbers, first-hand stories.</p>
+    </div>
+    <div class="card">
+      <h4>Be Talked About</h4>
+      <p>Off-site reputation — reviews, listings, local news, partners. The strongest engine, and the one almost no Realtor works.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PYRAMID ============ -->
+<section id="pyramid">
+  <div class="wrap">
+    <div class="kicker">AI Visibility Index</div>
+    <h2>The AI Visibility Pyramid</h2>
+    <p class="sub">How AI builds trust in a Realtor, layer by layer</p>
+
+    <div class="pyramid">
+      <div class="pyr-layer light" style="width:34%; background:var(--gold);">Reviews</div>
+      <div class="pyr-layer light" style="width:46%; background:var(--gold-l);">Personal Brand</div>
+      <div class="pyr-layer" style="width:58%; background:var(--navy-3);">Outside Authority</div>
+      <div class="pyr-layer" style="width:72%; background:var(--navy-2);">Local Content</div>
+      <div class="pyr-layer" style="width:100%; background:var(--navy);">Technical Foundation</div>
+    </div>
+
+    <div style="margin-top:30px;">
+      <p class="glossary-line"><b>Reviews:</b> Recent, specific, aggregated reviews across Google, Zillow and Realtor.com — the layer consumers and AI trust most.</p>
+      <p class="glossary-line"><b>Personal Brand:</b> One consistent name, photo, bio and message everywhere, so AI isn&rsquo;t left guessing which &ldquo;Jacqui Bowman&rdquo; is the Realtor.</p>
+      <p class="glossary-line"><b>Outside Authority:</b> Mentions on brokerage, media, chamber and community sites that confirm — from an independent source — who Jacqui is.</p>
+      <p class="glossary-line"><b>Local Content:</b> Neighborhood guides, school district pages and market updates that prove local expertise in searchable terms.</p>
+      <p class="glossary-line"><b>Technical Foundation:</b> A working website, an accurate Google Business Profile, and consistent name / phone / brokerage data everywhere online.</p>
+    </div>
+    <p style="color:var(--gold); font-style:italic; margin-top:10px;">The five sections that follow take these one at a time — where Jacqui stands, and exactly what to do.</p>
+  </div>
+</section>
+
+<!-- ============ LAYER 1: REVIEWS ============ -->
+<section id="layer-1">
+  <div class="wrap">
+    <div class="kicker">Layer 1 of 5</div>
+    <h2>Reviews</h2>
+    <p class="sub">AI reads reviews, not resumes — recent, specific, aggregated reviews are what it trusts most.</p>
+    <p style="margin-top:22px;">Get reviews often, on the platforms AI and consumers check first: Google, Zillow, Realtor.com and Homes.com. Ask for specifics (&ldquo;sold our home in 9 days, $12k over ask&rdquo;), not just stars. Reply to every review. Ask within the first week after closing, while it&rsquo;s fresh.</p>
+
+    <div class="kicker" style="margin-top:30px;">Where Jacqui stands — aggregated reviews found, by platform</div>
+    <div class="platform-row">
+      <div class="platform-card"><div class="badge b-opp b-sm">0</div><div class="pname">Google</div></div>
+      <div class="platform-card"><div class="badge b-opp b-sm">0</div><div class="pname">Zillow</div></div>
+      <div class="platform-card"><div class="badge b-opp b-sm">0</div><div class="pname">Realtor.com</div></div>
+      <div class="platform-card"><div class="badge b-opp b-sm">0</div><div class="pname">Homes.com</div></div>
+    </div>
+
+    <div class="callout">
+      <p>Realtor.com currently shows no accumulated reviews under Jacqui&rsquo;s name, and no other platform shows a consolidated count — despite genuine, detailed client testimonials already sitting on The Summit Group&rsquo;s site. The raw material exists; it just hasn&rsquo;t moved to where AI looks.</p>
+    </div>
+
+    <div class="do-this">
+      <div class="k">Do this</div>
+      <p>After every closing, send a same-week review request to Google, Zillow and Realtor.com — three platforms, one short ask, sent while the experience is fresh.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAYER 2: PERSONAL BRAND ============ -->
+<section id="layer-2">
+  <div class="wrap">
+    <div class="kicker">Layer 2 of 5</div>
+    <h2>Personal Brand</h2>
+    <p class="sub">One name, one lane, said identically everywhere — so AI isn&rsquo;t left guessing.</p>
+    <p style="margin-top:22px;">Pick one lane you can own (first-time buyers, listings, relocation) and say it the same way in every bio. Test: if a client, a partner and an AI tool were each asked &ldquo;what is this Realtor known for, and what&rsquo;s their name?&rdquo; — would all three give the same two answers?</p>
+
+    <div class="kicker" style="margin-top:30px;">Where Jacqui stands — three identities, one person</div>
+    <div class="cards2" style="grid-template-columns:repeat(3,1fr);">
+      <div class="card">
+        <h4 style="font-size:15px;">jacquibowman.com</h4>
+        <p>Personal coaching brand — faith, family, business mentorship.</p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:15px;">ryanbowman.exprealty.com</h4>
+        <p>The Summit Group, hosted on a site branded to co-founder Ryan Bowman.</p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:15px;">summitgroupohio.com</h4>
+        <p>A third team domain, separate from both of the above.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:20px;">
+      <p>All three are genuine and well-built. The gap is that AI reads them as separate people, splitting authority that should belong to one.</p>
+    </div>
+
+    <div class="do-this">
+      <div class="k">Do this</div>
+      <p>Designate one site as the primary real-estate-facing hub, anchored to Jacqui&rsquo;s own name, and link every other profile back to it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAYER 3: OUTSIDE AUTHORITY ============ -->
+<section id="layer-3">
+  <div class="wrap">
+    <div class="kicker">Layer 3 of 5</div>
+    <h2>Outside Authority</h2>
+    <p class="sub">AI trusts third-party sites more than your own — get named on the sites it already reads.</p>
+    <p style="margin-top:22px;">Local news, chamber and board features, &ldquo;best of&rdquo; roundups, and partner pages carry more weight with AI than your own website, because they&rsquo;re independent confirmation, not self-promotion.</p>
+
+    <div class="kicker" style="margin-top:30px;">Where Jacqui stands</div>
+    <div class="status-row">
+      <div class="name">Directory listings (Zillow, Realtor.com, HomeLight)</div>
+      <div class="pill build">Building</div>
+      <div class="note">Present, but thin and not consolidated</div>
+    </div>
+    <div class="status-row">
+      <div class="name">Local press / media coverage</div>
+      <div class="pill opp">Opportunity</div>
+      <div class="note">No recent feature coverage found</div>
+    </div>
+    <div class="status-row">
+      <div class="name">&ldquo;Best of&rdquo; roundups</div>
+      <div class="pill opp">Opportunity</div>
+      <div class="note">Absent from Stow, Munroe Falls and Akron roundups tested</div>
+    </div>
+    <div class="status-row">
+      <div class="name">Chamber of Commerce &amp; Rotary</div>
+      <div class="pill strong">Active</div>
+      <div class="note">Real ties — an underused asset for a feature or mention</div>
+    </div>
+
+    <div class="callout" style="margin-top:24px;">
+      <p>The Stow-Munroe Falls Chamber and Rotary relationships are real and underused — a short feature, sponsorship mention, or guest article on either site is exactly the kind of independent link AI weighs heavily.</p>
+    </div>
+
+    <div class="do-this">
+      <div class="k">Do this</div>
+      <p>Ask the Chamber or Rotary about a member spotlight or newsletter feature — a five-minute conversation for a lasting, independent link.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAYER 4: LOCAL CONTENT ============ -->
+<section id="layer-4">
+  <div class="wrap">
+    <div class="kicker">Layer 4 of 5</div>
+    <h2>Local Content</h2>
+    <p class="sub">The strongest signal AI uses to confirm real, current local expertise — and Jacqui&rsquo;s biggest untapped asset.</p>
+    <p style="margin-top:22px;">Neighborhood guides, school-district pages, market updates and buyer/seller tips — written in her own words, tied to real places and numbers — are what turn &ldquo;20 years of experience&rdquo; into something AI can actually cite.</p>
+
+    <div class="kicker" style="margin-top:30px;">What to publish first</div>
+    <div class="topic-grid">
+      <div class="topic"><i class="dot"></i>Market updates for Stow, Munroe Falls &amp; Cuyahoga Falls</div>
+      <div class="topic"><i class="dot"></i>Stow-Munroe Falls school district guide</div>
+      <div class="topic"><i class="dot"></i>Neighborhood spotlights</div>
+      <div class="topic"><i class="dot"></i>Community event recaps (Pizza Palooza, 4th of July Parade)</div>
+      <div class="topic"><i class="dot"></i>First-time buyer FAQ</div>
+      <div class="topic"><i class="dot"></i>Seller prep checklist</div>
+    </div>
+
+    <div class="callout">
+      <p>Two decades across Stow, Munroe Falls, Cuyahoga Falls, Hudson and Tallmadge is a library of neighborhood knowledge that hasn&rsquo;t yet become published content — this is the fastest-moving layer once she starts.</p>
+    </div>
+
+    <div class="do-this">
+      <div class="k">Do this</div>
+      <p>One market update, one neighborhood or school spotlight, one buyer/seller tip — every month. Consistency beats volume.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAYER 5: TECHNICAL FOUNDATION ============ -->
+<section id="layer-5">
+  <div class="wrap">
+    <div class="kicker">Layer 5 of 5</div>
+    <h2>Technical Foundation</h2>
+    <p class="sub">The infrastructure everything else depends on — GBP, NAP consistency, one clean site.</p>
+    <p style="margin-top:22px;">A fully claimed Google Business Profile under Jacqui&rsquo;s own name, plus identical name / phone / brokerage info everywhere she appears, is the single fastest, most concrete fix available — it feeds both Google&rsquo;s local results and most AI assistants&rsquo; local recommendations directly.</p>
+
+    <div class="kicker" style="margin-top:30px;">Where Jacqui stands</div>
+    <div class="status-row">
+      <div class="name">Google Business Profile claimed under her own name</div>
+      <div class="pill opp">Opportunity</div>
+    </div>
+    <div class="status-row">
+      <div class="name">Name / phone / brokerage consistent everywhere</div>
+      <div class="pill build">Building</div>
+    </div>
+    <div class="status-row">
+      <div class="name">Website speed &amp; mobile experience</div>
+      <div class="pill strong">Active</div>
+    </div>
+    <div class="status-row">
+      <div class="name">Duplicate / fragmented profiles</div>
+      <div class="pill opp">Opportunity</div>
+      <div class="note">3 identities carrying her name (see Layer 2)</div>
+    </div>
+
+    <div class="do-this" style="margin-top:24px;">
+      <div class="k">Do this</div>
+      <p>Claim and fully complete Google Business Profile under Jacqui&rsquo;s own name first — before any other technical fix.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITY FOOTPRINT ============ -->
+<section id="community">
+  <div class="wrap">
+    <div class="kicker">AI Visibility Index</div>
+    <h2>Your Community Footprint</h2>
+    <p class="sub">How visible Jacqui is within the community itself — not just online.</p>
+
+    <div class="score-hero" style="background:none; color:var(--ink); padding:0; margin-top:26px;">
+      <div class="badge b-strong b-md">76</div>
+      <p style="max-width:520px; margin:0;">This is Jacqui&rsquo;s most authentic, most differentiated asset — and it&rsquo;s genuinely strong. The opportunity isn&rsquo;t to do more in the community. It&rsquo;s to make what she already does visible to AI.</p>
+    </div>
+
+    <div class="community-grid" style="margin-top:30px;">
+      <div class="item">Junior League of Akron</div>
+      <div class="item">Stow-Munroe Falls Rotary Club</div>
+      <div class="item">Stow-Munroe Falls Levy Committee</div>
+      <div class="item">Citizens for Excellence Committee</div>
+      <div class="item">Stow-Munroe Falls Community Foundation</div>
+      <div class="item">Stow-Munroe Falls Chamber of Commerce</div>
+    </div>
+
+    <div class="kicker">How community trust becomes AI visibility</div>
+    <div class="flow">
+      <div class="step" style="background:var(--navy);">Community Involvement</div>
+      <div class="arrow">▼</div>
+      <div class="step" style="background:var(--navy-2);">Local Content</div>
+      <div class="arrow">▼</div>
+      <div class="step" style="background:var(--navy-3);">Search Visibility</div>
+      <div class="arrow">▼</div>
+      <div class="step" style="background:var(--gold); color:var(--navy);">AI Understanding</div>
+      <div class="arrow">▼</div>
+      <div class="step" style="background:var(--gold-l); color:var(--navy);">Consumer Trust</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEEP SCORE + 90 DAY PLAN ============ -->
+<section id="plan">
+  <div class="wrap">
+    <div class="kicker">AI Visibility Index</div>
+    <h2>Keep Score &amp; 90-Day Plan</h2>
+    <p class="sub">Add &ldquo;where did you first hear about me?&rdquo; to every intake form, and re-run this audit monthly — the trend matters more than any single score.</p>
+
+    <div class="plan">
+      <div class="month">
+        <h4>Month One — Quick Wins</h4>
+        <ul>
+          <li>Claim and fully optimize Google Business Profile under Jacqui&rsquo;s own name</li>
+          <li>Align name, phone, brokerage and photo everywhere (NAP consistency)</li>
+          <li>Send review requests to the last 12 months of closed clients</li>
+        </ul>
+      </div>
+      <div class="month">
+        <h4>Month Two — Authority Building</h4>
+        <ul>
+          <li>Designate one primary website as the real estate hub and link every profile to it</li>
+          <li>Publish neighborhood guides for Stow, Munroe Falls and Cuyahoga Falls</li>
+          <li>Secure one Chamber, Rotary or local media mention with a link back</li>
+        </ul>
+      </div>
+      <div class="month">
+        <h4>Month Three — Content Consistency</h4>
+        <ul>
+          <li>Launch a monthly market update for the Summit / Portage / Stark region</li>
+          <li>Publish school-district guides (Stow-Munroe Falls, Cuyahoga Falls, Hudson)</li>
+          <li>Re-run the audit; compare the trend, not just the number</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<div class="roadmap-wrap">
+  <div class="wrap">
+    <div class="kicker on-dark">AI Visibility Index</div>
+    <h2 style="color:#fff;">The AI Visibility Roadmap</h2>
+    <p class="sub" style="color:#c9d2e0;">From where Jacqui stands today to where consumers find her first.</p>
+
+    <div class="roadmap-flow">
+      <div class="step" style="background:var(--navy-2); color:#fff;">Current Visibility</div>
+      <div class="arrow" style="color:var(--gold); text-align:center;">▼</div>
+      <div class="step" style="background:var(--navy-3); color:#fff;">Better Google Presence</div>
+      <div class="arrow" style="color:var(--gold); text-align:center;">▼</div>
+      <div class="step" style="background:#3A5A8C; color:#fff;">More Local Authority</div>
+      <div class="arrow" style="color:var(--gold); text-align:center;">▼</div>
+      <div class="step" style="background:#5C7AA8; color:#fff;">More Helpful Content</div>
+      <div class="arrow" style="color:var(--gold); text-align:center;">▼</div>
+      <div class="step" style="background:#8C9EC4; color:#fff;">Stronger AI Understanding</div>
+      <div class="arrow" style="color:var(--gold); text-align:center;">▼</div>
+      <div class="step" style="background:var(--gold-l); color:var(--navy);">Greater Consumer Trust</div>
+      <div class="arrow" style="color:var(--gold); text-align:center;">▼</div>
+      <div class="step" style="background:var(--gold); color:var(--navy);">More Conversations</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADDITIONAL RESOURCES ============ -->
+<section id="resources">
+  <div class="wrap">
+    <div class="kicker">AI Visibility Index</div>
+    <h2>Additional Resources</h2>
+    <p class="sub">Optional next steps from the Business Growth Library, for whenever Jacqui wants to go deeper.</p>
+
+    <div style="margin-top:30px;">
+      <div class="resource">
+        <h4>Google Visibility Blueprint</h4>
+        <p>Claiming and optimizing a Google Business Profile that AI and consumers trust.</p>
+      </div>
+      <div class="resource">
+        <h4>Local Authority Blueprint</h4>
+        <p>Turning neighborhood and market knowledge into published local authority.</p>
+      </div>
+      <div class="resource">
+        <h4>Hometown Podcast Playbook</h4>
+        <p>Community-focused conversations that build outside authority and local mentions.</p>
+      </div>
+      <div class="resource">
+        <h4>Closing Table Review Playbook</h4>
+        <p>A repeatable system for turning every closing into a fresh, aggregated review.</p>
+      </div>
+    </div>
+
+    <div class="kicker" style="margin-top:34px;">A few terms you&rsquo;ll hear</div>
+    <div class="terms">
+      <p><b>Discovery search:</b> Searching for a type of help, not a name (&ldquo;best Realtor near me&rdquo;).</p>
+      <p><b>Branded search:</b> Searching for a Realtor by name.</p>
+      <p><b>Consensus:</b> The whole web saying the same true thing about someone — what AI repeats.</p>
+      <p><b>NAP consistency:</b> Name, address and phone matching exactly everywhere online.</p>
+    </div>
+
+    <div class="closer">
+      <p>This report is part of the AI Visibility Index series from the Business Growth Library — the same framework behind the Loan Officer AI Visibility Index.</p>
+      <div class="who">Prepared for Jacqueline &ldquo;Jacqui&rdquo; Bowman · Summit, Portage &amp; Stark County, Ohio</div>
+    </div>
+  </div>
+</section>
+
+<footer>AI Visibility Index · Jacqui Bowman · Business Growth Library</footer>
+
+</body>
+</html>
