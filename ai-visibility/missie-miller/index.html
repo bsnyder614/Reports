@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Missie Miller AI Visibility Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>/* Layout: stacked report pages (navy cover, paper pages, navy feature pages), LO series brand kit */
+:root{
+  --navy:#1B2A4A; --navy-mid:#243660; --gold:#C9A84C; --gold-light:#E8C96A; --gold-pale:#F5EDD6;
+  --white:#FFFFFF; --off-white:#F7F8FA; --paper:#FFFFFF; --light-gray:#E8ECF2; --mid-gray:#6B7A90; --dark-gray:#2D3748;
+  --strong:#2E7D5B; --strong-bg:#DDF3E8; --build:#9A7A1F; --build-bg:#F5EDD6; --opp:#A5561A; --opp-bg:#FBEBDD;
+  --display:'Montserrat', 'Helvetica Neue', Arial, sans-serif; --body:'Open Sans', 'Segoe UI', Arial, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{background:var(--off-white);color:var(--dark-gray);font-family:var(--body);line-height:1.55;margin:0}
+.report{padding:24px 16px;display:flex;flex-direction:column;gap:24px;align-items:center}
+p{margin:0}
+b,strong{color:var(--navy);font-weight:700}
+
+/* ---- page shell ---- */
+.page,.cover,.back{width:100%;max-width:880px;border-radius:14px;box-shadow:0 1px 3px rgba(27,42,74,.08),0 8px 28px rgba(27,42,74,.06);position:relative;overflow:hidden}
+.page{background:var(--paper);padding:34px 44px 30px;display:flex;flex-direction:column;gap:18px}
+.page-head,.page-foot{display:flex;justify-content:space-between;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid-gray)}
+.page-head span:last-child{color:var(--gold);font-size:12px}
+.page-foot{margin-top:auto;padding-top:10px;border-top:1px solid var(--light-gray);font-weight:600;letter-spacing:1.5px}
+.eyebrow{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.page-title{font-family:var(--display);font-size:clamp(24px,4vw,33px);font-weight:900;color:var(--navy);line-height:1.12;margin:-10px 0 0;text-wrap:balance}
+.divider{height:3px;width:100%;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;margin-top:-6px}
+.lede{font-size:15.5px;max-width:68ch;color:var(--dark-gray)}
+.lede.center{text-align:center;margin:0 auto}
+.note{font-size:13px;color:var(--mid-gray);margin-top:10px}
+.tiny{font-size:11px;color:var(--mid-gray)}
+.mini-h{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.two-col>*{min-width:0}
+.two-col.wide-left{grid-template-columns:1.25fr 1fr}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+/* dark pages */
+.page.dark{background:var(--navy);color:rgba(255,255,255,.8)}
+.page.dark .page-title{color:var(--white)}
+.page.dark .page-head,.page.dark .page-foot{color:rgba(255,255,255,.45);border-color:rgba(255,255,255,.1)}
+.page.dark b,.page.dark strong{color:var(--white)}
+
+/* chips */
+.chip{display:inline-block;font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.3px;border-radius:20px;padding:3px 10px;white-space:nowrap;align-self:flex-start}
+.chip-strong{background:var(--strong-bg);color:var(--strong)}
+.chip-build{background:var(--build-bg);color:var(--build)}
+.chip-opp{background:var(--opp-bg);color:var(--opp)}
+
+/* rings */
+.ring{display:block;max-width:100%;height:auto}
+.arc-strong{stroke:var(--strong)} .arc-build{stroke:var(--gold)} .arc-opp{stroke:#D08A4E}
+.page.dark .arc-opp{stroke:#E0A26A}
+.band-label{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-top:8px}
+
+/* callouts / scripts */
+.callout{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;line-height:1.6}
+.page.dark .callout{background:rgba(201,168,76,.12);color:rgba(255,255,255,.85)}
+.script{background:var(--navy);border-radius:10px;padding:16px 18px;color:rgba(255,255,255,.88)}
+.script-k{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.script-t{font-size:13px;line-height:1.6;font-style:italic}
+.list-card,.mini-card{background:var(--off-white);border-radius:12px;padding:18px 20px;border-top:3px solid var(--navy)}
+.list-card.gold{border-top-color:var(--gold)}
+.list-k{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+ul.ticks,ul.arrows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+ul.ticks li,ul.arrows li{padding-left:22px;position:relative;font-size:13.5px;line-height:1.55}
+ul.ticks li::before{content:"✓";position:absolute;left:0;color:var(--strong);font-weight:700}
+ul.arrows li::before{content:"→";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* cover */
+.cover{background:var(--navy);color:var(--white);text-align:center;padding:64px 40px 80px;display:flex;flex-direction:column;align-items:center}
+.cover::before{content:"";position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:rgba(201,168,76,.08)}
+.cover::after{content:"";position:absolute;bottom:-100px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(201,168,76,.06)}
+.cover>*{position:relative;z-index:1}
+.cover-eyebrow{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.cover-prep{font-family:var(--display);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px}
+.cover-name{font-family:var(--display);font-size:clamp(50px,9vw,86px);font-weight:900;line-height:1;letter-spacing:-1px;margin:0 0 12px}
+.cover-name span{color:var(--gold)}
+.cover-title{font-family:var(--display);font-size:14px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.5px;margin-bottom:32px;max-width:560px}
+.cover-divider{width:60px;height:3px;background:var(--gold);margin:0 auto 32px}
+.cover-headline{font-family:var(--display);font-size:clamp(22px,3.6vw,30px);font-weight:800;line-height:1.25;max-width:640px;margin:0 0 16px;text-wrap:balance}
+.cover-sub{font-size:15px;color:rgba(255,255,255,.62);max-width:520px;margin-bottom:40px}
+.cover-score-pill{background:rgba(201,168,76,.15);border:2px solid var(--gold);border-radius:50px;padding:12px 34px;display:inline-flex;align-items:center;gap:16px;margin-bottom:40px}
+.cover-score-number{font-family:var(--display);font-size:42px;font-weight:900;color:var(--gold);line-height:1}
+.cover-score-label{text-align:left}
+.cover-score-label .band{display:block;font-family:var(--display);font-size:17px;font-weight:800}
+.cover-score-label .out-of{display:block;font-size:12px;color:rgba(255,255,255,.5)}
+.cover-branding{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.cover-footer{position:absolute;bottom:26px;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:0 36px;font-family:var(--display);font-size:10.5px;letter-spacing:1px;color:rgba(255,255,255,.35)}
+
+/* p2 */
+.exec-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.exec-top>*{min-width:0}
+.exec-score{text-align:center}
+.exec-para{font-size:15px;line-height:1.7}
+
+/* p3 */
+.prompt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.prompt{display:flex;gap:10px;align-items:center;background:var(--off-white);border:1px solid var(--light-gray);border-radius:26px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--navy);min-width:0}
+.prompt-ic{flex:none;width:22px;height:22px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--display);font-weight:900;font-size:12px;display:grid;place-items:center}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:var(--navy);border-radius:12px;padding:18px;color:rgba(255,255,255,.7)}
+.step-n{font-family:var(--display);font-weight:900;font-size:30px;color:rgba(201,168,76,.45);line-height:1}
+.step-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:15px;margin:8px 0 4px}
+.step-d{font-size:12.5px}
+
+/* p4 */
+.score-hero{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.big-score{text-align:center}
+.big-band{display:block;font-family:var(--display);font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-top:8px}
+.big-sub{display:block;font-size:11px;color:rgba(255,255,255,.45)}
+.score-read{flex:1;min-width:240px;display:flex;flex-direction:column;gap:14px}
+.split{display:flex;gap:28px}
+.split-n{font-family:var(--display);font-weight:900;font-size:46px;color:#7FD3A8;line-height:1}
+.split-n.gold{color:var(--gold-light)}
+.split-l{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px}
+.score-p{font-size:14.5px;color:rgba(255,255,255,.78)}
+.gauges{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.gauge{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.g-name{font-family:var(--display);font-weight:800;font-size:11.5px;color:var(--white);margin-top:6px;line-height:1.25}
+.g-w{font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+.g-d{font-size:10.5px;color:rgba(255,255,255,.55);line-height:1.35}
+.key{display:flex;gap:22px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.7)}
+.key span{display:inline-flex;gap:7px;align-items:center}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.d-strong{background:var(--strong)} .d-build{background:var(--gold)} .d-opp{background:#E0A26A}
+.bench{font-size:13.5px;background:rgba(255,255,255,.06);border-radius:10px;padding:14px 18px;color:rgba(255,255,255,.8)}
+
+/* p5 pyramid */
+.pyramid{display:flex;flex-direction:column;gap:8px}
+.pyr-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:center}
+.pyr-block{height:58px;display:grid;place-items:center;color:var(--white);font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.5px;margin:0 auto}
+.pb0{width:44%;background:var(--gold);color:var(--navy);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
+.pb1{width:58%;background:#3B4F78;clip-path:polygon(11% 0,89% 0,100% 100%,0 100%)}
+.pb2{width:72%;background:var(--navy-mid);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%)}
+.pb3{width:86%;background:#1F3157;clip-path:polygon(6% 0,94% 0,100% 100%,0 100%)}
+.pb4{width:100%;background:var(--navy);clip-path:polygon(5% 0,95% 0,100% 100%,0 100%)}
+.pb0 span,.pb1 span,.pb2 span,.pb3 span,.pb4 span{padding:0 18%;text-align:center;line-height:1.15}
+.pyr-note{display:flex;flex-direction:column;gap:5px}
+.pn-d{font-size:13px}
+
+/* p6 channels */
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.ch{border:1px solid var(--light-gray);border-radius:10px;padding:11px 12px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.ch-n{font-family:var(--display);font-weight:800;font-size:12.5px;color:var(--navy)}
+.ch-s{font-size:11px;color:var(--mid-gray);margin-bottom:5px;overflow-wrap:anywhere}
+.ch .chip{white-space:normal}
+
+/* p7 reviews */
+.plat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.plat{background:var(--off-white);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.plat-n{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid-gray)}
+.plat-c{font-family:var(--display);font-weight:900;font-size:24px;color:var(--navy);line-height:1.1}
+.plat-d{font-size:12px;margin-bottom:5px}
+.meter{margin-bottom:11px}
+.meter-top{display:flex;justify-content:space-between;gap:10px;font-family:var(--display);font-weight:700;font-size:12.5px;color:var(--navy);margin-bottom:5px}
+.meter-v{font-family:var(--body);font-weight:500;color:var(--mid-gray);font-size:12px;text-align:right}
+.bar{height:9px;background:var(--light-gray);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px}
+.fill-strong{background:var(--strong)} .fill-build{background:var(--gold)} .fill-opp{background:#D08A4E}
+
+/* p8 */
+.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.q{border-top:3px solid var(--navy);background:var(--off-white);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.q-q{font-family:var(--display);font-weight:800;color:var(--navy);font-size:14px}
+.q-a{font-size:12.5px}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--navy);color:rgba(255,255,255,.7);font-family:var(--display);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;text-align:left;padding:9px 12px}
+.tbl td{padding:8px 12px;border-bottom:1px solid var(--light-gray);vertical-align:middle}
+.tbl td:first-child{font-weight:700;color:var(--navy);white-space:nowrap}
+.tbl.sim td:first-child{white-space:normal;font-weight:600}
+.tbl .grp td{background:var(--gold-pale);font-family:var(--display);font-size:10.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);padding:6px 12px}
+.tbl.sim td:last-child{color:var(--mid-gray);font-size:12px}
+.sim-foot{display:flex;flex-direction:column;gap:3px;font-size:13px}
+
+/* p9 */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:var(--navy);border-radius:12px;padding:16px;text-align:center}
+.stat-n{font-family:var(--display);font-weight:900;font-size:36px;color:var(--gold);line-height:1}
+.stat-l{font-size:11.5px;color:rgba(255,255,255,.7);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.la-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.la-grid.ten{grid-template-columns:repeat(5,1fr)}
+.la{display:flex;flex-direction:column;gap:6px;border:1px solid var(--light-gray);border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:600;color:var(--navy);min-width:0}
+
+/* p12 */
+.starter{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.st{background:var(--navy);border-radius:12px;padding:16px;color:rgba(255,255,255,.72);position:relative;overflow:hidden}
+.st::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.st-n{font-family:var(--display);font-weight:900;font-size:28px;color:rgba(201,168,76,.4);line-height:1}
+.st-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:14.5px;margin:6px 0 5px;line-height:1.3}
+.st-d{font-size:12.5px}
+.cal-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--light-gray);border-radius:12px;overflow:hidden}
+.cal{padding:12px 14px;border-right:1px solid var(--light-gray);min-width:0}
+.cal:last-child{border-right:0}
+.cal-d{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.cal-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:13px;margin:4px 0 2px}
+.cal-p{font-size:11.5px;color:var(--mid-gray)}
+
+/* p13 */
+.gbp-top{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.gbp-top>*{min-width:0}
+.gbp-badge{background:var(--navy);border-radius:14px;padding:16px 24px;text-align:center}
+.gbp-r{font-family:var(--display);font-weight:900;font-size:40px;color:var(--white);line-height:1}
+.gbp-s{color:var(--gold);letter-spacing:3px;font-size:16px}
+.gbp-c{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px}
+.gb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gb{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--light-gray);border-radius:10px;padding:11px 12px;min-width:0}
+.gb-n{font-family:var(--display);font-weight:800;font-size:12.5px;color:var(--navy)}
+.gb-d{font-size:11.5px;color:var(--mid-gray)}
+
+/* p15 */
+.fp-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.fp-top>*{min-width:0}
+.fp-score{text-align:center}
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.fl{flex:1;min-width:110px;background:var(--navy);color:var(--white);font-family:var(--display);font-weight:800;font-size:12px;text-align:center;padding:12px 18px;clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%);display:grid;place-items:center;line-height:1.2}
+.fl:first-child{clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)}
+.fl:nth-child(even){background:var(--navy-mid)}
+.fl:last-child{background:var(--gold);color:var(--navy)}
+.pl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pl{background:var(--off-white);border-radius:10px;padding:11px 13px;min-width:0}
+.pl-k{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.pl-v{font-size:12px;margin-top:3px}
+
+/* p16 */
+.moves{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.move{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px;min-width:0}
+.move::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.move-rank{font-family:var(--display);font-weight:900;font-size:40px;color:rgba(201,168,76,.35);line-height:1}
+.move-title{font-family:var(--display);font-weight:800;font-size:16px;color:var(--white);line-height:1.25}
+.move-body{font-size:13px;color:rgba(255,255,255,.75)}
+.move-why{font-size:12.5px;color:rgba(255,255,255,.65)}
+.move-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1)}
+.mm-wide{grid-column:1/-1}
+.mm-k{font-family:var(--display);font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.mm-v{font-size:12.5px;color:var(--white);font-weight:600}
+
+/* p17 */
+.timeline{display:flex;align-items:center;padding:0 16%}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:var(--gold);flex:none;box-shadow:0 0 0 4px var(--gold-pale)}
+.tl-line{flex:1;height:3px;background:var(--gold-pale)}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-6px}
+.phase{background:var(--navy);border-radius:12px;padding:20px;min-width:0}
+.phase-l{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.phase-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:16px;margin:4px 0 10px}
+.phase-i{list-style:none;margin:0;padding:0}
+.phase-i li{font-size:12.5px;color:rgba(255,255,255,.75);padding:6px 0 6px 16px;border-bottom:1px solid rgba(255,255,255,.08);position:relative;line-height:1.45}
+.phase-i li:last-child{border-bottom:0}
+.phase-i li::before{content:"›";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* p18 */
+.roadmap{display:flex;flex-direction:column;align-items:center;gap:0}
+.rm{display:flex;align-items:center;gap:14px;background:var(--off-white);border:1px solid var(--light-gray);border-radius:12px;padding:10px 18px;width:min(100%,460px);position:relative}
+.rm + .rm{margin-top:22px}
+.rm + .rm::before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--gold)}
+.rm-n{width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--display);font-weight:900;font-size:13px;display:grid;place-items:center;flex:none}
+.rm-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:14.5px}
+.rm.here{background:var(--navy);border-color:var(--navy)}
+.rm.here .rm-t{color:var(--white)}
+.rm.here .rm-n{background:var(--gold);color:var(--navy)}
+.rm-you{margin-left:auto;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.rm:last-child{background:var(--gold);border-color:var(--gold)}
+.rm:last-child .rm-n{background:var(--navy)}
+
+/* p19 */
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res{display:flex;flex-direction:column;gap:5px;text-decoration:none;background:var(--navy);border-radius:12px;padding:18px;color:rgba(255,255,255,.72);border-top:3px solid var(--gold);min-width:0}
+.res:hover,.res:focus-visible{background:var(--navy-mid);outline:2px solid var(--gold);outline-offset:2px}
+.res-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:15px}
+.res-d{font-size:12.5px}
+.res-go{font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.gloss{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gloss>div{border-top:2px solid var(--light-gray);padding-top:8px;min-width:0}
+.gl-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:12.5px}
+.gl-d{font-size:11.5px;color:var(--mid-gray)}
+
+/* back */
+.back{background:var(--navy);text-align:center;padding:64px 40px;color:rgba(255,255,255,.65)}
+.back h2{font-family:var(--display);font-weight:900;font-size:clamp(30px,5vw,48px);line-height:1.1;color:var(--white);margin:0 0 18px;text-wrap:balance}
+.back h2 span{color:var(--gold)}
+.back>p{max-width:540px;margin:0 auto 28px;font-size:15px}
+.back .cover-divider{margin:0 auto 20px}
+.back-l{font-size:12px;color:rgba(255,255,255,.4);margin-top:10px}
+.back-c{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* responsive */
+@media (max-width:760px){
+  .page{padding:26px 20px 22px}
+  .two-col,.two-col.wide-left,.exec-top,.gbp-top,.fp-top{grid-template-columns:1fr}
+  .exec-score,.fp-score{justify-self:center}
+  .prompt-grid,.steps3,.q-grid,.starter,.moves,.phases,.pl-grid,.gb-grid{grid-template-columns:1fr}
+  .gauges{grid-template-columns:repeat(3,1fr)}
+  .plat-grid,.stat-row,.res-grid,.gloss{grid-template-columns:repeat(2,1fr)}
+  .la-grid,.la-grid.ten{grid-template-columns:repeat(2,1fr)}
+  .cal-row{grid-template-columns:1fr 1fr}
+  .cal:nth-child(2){border-right:0} .cal{border-bottom:1px solid var(--light-gray)}
+  .pyr-row{grid-template-columns:1fr;gap:6px}
+  .pb0,.pb1,.pb2,.pb3,.pb4{width:100%}
+  .cover{padding:48px 22px 90px}
+  .cover-footer{flex-direction:column;align-items:center;gap:4px}
+  .timeline{display:none}
+  .fl{flex-basis:100%;clip-path:none!important;border-radius:8px;margin-bottom:6px}
+  .flow{flex-direction:column}
+  .rm-you{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* print / PDF: one report page per sheet */
+@page{size:11in 8.5in;margin:0}
+@media print{
+  body{background:var(--white)}
+  .report{padding:0;gap:0}
+  .page,.cover,.back{max-width:none;width:11in;height:8.5in;border-radius:0;box-shadow:none;break-after:page;page-break-after:always}
+  .cover,.back{justify-content:center}
+  .page{padding:.42in .6in .34in}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.page>*{flex-shrink:0}
+@media print{
+  .tbl.sim td{padding:5px 12px}
+  .tbl .grp td{padding:4px 12px}
+  .page{gap:14px}
+  .cover{padding:40px 40px 64px}
+  .cover-name{font-size:76px}
+  .cover-title{margin-bottom:22px}
+  .cover-divider{margin-bottom:22px}
+  .cover-sub{margin-bottom:26px}
+  .cover-score-pill{margin-bottom:26px}
+  .fp-top .ring{width:112px;height:112px}
+  .fp-bars .meter{margin-bottom:7px}
+  .pl{padding:8px 12px}
+  .gauges .ring{width:92px;height:92px}
+}
+@media print{
+  .tbl td{padding:6px 12px}
+  .tbl.sim td{padding:4px 12px;font-size:12px}
+  .sim-foot{font-size:12px}
+  .q{padding:11px 14px}
+  .fp-top{gap:20px}
+}
+@media print{ #p10,#p15{gap:9px} #p10 .tbl th{padding:7px 12px} }
+</style>
+</head><body><main class="report">
+<section class="cover" id="p1">
+<p class="cover-eyebrow">AI Visibility Index · Realtor Edition</p>
+<p class="cover-prep">Prepared for</p>
+<h1 class="cover-name">MISSIE<br><span>MILLER</span></h1>
+<p class="cover-title">REALTOR® · Lead Sales Associate · Valley Real Estate Services · Carlisle, Ohio</p>
+<div class="cover-divider"></div>
+<h2 class="cover-headline">How Visible Is Your Business When Consumers Ask AI to Recommend a Realtor?</h2>
+<p class="cover-sub">A personalized look at how Google and AI tools see your business across Carlisle, Franklin and the 45005 area, with practical next steps.</p>
+<div class="cover-score-pill">
+  <div class="cover-score-number">19</div>
+  <div class="cover-score-label"><span class="band">FOUNDATIONAL</span><span class="out-of">out of 100 · AI Visibility Score</span></div>
+</div>
+<p class="cover-branding">Presented by Brian Snyder</p>
+<div class="cover-footer"><span>Building Better Businesses. Building Better Lives.</span><span>Confidential · September 2026</span></div>
+</section>
+<section class="page" id="p2">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>02</span></header>
+<p class="eyebrow">Executive Summary</p>
+<h2 class="page-title">Trusted by Name. Ready to Be Discovered.</h2>
+<div class="divider"></div>
+
+<div class="exec-top">
+  <div class="exec-score"><svg class="ring" viewBox="0 0 150 150" width="150" height="150" role="img" aria-label="Overall 19 out of 100">
+<circle cx="75.0" cy="75.0" r="68.5" fill="none" stroke="var(--light-gray)" stroke-width="13"/>
+<circle cx="75.0" cy="75.0" r="68.5" fill="none" class="arc-opp" stroke-width="13" stroke-linecap="round"
+ stroke-dasharray="81.8 430.4" transform="rotate(-90 75.0 75.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--navy)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="45">19</text>
+</svg><p class="band-label">Foundational</p><p class="tiny">Overall AI Visibility Score</p></div>
+  <p class="exec-para">When someone searches for Missie Miller by name, Google and AI tools find her quickly, along with 15 five-star Google reviews and 104 closed sales over the past five years. When a buyer or seller in Carlisle asks AI a cold question like "who's the best Realtor near me," her name rarely comes up yet. The reputation is already there. The work ahead is organizing it under one clear name and story so AI can find it, starting with her own website, her review platforms and a handful of local pages about Carlisle and Franklin.</p>
+</div>
+<div class="two-col">
+  <div class="list-card"><p class="list-k">Three Strengths</p><ul class="ticks">
+    <li><b>A 5.0 Google rating across 15 reviews</b> with real stories: a first-time buyer guided start to finish, a home that went pending in one weekend.</li>
+    <li><b>104 closed sales and $26.3M in volume</b> over five years, with 24 sales in Carlisle and 45 in Franklin.</li>
+    <li><b>A true hometown story.</b> A Carlisle High School graduate who raised her family in Carlisle and grew up across the Miami Valley.</li>
+  </ul></div>
+  <div class="list-card gold"><p class="list-k">Three Opportunities</p><ul class="arrows">
+    <li><b>Put your name on your own website.</b> Your agent site is titled "Valley Real Estate Services" and has no personal bio yet.</li>
+    <li><b>Match your contact details everywhere.</b> Four phone numbers and two office addresses show up across platforms.</li>
+    <li><b>Publish local answers.</b> Carlisle and Franklin questions are answered today by directories and cash home buyers.</li>
+  </ul></div>
+</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p3">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>03</span></header>
+<p class="eyebrow">Why This Matters</p>
+<h2 class="page-title">The Search Happens Before the Phone Call.</h2>
+<div class="divider"></div>
+
+<p class="lede">Buyers and sellers around Carlisle now type questions like these into ChatGPT, Google and Gemini, and the answer often names two or three agents. The consumer never visits a list of results.</p>
+<div class="prompt-grid"><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best Realtor in Carlisle, Ohio</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best listing agent near me (45005)</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best buyer's agent in Franklin, OH</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Realtor for first-time homebuyers in Warren County</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Luxury Realtor near Springboro</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Realtor for a move to the Dayton area</span></div></div>
+<div class="steps3">
+  <div class="step"><span class="step-n">1</span><p class="step-t">AI reads the web</p><p class="step-d">Reviews, directories, local news, your site and your social profiles.</p></div>
+  <div class="step"><span class="step-n">2</span><p class="step-t">It looks for agreement</p><p class="step-d">The same name, the same town and the same specialty said in many places.</p></div>
+  <div class="step"><span class="step-n">3</span><p class="step-t">It names who it understands</p><p class="step-d">Agents with a clear, repeated story get recommended. The rest get left out.</p></div>
+</div>
+<div class="callout"><strong>The big idea:</strong> AI can only recommend a professional it understands. Every recommendation in this report is about making it easy for AI to understand who Missie is, where she works and what she's known for.</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page dark" id="p4">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>04</span></header>
+<p class="eyebrow">AI Visibility Score</p>
+<h2 class="page-title">Your Score. Your Starting Point.</h2>
+<div class="divider"></div>
+
+<div class="score-hero">
+  <div class="big-score"><svg class="ring" viewBox="0 0 170 170" width="170" height="170" role="img" aria-label="Overall 19 out of 100">
+<circle cx="85.0" cy="85.0" r="78.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14"/>
+<circle cx="85.0" cy="85.0" r="78.0" fill="none" class="arc-opp" stroke-width="14" stroke-linecap="round"
+ stroke-dasharray="93.1 490.1" transform="rotate(-90 85.0 85.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="51">19</text>
+</svg><span class="big-band">Foundational</span><span class="big-sub">out of 100</span></div>
+  <div class="score-read">
+    <div class="split"><div><p class="split-n">88</p><p class="split-l">Searched by name</p></div><div><p class="split-n gold">12</p><p class="split-l">Found by strangers</p></div></div>
+    <p class="score-p">The gap between those two numbers is the whole story. People who already know Missie can find her. People who don't know her yet are not being pointed to her.</p>
+  </div>
+</div>
+<div class="gauges"><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Discovery Presence 12 out of 100">
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="35.4 295.3" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">12</text>
+</svg><p class="g-name">Discovery Presence</p><p class="g-w">Weight 30%</p><p class="g-d">Found when strangers ask</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Outside Authority 20 out of 100">
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="59.1 295.3" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">20</text>
+</svg><p class="g-name">Outside Authority</p><p class="g-w">Weight 20%</p><p class="g-d">Other sites vouching for you</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Reviews 40 out of 100">
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="118.1 295.3" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">40</text>
+</svg><p class="g-name">Reviews</p><p class="g-w">Weight 15%</p><p class="g-d">What clients say, and where</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Local Content 0 out of 100">
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="0.0 295.3" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">0</text>
+</svg><p class="g-name">Local Content</p><p class="g-w">Weight 15%</p><p class="g-d">Pages about your towns</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Personal Brand 30 out of 100">
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="88.6 295.3" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">30</text>
+</svg><p class="g-name">Personal Brand</p><p class="g-w">Weight 10%</p><p class="g-d">One name, one clear lane</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Technical Foundation 25 out of 100">
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="47.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="73.8 295.3" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">25</text>
+</svg><p class="g-name">Technical Foundation</p><p class="g-w">Weight 10%</p><p class="g-d">Site, Google profile, matching info</p></div></div>
+<div class="key"><span><i class="dot d-strong"></i>Strong 70+</span><span><i class="dot d-build"></i>Building 45 to 69</span><span><i class="dot d-opp"></i>Opportunity under 45</span></div>
+<p class="bench"><b>Market context:</b> most agents in smaller Warren County markets score under 30 today because this is still new ground for the industry. Agents actively investing in AI visibility typically score 45 to 65, which means the agents who start now have real room to lead.</p>
+
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p5">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>05</span></header>
+<p class="eyebrow">The Framework</p>
+<h2 class="page-title">The AI Visibility Pyramid</h2>
+<div class="divider"></div>
+
+<p class="lede">Consumers experience your business from the top down, starting with reviews. AI builds its understanding from the bottom up. Each layer supports the one above it.</p>
+<div class="pyramid"><div class="pyr-row"><div class="pyr-block pb0"><span>Reviews</span></div><div class="pyr-note"><p class="pn-d">What clients say about you, and on how many sites.</p><span class="chip chip-build">Strong on Google</span></div></div><div class="pyr-row"><div class="pyr-block pb1"><span>Personal Brand</span></div><div class="pyr-note"><p class="pn-d">One name, one lane, said the same way everywhere.</p><span class="chip chip-opp">Needs one story</span></div></div><div class="pyr-row"><div class="pyr-block pb2"><span>Outside Authority</span></div><div class="pyr-note"><p class="pn-d">Other trusted sites mentioning you: news, chamber, builders.</p><span class="chip chip-opp">Directories only</span></div></div><div class="pyr-row"><div class="pyr-block pb3"><span>Local Content</span></div><div class="pyr-note"><p class="pn-d">Pages you publish about Carlisle, Franklin and the schools.</p><span class="chip chip-opp">Open lane</span></div></div><div class="pyr-row"><div class="pyr-block pb4"><span>Technical Foundation</span></div><div class="pyr-note"><p class="pn-d">Your website, Google Business Profile and matching contact info.</p><span class="chip chip-opp">Needs cleanup</span></div></div></div>
+<div class="callout"><strong>Where to start:</strong> the two bottom layers are the fastest to improve and cost nothing. Fixing them makes every review and every local page you add later count for more.</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p6">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>06</span></header>
+<p class="eyebrow">Online Presence Audit</p>
+<h2 class="page-title">Where AI Can Find You Today</h2>
+<div class="divider"></div>
+
+<div class="ch-grid"><div class="ch"><p class="ch-n">Personal website</p><p class="ch-s">missiemiller.valleyres.com</p><span class="chip chip-build">Found · needs your name and bio</span></div><div class="ch"><p class="ch-n">Google Search</p><p class="ch-s">Name searches</p><span class="chip chip-strong">Strong</span></div><div class="ch"><p class="ch-n">Google Maps</p><p class="ch-s">441 Park Dr pin</p><span class="chip chip-strong">Found</span></div><div class="ch"><p class="ch-n">Google Business Profile</p><p class="ch-s">Missie Miller Realtor</p><span class="chip chip-strong">Strong · 15 reviews</span></div><div class="ch"><p class="ch-n">LinkedIn</p><p class="ch-s">Realtor, Franklin</p><span class="chip chip-build">Found · 3 connections</span></div><div class="ch"><p class="ch-n">Facebook</p><p class="ch-s">Missie Miller Realtor</p><span class="chip chip-strong">Found · 559 likes</span></div><div class="ch"><p class="ch-n">Instagram</p><p class="ch-s">Personal business page</p><span class="chip chip-opp">Not found yet</span></div><div class="ch"><p class="ch-n">YouTube</p><p class="ch-s">Local video</p><span class="chip chip-opp">Not found yet</span></div><div class="ch"><p class="ch-n">Brokerage website</p><p class="ch-s">valleyres.com bio page</p><span class="chip chip-build">Found · no bio text</span></div><div class="ch"><p class="ch-n">Homes.com</p><p class="ch-s">104 sales on profile</p><span class="chip chip-build">Found · different phone</span></div><div class="ch"><p class="ch-n">Zillow</p><p class="ch-s">Agent profile</p><span class="chip chip-opp">Not found in search</span></div><div class="ch"><p class="ch-n">Realtor.com</p><p class="ch-s">Agent profile</p><span class="chip chip-opp">Not found in search</span></div><div class="ch"><p class="ch-n">Local directories</p><p class="ch-s">Yelp, SocialSurvey</p><span class="chip chip-build">Found · 0 reviews shown</span></div></div>
+<div class="two-col">
+ <div class="callout"><strong>What stands out:</strong> your agent website loads with the brokerage's name in the browser title, and its social icons link to another agent's Facebook page and an unrelated X account. AI reads those links as clues about who the site belongs to.</div>
+ <div class="script"><p class="script-k">Copy and paste · Request to your brokerage web admin</p><p class="script-t">Hi, could you help me update my agent site at missiemiller.valleyres.com? I'd like the page title to read &quot;Missie Miller, REALTOR® | Carlisle &amp; Franklin, Ohio,&quot; my bio added to my agent page, and the social links pointed to facebook.com/missiemillerrealtor and my LinkedIn. Thank you!</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p7">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>07</span></header>
+<p class="eyebrow">Review Analysis</p>
+<h2 class="page-title">A Five-Star Reputation, Living on One Site</h2>
+<div class="divider"></div>
+
+<div class="plat-grid"><div class="plat"><p class="plat-n">Google</p><p class="plat-c">15</p><p class="plat-d">5.0 average</p><span class="chip chip-strong">Strong</span></div><div class="plat"><p class="plat-n">Zillow</p><p class="plat-c">Not found</p><p class="plat-d">No profile surfaced</p><span class="chip chip-opp">Opportunity</span></div><div class="plat"><p class="plat-n">Homes.com</p><p class="plat-c">None shown</p><p class="plat-d">Profile has sales, no reviews</p><span class="chip chip-opp">Opportunity</span></div><div class="plat"><p class="plat-n">Facebook</p><p class="plat-c">Not visible</p><p class="plat-d">Recommendations not showing</p><span class="chip chip-opp">Opportunity</span></div></div>
+<div class="two-col">
+ <div><p class="mini-h">How your reviews read to AI</p><div class="meter"><div class="meter-top"><span>Quantity</span><span class="meter-v">15 reviews, all on one platform</span></div><div class="bar"><i class="fill-build" style="width:45%"></i></div></div><div class="meter"><div class="meter-top"><span>Quality</span><span class="meter-v">Specific, heartfelt, 5 stars</span></div><div class="bar"><i class="fill-strong" style="width:95%"></i></div></div><div class="meter"><div class="meter-top"><span>Recency</span><span class="meter-v">Newest reviews aren't visible yet</span></div><div class="bar"><i class="fill-opp" style="width:40%"></i></div></div><div class="meter"><div class="meter-top"><span>Consistency</span><span class="meter-v">One platform out of four</span></div><div class="bar"><i class="fill-opp" style="width:25%"></i></div></div>
+ <p class="note">Themes clients repeat: patient guidance for first-time buyers, fast sales (one home went pending over a weekend after a failed attempt to sell by owner), and a client who has trusted Missie for seven years.</p></div>
+ <div><div class="callout"><strong>Why it matters:</strong> a SocialSurvey page tied to your name shows "0 reviews," and it's one of the pages AI reads. Spreading reviews to Zillow, Realtor.com and Homes.com gives AI the same five-star story from four directions.</div>
+ <div class="script"><p class="script-k">Copy and paste · Post-closing review request</p><p class="script-t">Congratulations again on your new home! If you have two minutes, a quick review would mean a lot and helps other families in Carlisle and Franklin find someone they can trust. Here's the link: [review link]. If you mention something specific, like how fast we closed or what we worked through together, that helps people most. Thank you for letting me be part of this.</p></div></div>
+</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p8">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>08</span></header>
+<p class="eyebrow">Brand Consistency</p>
+<h2 class="page-title">Does AI Know Who Missie Is?</h2>
+<div class="divider"></div>
+
+<div class="q-grid"><div class="q"><p class="q-q">Who is she?</p><p class="q-a">Missie Miller, REALTOR® with Valley Real Estate Services</p><span class="chip chip-strong">Clear</span></div><div class="q"><p class="q-q">Where does she serve?</p><p class="q-a">Carlisle, Franklin, Cincinnati area or north-central Ohio, depending on the page</p><span class="chip chip-build">Mixed</span></div><div class="q"><p class="q-q">What is she known for?</p><p class="q-a">No single specialty appears anywhere</p><span class="chip chip-opp">Not yet defined</span></div></div>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Element</th><th>What AI finds</th><th>Status</th></tr></thead><tbody><tr><td>Profile photo</td><td>Same headshot on Homes.com and Google</td><td><span class="chip chip-strong">Consistent</span></td></tr><tr><td>Biography</td><td>Personal story on SocialSurvey, generic text on Homes.com, none on your sites</td><td><span class="chip chip-opp">Three versions</span></td></tr><tr><td>Brokerage name</td><td>Valley Real Estate Services, Services LL and Services LLC</td><td><span class="chip chip-build">Close</span></td></tr><tr><td>Phone numbers</td><td>937-467-1197 · 937-400-1320 · 937-714-7056 · 866-266-4466</td><td><span class="chip chip-opp">Four numbers</span></td></tr><tr><td>Office address</td><td>441 Park Dr (Google, Yelp, brokerage) and 692 Central Ave (Homes.com)</td><td><span class="chip chip-opp">Two addresses</span></td></tr><tr><td>Website</td><td>Brokerage-branded title, other agents' social links</td><td><span class="chip chip-opp">Needs your name</span></td></tr><tr><td>Messaging</td><td>No shared tagline or specialty line</td><td><span class="chip chip-opp">Open</span></td></tr></tbody></table></div>
+<div class="two-col">
+ <div class="callout"><strong>Name twin:</strong> a different "Missie Miller Realtor" page exists for an agent in north-central Ohio. Saying "Carlisle, Ohio" next to your name every time helps AI keep the two of you apart.</div>
+ <div class="script"><p class="script-k">Copy and paste · One-line bio to use everywhere</p><p class="script-t">Missie Miller is a Carlisle, Ohio Realtor with Valley Real Estate Services, helping buyers and sellers in Carlisle, Franklin and Franklin Township. A Carlisle High School graduate, she's closed more than 100 homes in the past five years, most of them in Carlisle and Franklin.</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p9">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>09</span></header>
+<p class="eyebrow">Local Authority</p>
+<h2 class="page-title">Your Experience Is the Raw Material</h2>
+<div class="divider"></div>
+
+<div class="stat-row">
+ <div class="stat"><p class="stat-n">45</p><p class="stat-l">sales in Franklin</p></div>
+ <div class="stat"><p class="stat-n">24</p><p class="stat-l">sales in Carlisle</p></div>
+ <div class="stat"><p class="stat-n">14</p><p class="stat-l">sales in Miamisburg</p></div>
+ <div class="stat"><p class="stat-n">12</p><p class="stat-l">years licensed</p></div>
+</div>
+<p class="mini-h">Published local authority today</p>
+<div class="la-grid"><div class="la"><span class="chip chip-opp">Open</span><span>Neighborhood guides</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Community pages</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Market updates</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Local videos</span></div><div class="la"><span class="chip chip-opp">Open</span><span>School district content</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Buyer education</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Seller education</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Community involvement</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Lifestyle content</span></div></div>
+<div class="callout"><strong>How this improves visibility:</strong> when someone asks AI about living in Carlisle or which schools serve a Franklin Township address, AI quotes whoever wrote the clearest local answer. Twelve years of closings around 45005 is exactly the knowledge those answers need. Right now it lives in your head and not yet on a page AI can read.</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p10">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>10</span></header>
+<p class="eyebrow">AI Search Simulation</p>
+<h2 class="page-title">What Happens When Consumers Ask</h2>
+<div class="divider"></div>
+
+<div class="tbl-wrap"><table class="tbl sim"><thead><tr><th>What a consumer asks</th><th>Missie</th><th>What shows up</th></tr></thead><tbody>
+<tr class="grp"><td colspan="3">Discovery · someone who doesn't know you yet</td></tr><tr class=""><td>Best Realtor in Carlisle, Ohio</td><td><span class="chip chip-build">Mentioned</span></td><td>Listed on a Yelp "Top 10" page. Directories and New Carlisle results lead.</td></tr><tr class=""><td>Best real estate agent near Carlisle, Warren County</td><td><span class="chip chip-build">Mentioned</span></td><td>Same Yelp page. County lists name other agents.</td></tr><tr class=""><td>Best listing agent in Carlisle, OH</td><td><span class="chip chip-opp">Not yet</span></td><td>Directory pages from Angi, HomeLight and Homes.com</td></tr><tr class=""><td>Realtor for first-time homebuyers in Carlisle or Franklin</td><td><span class="chip chip-opp">Not yet</span></td><td>Larger brokerages' city pages</td></tr><tr class=""><td>Best luxury Realtor near Carlisle or Springboro</td><td><span class="chip chip-opp">Not yet</span></td><td>Springboro agent lists</td></tr><tr class=""><td>Realtor for relocation to the Dayton area</td><td><span class="chip chip-opp">Not yet</span></td><td>Relocation departments and Wright-Patt specialists</td></tr><tr class=""><td>Who should I use to sell my home in Carlisle, Ohio?</td><td><span class="chip chip-opp">Not yet</span></td><td>Cash home-buying companies</td></tr><tr class=""><td>Local Realtor vs. big brokerage in Carlisle</td><td><span class="chip chip-opp">Not yet</span></td><td>General articles, no local agents</td></tr>
+<tr class="grp"><td colspan="3">Branded · someone who already has your name</td></tr><tr class="br"><td>Missie Miller Valley Real Estate Services reviews</td><td><span class="chip chip-strong">Named</span></td><td>Your profiles surface, reviews don't</td></tr><tr class=""><td>Missie Miller Realtor Carlisle Ohio</td><td><span class="chip chip-strong">Named</span></td><td>Facebook, Homes.com, Yelp, LinkedIn</td></tr><tr class=""><td>Is Missie Miller a good Realtor?</td><td><span class="chip chip-build">Mentioned</span></td><td>Other Missy and Michelle Millers' reviews mix in</td></tr><tr class=""><td>Missie Miller real estate license Ohio</td><td><span class="chip chip-strong">Named</span></td><td>License 2013003578 on listings</td></tr>
+</tbody></table></div>
+<div class="sim-foot"><p><b>Discovery:</b> mentioned in 2 of 8, named in 0. <b>Branded:</b> named in 3 of 4.</p><p class="tiny">All 12 queries in the audit bank, run September 30, 2026 through the web sources AI tools draw from. Results are directional and change month to month.</p></div>
+<div class="callout"><strong>The biggest opening:</strong> "who should I use to sell my home in Carlisle" is answered today by cash home-buying companies, which leaves room for a local Realtor who publishes a helpful answer.</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p11">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>11</span></header>
+<p class="eyebrow">Search Presence</p>
+<h2 class="page-title">Where Your Name Travels Online</h2>
+<div class="divider"></div>
+
+<div class="two-col wide-left">
+ <div><div class="meter"><div class="meter-top"><span>Google Search</span><span class="meter-v">Your name returns your own profiles first</span></div><div class="bar"><i class="fill-strong" style="width:75%"></i></div></div><div class="meter"><div class="meter-top"><span>Google Maps</span><span class="meter-v">Pin and 5.0 rating at 441 Park Dr</span></div><div class="bar"><i class="fill-strong" style="width:70%"></i></div></div><div class="meter"><div class="meter-top"><span>AI results</span><span class="meter-v">Found by name, rarely by question</span></div><div class="bar"><i class="fill-opp" style="width:15%"></i></div></div><div class="meter"><div class="meter-top"><span>Brokerage website</span><span class="meter-v">Page exists, no bio or story</span></div><div class="bar"><i class="fill-opp" style="width:35%"></i></div></div><div class="meter"><div class="meter-top"><span>Directory listings</span><span class="meter-v">Homes.com, Yelp, SocialSurvey</span></div><div class="bar"><i class="fill-build" style="width:50%"></i></div></div><div class="meter"><div class="meter-top"><span>Third-party mentions</span><span class="meter-v">None found beyond directories</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div><div class="meter"><div class="meter-top"><span>Local news</span><span class="meter-v">No articles found</span></div><div class="bar"><i class="fill-opp" style="width:3%"></i></div></div><div class="meter"><div class="meter-top"><span>Industry websites</span><span class="meter-v">Board and MLS listings only</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div></div>
+ <div class="stack">
+  <div class="callout"><strong>Why third-party mentions matter:</strong> AI trusts what other sites say about you more than what you say about yourself. One Franklin Area Chamber listing or builder page is worth more than another page on your own site.</div>
+  <div class="mini-card"><p class="mini-h">Three places to earn a mention</p><ul class="arrows">
+   <li>Franklin Area Chamber of Commerce member directory (serves Franklin, Carlisle and Franklin Township)</li>
+   <li>Dayton Local's Realtor directory</li>
+   <li>A builder's preferred-agent page near 45005</li></ul></div>
+ </div>
+</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p12">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>12</span></header>
+<p class="eyebrow">Local Content Evaluation</p>
+<h2 class="page-title">Three Pages That Would Change the Answer</h2>
+<div class="divider"></div>
+
+<div class="la-grid ten"><div class="la"><span class="chip chip-opp">Not yet</span><span>Market updates</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Neighborhood spotlights</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Community events</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>School information</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Local businesses</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Buying tips</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Selling tips</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>FAQs</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Moving advice</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Home maintenance</span></div></div>
+<div class="starter">
+ <div class="st"><span class="st-n">1</span><p class="st-t">Carlisle Schools, Franklin Address</p><p class="st-d">Many Franklin Township homes sit in Carlisle Local Schools. Explain how to tell which district a home is in.</p></div>
+ <div class="st"><span class="st-n">2</span><p class="st-t">Cash Offer or List It? Selling in Carlisle</p><p class="st-d">An honest side-by-side for sellers. This is the question cash buyers answer today.</p></div>
+ <div class="st"><span class="st-n">3</span><p class="st-t">Living in Carlisle, Ohio</p><p class="st-d">From Railroad Days to Roscoe Roof Park, commute times to Dayton and Cincinnati on I-75, and typical home prices.</p></div>
+</div>
+<p class="mini-h">A content calendar Carlisle already hands you</p>
+<div class="cal-row"><div class="cal"><p class="cal-d">May to Sep</p><p class="cal-t">Food Truck Thursdays</p><p class="cal-p">Roscoe Roof Park, every other Thursday</p></div><div class="cal"><p class="cal-d">1st Tue · Aug</p><p class="cal-t">National Night Out</p><p class="cal-p">Roscoe Roof Park</p></div><div class="cal"><p class="cal-d">3rd weekend · Aug</p><p class="cal-t">Railroad Days Festival & Parade</p><p class="cal-p">Chamberlain Middle School grounds</p></div><div class="cal"><p class="cal-d">Early Dec</p><p class="cal-t">Holiday Memorial Tree Lighting</p><p class="cal-p">Carlisle Town Hall</p></div></div>
+<p class="note">Why consistency matters: AI favors sources that keep publishing. One helpful local page every two weeks builds more trust than ten pages written in one weekend. Always write "Carlisle, Ohio" in titles so AI doesn't mix you up with New Carlisle, Ohio or Carlisle, Pennsylvania.</p>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p13">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>13</span></header>
+<p class="eyebrow">Google Business Profile</p>
+<h2 class="page-title">Your Strongest Asset, Ready for More</h2>
+<div class="divider"></div>
+
+<div class="gbp-top"><div class="gbp-badge"><p class="gbp-r">5.0</p><p class="gbp-s">★★★★★</p><p class="gbp-c">15 Google reviews</p></div>
+<p class="lede">Your Google Business Profile is the one place where AI already sees a complete, trusted picture of your business. A few additions turn it into the anchor every other profile points back to.</p></div>
+<div class="gb-grid"><div class="gb"><span class="chip chip-strong">Done</span><div><p class="gb-n">Profile exists</p><p class="gb-d">Yes · Missie Miller Realtor</p></div></div><div class="gb"><span class="chip chip-strong">Done</span><div><p class="gb-n">Verification</p><p class="gb-d">Appears active · hours and phone set</p></div></div><div class="gb"><span class="chip chip-build">Improve</span><div><p class="gb-n">Business description</p><p class="gb-d">Confirm it uses your one-line bio</p></div></div><div class="gb"><span class="chip chip-build">Improve</span><div><p class="gb-n">Categories</p><p class="gb-d">Listed as agency · add Real estate agent</p></div></div><div class="gb"><span class="chip chip-build">Improve</span><div><p class="gb-n">Photos</p><p class="gb-d">Add headshot, sold homes, Carlisle scenes</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Google Posts</p><p class="gb-d">None visible · start weekly</p></div></div><div class="gb"><span class="chip chip-strong">Done</span><div><p class="gb-n">Reviews</p><p class="gb-d">15 reviews · 5.0</p></div></div><div class="gb"><span class="chip chip-build">Improve</span><div><p class="gb-n">Service areas</p><p class="gb-d">Add Carlisle, Franklin, Franklin Twp, Springboro, Middletown, Miamisburg, Germantown</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Questions & Answers</p><p class="gb-d">Seed 3 common local questions</p></div></div></div>
+<div class="script"><p class="script-k">Copy and paste · Business description</p><p class="script-t">Missie Miller is a Carlisle, Ohio Realtor with Valley Real Estate Services, helping buyers and sellers in Carlisle, Franklin, Franklin Township and nearby Warren County communities. A Carlisle High School graduate with 12 years in real estate, Missie has closed more than 100 homes in the past five years and returns every missed call within 12 hours.</p></div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p14">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>14</span></header>
+<p class="eyebrow">Social Presence</p>
+<h2 class="page-title">A Local Following to Build On</h2>
+<div class="divider"></div>
+
+<div class="plat-grid"><div class="plat"><p class="plat-n">Facebook</p><p class="plat-c">Found</p><p class="plat-d">559 likes, a real local following</p><span class="chip chip-strong">Strong</span></div><div class="plat"><p class="plat-n">LinkedIn</p><p class="plat-c">Found</p><p class="plat-d">3 connections, lists Franklin</p><span class="chip chip-build">Building</span></div><div class="plat"><p class="plat-n">Instagram</p><p class="plat-c">Not found</p><p class="plat-d">Brokerage account only</p><span class="chip chip-opp">Opportunity</span></div><div class="plat"><p class="plat-n">YouTube</p><p class="plat-c">Not found</p><p class="plat-d">No local video yet</p><span class="chip chip-opp">Opportunity</span></div></div>
+<div class="two-col">
+ <div><div class="meter"><div class="meter-top"><span>Posting consistency</span></div><div class="bar"><i class="fill-opp" style="width:35%"></i></div></div><div class="meter"><div class="meter-top"><span>Professional branding</span></div><div class="bar"><i class="fill-build" style="width:50%"></i></div></div><div class="meter"><div class="meter-top"><span>Consumer education</span></div><div class="bar"><i class="fill-opp" style="width:15%"></i></div></div><div class="meter"><div class="meter-top"><span>Local relevance</span></div><div class="bar"><i class="fill-opp" style="width:40%"></i></div></div><div class="meter"><div class="meter-top"><span>Overall effectiveness</span></div><div class="bar"><i class="fill-opp" style="width:35%"></i></div></div><p class="tiny">Based on what's publicly visible. Posts shared only with friends aren't counted.</p></div>
+ <div class="mini-card"><p class="mini-h">A simple monthly rhythm</p><ul class="arrows">
+  <li><b>Week 1:</b> share your new local page on Facebook and LinkedIn</li>
+  <li><b>Week 2:</b> a 60-second phone video from a Carlisle spot, posted to Facebook and YouTube</li>
+  <li><b>Week 3:</b> a just-closed story (with the client's permission)</li>
+  <li><b>Week 4:</b> a community event, like Food Truck Thursday or Railroad Days</li></ul>
+  <p class="note">Every post links back to your agent site, so the social signals all point to one home base.</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p15">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>15</span></header>
+<p class="eyebrow">Your Community Footprint</p>
+<h2 class="page-title">Deep Roots, Quiet Online</h2>
+<div class="divider"></div>
+
+<div class="fp-top"><div class="fp-score"><svg class="ring" viewBox="0 0 130 130" width="130" height="130" role="img" aria-label="Community Footprint 44 out of 100">
+<circle cx="65.0" cy="65.0" r="59.0" fill="none" stroke="var(--light-gray)" stroke-width="12"/>
+<circle cx="65.0" cy="65.0" r="59.0" fill="none" class="arc-opp" stroke-width="12" stroke-linecap="round"
+ stroke-dasharray="163.1 370.7" transform="rotate(-90 65.0 65.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--navy)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="39">44</text>
+</svg><p class="band-label">Building</p><p class="tiny">Community Footprint Score</p></div>
+<div class="fp-bars"><div class="meter"><div class="meter-top"><span>Hometown roots</span><span class="meter-v">90</span></div><div class="bar"><i class="fill-strong" style="width:90%"></i></div></div><div class="meter"><div class="meter-top"><span>Local sales history</span><span class="meter-v">85</span></div><div class="bar"><i class="fill-strong" style="width:85%"></i></div></div><div class="meter"><div class="meter-top"><span>School district know-how</span><span class="meter-v">60</span></div><div class="bar"><i class="fill-build" style="width:60%"></i></div></div><div class="meter"><div class="meter-top"><span>Visible community involvement</span><span class="meter-v">15</span></div><div class="bar"><i class="fill-opp" style="width:15%"></i></div></div><div class="meter"><div class="meter-top"><span>Chamber & local groups (online)</span><span class="meter-v">10</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div><div class="meter"><div class="meter-top"><span>Media & partner mentions</span><span class="meter-v">5</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div></div></div>
+<div class="flow"><div class="fl">Community Involvement</div><div class="fl">Local Content</div><div class="fl">Search Visibility</div><div class="fl">AI Understanding</div><div class="fl">Consumer Trust</div></div>
+<div class="pl-grid"><div class="pl"><p class="pl-k">Schools</p><p class="pl-v">Carlisle Local Schools · Franklin City Schools</p></div><div class="pl"><p class="pl-k">Parks</p><p class="pl-v">Roscoe Roof Park · Cook Park</p></div><div class="pl"><p class="pl-k">Events</p><p class="pl-v">Railroad Days · National Night Out · Food Truck Thursdays · Holiday Tree Lighting</p></div><div class="pl"><p class="pl-k">Builders</p><p class="pl-v">Arbor Homes (Shaker Meadows, Franklin) · Maronda Homes (Trails of Greycliff, Franklin) · Cristo Homes (Reserves of Waterbury Village, Carlisle)</p></div><div class="pl"><p class="pl-k">Organizations</p><p class="pl-v">Franklin Area Chamber of Commerce (monthly luncheons) · Carlisle High School Band Boosters</p></div><div class="pl"><p class="pl-k">Landmark</p><p class="pl-v">The Carlisle Station historical marker sits on Park Drive, the same street as your office</p></div></div>
+<div class="script"><p class="script-k">Copy and paste · Pitch to a local builder or the Chamber</p><p class="script-t">Hi [Name], I've lived in Carlisle most of my life and help a lot of buyers and sellers in Carlisle and Franklin. I'd love to be considered for your [preferred agent page / member spotlight]. Happy to send a short bio, a headshot and a few client reviews, whatever's easiest on your end.</p></div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page dark" id="p16">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>16</span></header>
+<p class="eyebrow">Three Biggest Opportunities</p>
+<h2 class="page-title">The Moves That Change the Answer</h2>
+<div class="divider"></div>
+<div class="moves"><div class="move"><p class="move-rank">1</p><p class="move-title">Claim Your Name Online</p><p class="move-body">Retitle your agent site with your name, add your bio, fix the social links, and use one phone number and one office address everywhere.</p>
+<p class="move-why"><b>Why it matters:</b> AI can't recommend you until it can tell which pages are yours. This gives every other effort a single home base.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Easy</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">2 to 3 hours plus one request to your brokerage</p></div></div></div><div class="move"><p class="move-rank">2</p><p class="move-title">Take Your Five Stars to Four Sites</p><p class="move-body">Keep asking on Google, and start sending closed clients to Zillow, Realtor.com and Homes.com too.</p>
+<p class="move-why"><b>Why it matters:</b> AI trusts a reputation it sees repeated on several sites. You already have the happy clients.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Easy</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">10 minutes per closing, ongoing</p></div></div></div><div class="move"><p class="move-rank">3</p><p class="move-title">Become the Voice of 45005</p><p class="move-body">Publish the three local pages on page 12, then one new Carlisle or Franklin page every two weeks.</p>
+<p class="move-why"><b>Why it matters:</b> Local answers are what AI quotes. This is how you show up when a stranger asks who to call.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Moderate</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">About 2 hours per page</p></div></div></div></div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p17">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>17</span></header>
+<p class="eyebrow">90-Day Action Plan</p>
+<h2 class="page-title">One Month at a Time</h2>
+<div class="divider"></div>
+
+<div class="timeline"><span class="tl-dot"></span><span class="tl-line"></span><span class="tl-dot"></span><span class="tl-line"></span><span class="tl-dot"></span></div>
+<div class="phases"><div class="phase"><p class="phase-l">Month One</p><p class="phase-t">Quick Wins</p><ul class="phase-i"><li>Send the web admin request on page 6</li><li>Pick one phone number and one address, update every profile</li><li>Paste your one-line bio into Google, Homes.com, LinkedIn and Facebook</li><li>Add service areas, categories and photos to your Google profile</li><li>Send review requests to last year's 32 closed clients</li></ul></div><div class="phase"><p class="phase-l">Month Two</p><p class="phase-t">Authority Building</p><ul class="phase-i"><li>Claim Zillow and Realtor.com profiles with the same bio</li><li>Publish "Carlisle Schools, Franklin Address"</li><li>Publish "Cash Offer or List It? Selling in Carlisle"</li><li>Join or update your Franklin Area Chamber listing</li><li>Pitch one builder's preferred-agent page</li></ul></div><div class="phase"><p class="phase-l">Month Three</p><p class="phase-t">Content Consistency</p><ul class="phase-i"><li>Publish "Living in Carlisle, Ohio"</li><li>Start a monthly 45005 market update</li><li>Post one short local video each month</li><li>Seed three Q&As on your Google profile</li><li>Re-run this audit and compare the trend</li></ul></div></div>
+<div class="callout"><strong>Keep score:</strong> add "Where did you first hear about me?" to every intake conversation. The trend over three months tells you more than any single score.</div>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p18">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>18</span></header>
+<p class="eyebrow">AI Visibility Roadmap</p>
+<h2 class="page-title">From Known by Name to Found by Question</h2>
+<div class="divider"></div>
+
+<div class="roadmap"><div class="rm here"><span class="rm-n">1</span><span class="rm-t">Current Visibility</span><span class="rm-you">You are here · 19</span></div><div class="rm "><span class="rm-n">2</span><span class="rm-t">Better Google Presence</span></div><div class="rm "><span class="rm-n">3</span><span class="rm-t">More Local Authority</span></div><div class="rm "><span class="rm-n">4</span><span class="rm-t">More Helpful Content</span></div><div class="rm "><span class="rm-n">5</span><span class="rm-t">Stronger AI Understanding</span></div><div class="rm "><span class="rm-n">6</span><span class="rm-t">Greater Consumer Trust</span></div><div class="rm "><span class="rm-n">7</span><span class="rm-t">More Conversations</span></div></div>
+<p class="lede center">Each step builds on the one before it. The first two are almost entirely within your control this month, and they make everything after them work better.</p>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section><section class="page" id="p19">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>19</span></header>
+<p class="eyebrow">Additional Resources</p>
+<h2 class="page-title">Optional Next Steps</h2>
+<div class="divider"></div>
+
+<p class="lede">These guides from the Business Growth Library go deeper on each recommendation, whenever you're ready.</p>
+<div class="res-grid"><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/google-business-profile/" target="_blank" rel="noopener"><p class="res-t">Google Visibility Blueprint</p><p class="res-d">Claiming and completing a Google Business Profile that AI and consumers trust.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/local-authority-blueprint/" target="_blank" rel="noopener"><p class="res-t">Local Authority Blueprint</p><p class="res-d">Turning neighborhood and market knowledge into published local pages.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/hometown-podcast-playbook/" target="_blank" rel="noopener"><p class="res-t">Hometown Podcast Playbook</p><p class="res-d">Community conversations that earn outside mentions and local trust.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/closing-table-review-playbook/" target="_blank" rel="noopener"><p class="res-t">Closing Table Review Playbook</p><p class="res-d">A repeatable way to turn every closing into a fresh review on more than one site.</p><span class="res-go">Open resource →</span></a></div>
+<div class="gloss">
+ <div><p class="gl-t">Discovery search</p><p class="gl-d">Searching for a type of help, not a name, like "best Realtor near me."</p></div>
+ <div><p class="gl-t">Branded search</p><p class="gl-d">Searching for a Realtor by name.</p></div>
+ <div><p class="gl-t">NAP consistency</p><p class="gl-d">Name, address and phone matching exactly on every site.</p></div>
+ <div><p class="gl-t">Consensus</p><p class="gl-d">The whole web saying the same true thing about you. It's what AI repeats.</p></div>
+</div>
+<p class="tiny">General guidance, not legal advice. Confirm review, advertising and team-name rules with your broker, and keep Fair Housing and Ohio license display rules in mind for anything you publish.</p>
+<footer class="page-foot"><span>Prepared for Missie Miller · Carlisle, Ohio</span><span>Business Growth Library</span></footer>
+</section>
+<section class="back" id="p20">
+<h2>Known by Name.<br><span>Next, Found by Question.</span></h2>
+<p>Carlisle and Franklin families already trust Missie. The next step is making sure the tools they ask first can say her name too, and it's a conversation worth continuing whenever you're ready.</p>
+<div class="cover-divider"></div>
+<p class="cover-branding">Brian Snyder</p>
+<p class="back-l">Building Better Businesses. Building Better Lives.</p>
+<p class="back-c">614-306-3051 · bsnyder@uhm.com</p>
+</section>
+</main></body></html>
