@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Kristin Davis AI Visibility Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>/* Layout: stacked report pages (navy cover, paper pages, navy feature pages), LO series brand kit */
+:root{
+  --navy:#1B2A4A; --navy-mid:#243660; --gold:#C9A84C; --gold-light:#E8C96A; --gold-pale:#F5EDD6;
+  --white:#FFFFFF; --off-white:#F7F8FA; --paper:#FFFFFF; --light-gray:#E8ECF2; --mid-gray:#6B7A90; --dark-gray:#2D3748;
+  --strong:#2E7D5B; --strong-bg:#DDF3E8; --build:#9A7A1F; --build-bg:#F5EDD6; --opp:#A5561A; --opp-bg:#FBEBDD;
+  --display:'Montserrat', 'Helvetica Neue', Arial, sans-serif; --body:'Open Sans', 'Segoe UI', Arial, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{background:var(--off-white);color:var(--dark-gray);font-family:var(--body);line-height:1.55;margin:0}
+.report{padding:24px 16px;display:flex;flex-direction:column;gap:24px;align-items:center}
+p{margin:0}
+b,strong{color:var(--navy);font-weight:700}
+
+/* ---- page shell ---- */
+.page,.cover,.back{width:100%;max-width:880px;border-radius:14px;box-shadow:0 1px 3px rgba(27,42,74,.08),0 8px 28px rgba(27,42,74,.06);position:relative;overflow:hidden}
+.page{background:var(--paper);padding:34px 44px 30px;display:flex;flex-direction:column;gap:18px}
+.page-head,.page-foot{display:flex;justify-content:space-between;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid-gray)}
+.page-head span:last-child{color:var(--gold);font-size:12px}
+.page-foot{margin-top:auto;padding-top:10px;border-top:1px solid var(--light-gray);font-weight:600;letter-spacing:1.5px}
+.eyebrow{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.page-title{font-family:var(--display);font-size:clamp(24px,4vw,33px);font-weight:900;color:var(--navy);line-height:1.12;margin:-10px 0 0;text-wrap:balance}
+.divider{height:3px;width:100%;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;margin-top:-6px}
+.lede{font-size:15.5px;max-width:68ch;color:var(--dark-gray)}
+.lede.center{text-align:center;margin:0 auto}
+.note{font-size:13px;color:var(--mid-gray);margin-top:10px}
+.tiny{font-size:11px;color:var(--mid-gray)}
+.mini-h{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.two-col>*{min-width:0}
+.two-col.wide-left{grid-template-columns:1.25fr 1fr}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+/* dark pages */
+.page.dark{background:var(--navy);color:rgba(255,255,255,.8)}
+.page.dark .page-title{color:var(--white)}
+.page.dark .page-head,.page.dark .page-foot{color:rgba(255,255,255,.45);border-color:rgba(255,255,255,.1)}
+.page.dark b,.page.dark strong{color:var(--white)}
+
+/* chips */
+.chip{display:inline-block;font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.3px;border-radius:20px;padding:3px 10px;white-space:nowrap;align-self:flex-start}
+.chip-strong{background:var(--strong-bg);color:var(--strong)}
+.chip-build{background:var(--build-bg);color:var(--build)}
+.chip-opp{background:var(--opp-bg);color:var(--opp)}
+
+/* rings */
+.ring{display:block;max-width:100%;height:auto}
+.arc-strong{stroke:var(--strong)} .arc-build{stroke:var(--gold)} .arc-opp{stroke:#D08A4E}
+.page.dark .arc-opp{stroke:#E0A26A}
+.band-label{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-top:8px}
+
+/* callouts / scripts */
+.callout{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;line-height:1.6}
+.page.dark .callout{background:rgba(201,168,76,.12);color:rgba(255,255,255,.85)}
+.script{background:var(--navy);border-radius:10px;padding:16px 18px;color:rgba(255,255,255,.88)}
+.script-k{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.script-t{font-size:13px;line-height:1.6;font-style:italic}
+.list-card,.mini-card{background:var(--off-white);border-radius:12px;padding:18px 20px;border-top:3px solid var(--navy)}
+.list-card.gold{border-top-color:var(--gold)}
+.list-k{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+ul.ticks,ul.arrows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+ul.ticks li,ul.arrows li{padding-left:22px;position:relative;font-size:13.5px;line-height:1.55}
+ul.ticks li::before{content:"✓";position:absolute;left:0;color:var(--strong);font-weight:700}
+ul.arrows li::before{content:"→";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* cover */
+.cover{background:var(--navy);color:var(--white);text-align:center;padding:64px 40px 80px;display:flex;flex-direction:column;align-items:center}
+.cover::before{content:"";position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:rgba(201,168,76,.08)}
+.cover::after{content:"";position:absolute;bottom:-100px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(201,168,76,.06)}
+.cover>*{position:relative;z-index:1}
+.cover-eyebrow{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.cover-prep{font-family:var(--display);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px}
+.cover-name{font-family:var(--display);font-size:clamp(50px,9vw,86px);font-weight:900;line-height:1;letter-spacing:-1px;margin:0 0 12px}
+.cover-name span{color:var(--gold)}
+.cover-title{font-family:var(--display);font-size:14px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.5px;margin-bottom:32px;max-width:560px}
+.cover-divider{width:60px;height:3px;background:var(--gold);margin:0 auto 32px}
+.cover-headline{font-family:var(--display);font-size:clamp(22px,3.6vw,30px);font-weight:800;line-height:1.25;max-width:640px;margin:0 0 16px;text-wrap:balance}
+.cover-sub{font-size:15px;color:rgba(255,255,255,.62);max-width:520px;margin-bottom:40px}
+.cover-score-pill{background:rgba(201,168,76,.15);border:2px solid var(--gold);border-radius:50px;padding:12px 34px;display:inline-flex;align-items:center;gap:16px;margin-bottom:40px}
+.cover-score-number{font-family:var(--display);font-size:42px;font-weight:900;color:var(--gold);line-height:1}
+.cover-score-label{text-align:left}
+.cover-score-label .band{display:block;font-family:var(--display);font-size:17px;font-weight:800}
+.cover-score-label .out-of{display:block;font-size:12px;color:rgba(255,255,255,.5)}
+.cover-branding{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.cover-footer{position:absolute;bottom:26px;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:0 36px;font-family:var(--display);font-size:10.5px;letter-spacing:1px;color:rgba(255,255,255,.35)}
+
+/* p2 */
+.exec-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.exec-top>*{min-width:0}
+.exec-score{text-align:center}
+.exec-para{font-size:15px;line-height:1.7}
+
+/* p3 */
+.prompt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.prompt{display:flex;gap:10px;align-items:center;background:var(--off-white);border:1px solid var(--light-gray);border-radius:26px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--navy);min-width:0}
+.prompt-ic{flex:none;width:22px;height:22px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--display);font-weight:900;font-size:12px;display:grid;place-items:center}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:var(--navy);border-radius:12px;padding:18px;color:rgba(255,255,255,.7)}
+.step-n{font-family:var(--display);font-weight:900;font-size:30px;color:rgba(201,168,76,.45);line-height:1}
+.step-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:15px;margin:8px 0 4px}
+.step-d{font-size:12.5px}
+
+/* p4 */
+.score-hero{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.big-score{text-align:center}
+.big-band{display:block;font-family:var(--display);font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-top:8px}
+.big-sub{display:block;font-size:11px;color:rgba(255,255,255,.45)}
+.score-read{flex:1;min-width:240px;display:flex;flex-direction:column;gap:14px}
+.split{display:flex;gap:28px}
+.split-n{font-family:var(--display);font-weight:900;font-size:46px;color:#7FD3A8;line-height:1}
+.split-n.gold{color:var(--gold-light)}
+.split-l{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px}
+.score-p{font-size:14.5px;color:rgba(255,255,255,.78)}
+.gauges{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.gauge{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.g-name{font-family:var(--display);font-weight:800;font-size:11.5px;color:var(--white);margin-top:6px;line-height:1.25}
+.g-w{font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+.g-d{font-size:10.5px;color:rgba(255,255,255,.55);line-height:1.35}
+.key{display:flex;gap:22px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.7)}
+.key span{display:inline-flex;gap:7px;align-items:center}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.d-strong{background:var(--strong)} .d-build{background:var(--gold)} .d-opp{background:#E0A26A}
+.bench{font-size:13.5px;background:rgba(255,255,255,.06);border-radius:10px;padding:14px 18px;color:rgba(255,255,255,.8)}
+
+/* p5 pyramid */
+.pyramid{display:flex;flex-direction:column;gap:8px}
+.pyr-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:center}
+.pyr-block{height:58px;display:grid;place-items:center;color:var(--white);font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.5px;margin:0 auto}
+.pb0{width:44%;background:var(--gold);color:var(--navy);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
+.pb1{width:58%;background:#3B4F78;clip-path:polygon(11% 0,89% 0,100% 100%,0 100%)}
+.pb2{width:72%;background:var(--navy-mid);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%)}
+.pb3{width:86%;background:#1F3157;clip-path:polygon(6% 0,94% 0,100% 100%,0 100%)}
+.pb4{width:100%;background:var(--navy);clip-path:polygon(5% 0,95% 0,100% 100%,0 100%)}
+.pb0 span,.pb1 span,.pb2 span,.pb3 span,.pb4 span{padding:0 18%;text-align:center;line-height:1.15}
+.pyr-note{display:flex;flex-direction:column;gap:5px}
+.pn-d{font-size:13px}
+
+/* p6 channels */
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.ch{border:1px solid var(--light-gray);border-radius:10px;padding:11px 12px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.ch-n{font-family:var(--display);font-weight:800;font-size:12.5px;color:var(--navy)}
+.ch-s{font-size:11px;color:var(--mid-gray);margin-bottom:5px;overflow-wrap:anywhere}
+.ch .chip{white-space:normal}
+
+/* p7 reviews */
+.plat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.plat{background:var(--off-white);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.plat-n{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid-gray)}
+.plat-c{font-family:var(--display);font-weight:900;font-size:24px;color:var(--navy);line-height:1.1}
+.plat-d{font-size:12px;margin-bottom:5px}
+.meter{margin-bottom:11px}
+.meter-top{display:flex;justify-content:space-between;gap:10px;font-family:var(--display);font-weight:700;font-size:12.5px;color:var(--navy);margin-bottom:5px}
+.meter-v{font-family:var(--body);font-weight:500;color:var(--mid-gray);font-size:12px;text-align:right}
+.bar{height:9px;background:var(--light-gray);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px}
+.fill-strong{background:var(--strong)} .fill-build{background:var(--gold)} .fill-opp{background:#D08A4E}
+
+/* p8 */
+.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.q{border-top:3px solid var(--navy);background:var(--off-white);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.q-q{font-family:var(--display);font-weight:800;color:var(--navy);font-size:14px}
+.q-a{font-size:12.5px}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--navy);color:rgba(255,255,255,.7);font-family:var(--display);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;text-align:left;padding:9px 12px}
+.tbl td{padding:8px 12px;border-bottom:1px solid var(--light-gray);vertical-align:middle}
+.tbl td:first-child{font-weight:700;color:var(--navy);white-space:nowrap}
+.tbl.sim td:first-child{white-space:normal;font-weight:600}
+.tbl .grp td{background:var(--gold-pale);font-family:var(--display);font-size:10.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);padding:6px 12px}
+.tbl.sim td:last-child{color:var(--mid-gray);font-size:12px}
+.sim-foot{display:flex;flex-direction:column;gap:3px;font-size:13px}
+
+/* p9 */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:var(--navy);border-radius:12px;padding:16px;text-align:center}
+.stat-n{font-family:var(--display);font-weight:900;font-size:36px;color:var(--gold);line-height:1}
+.stat-l{font-size:11.5px;color:rgba(255,255,255,.7);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.la-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.la-grid.ten{grid-template-columns:repeat(5,1fr)}
+.la{display:flex;flex-direction:column;gap:6px;border:1px solid var(--light-gray);border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:600;color:var(--navy);min-width:0}
+
+/* p12 */
+.starter{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.st{background:var(--navy);border-radius:12px;padding:16px;color:rgba(255,255,255,.72);position:relative;overflow:hidden}
+.st::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.st-n{font-family:var(--display);font-weight:900;font-size:28px;color:rgba(201,168,76,.4);line-height:1}
+.st-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:14.5px;margin:6px 0 5px;line-height:1.3}
+.st-d{font-size:12.5px}
+.cal-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--light-gray);border-radius:12px;overflow:hidden}
+.cal{padding:12px 14px;border-right:1px solid var(--light-gray);min-width:0}
+.cal:last-child{border-right:0}
+.cal-d{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.cal-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:13px;margin:4px 0 2px}
+.cal-p{font-size:11.5px;color:var(--mid-gray)}
+
+/* p13 */
+.gbp-top{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.gbp-top>*{min-width:0}
+.gbp-badge{background:var(--navy);border-radius:14px;padding:16px 24px;text-align:center}
+.gbp-r{font-family:var(--display);font-weight:900;font-size:40px;color:var(--white);line-height:1}
+.gbp-s{color:var(--gold);letter-spacing:3px;font-size:16px}
+.gbp-c{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px}
+.gb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gb{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--light-gray);border-radius:10px;padding:11px 12px;min-width:0}
+.gb-n{font-family:var(--display);font-weight:800;font-size:12.5px;color:var(--navy)}
+.gb-d{font-size:11.5px;color:var(--mid-gray)}
+
+/* p15 */
+.fp-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.fp-top>*{min-width:0}
+.fp-score{text-align:center}
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.fl{flex:1;min-width:110px;background:var(--navy);color:var(--white);font-family:var(--display);font-weight:800;font-size:12px;text-align:center;padding:12px 18px;clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%);display:grid;place-items:center;line-height:1.2}
+.fl:first-child{clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)}
+.fl:nth-child(even){background:var(--navy-mid)}
+.fl:last-child{background:var(--gold);color:var(--navy)}
+.pl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pl{background:var(--off-white);border-radius:10px;padding:11px 13px;min-width:0}
+.pl-k{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.pl-v{font-size:12px;margin-top:3px}
+
+/* p16 */
+.moves{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.move{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px;min-width:0}
+.move::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.move-rank{font-family:var(--display);font-weight:900;font-size:40px;color:rgba(201,168,76,.35);line-height:1}
+.move-title{font-family:var(--display);font-weight:800;font-size:16px;color:var(--white);line-height:1.25}
+.move-body{font-size:13px;color:rgba(255,255,255,.75)}
+.move-why{font-size:12.5px;color:rgba(255,255,255,.65)}
+.move-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1)}
+.mm-wide{grid-column:1/-1}
+.mm-k{font-family:var(--display);font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.mm-v{font-size:12.5px;color:var(--white);font-weight:600}
+
+/* p17 */
+.timeline{display:flex;align-items:center;padding:0 16%}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:var(--gold);flex:none;box-shadow:0 0 0 4px var(--gold-pale)}
+.tl-line{flex:1;height:3px;background:var(--gold-pale)}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-6px}
+.phase{background:var(--navy);border-radius:12px;padding:20px;min-width:0}
+.phase-l{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.phase-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:16px;margin:4px 0 10px}
+.phase-i{list-style:none;margin:0;padding:0}
+.phase-i li{font-size:12.5px;color:rgba(255,255,255,.75);padding:6px 0 6px 16px;border-bottom:1px solid rgba(255,255,255,.08);position:relative;line-height:1.45}
+.phase-i li:last-child{border-bottom:0}
+.phase-i li::before{content:"›";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* p18 */
+.roadmap{display:flex;flex-direction:column;align-items:center;gap:0}
+.rm{display:flex;align-items:center;gap:14px;background:var(--off-white);border:1px solid var(--light-gray);border-radius:12px;padding:10px 18px;width:min(100%,460px);position:relative}
+.rm + .rm{margin-top:22px}
+.rm + .rm::before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--gold)}
+.rm-n{width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--display);font-weight:900;font-size:13px;display:grid;place-items:center;flex:none}
+.rm-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:14.5px}
+.rm.here{background:var(--navy);border-color:var(--navy)}
+.rm.here .rm-t{color:var(--white)}
+.rm.here .rm-n{background:var(--gold);color:var(--navy)}
+.rm-you{margin-left:auto;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.rm:last-child{background:var(--gold);border-color:var(--gold)}
+.rm:last-child .rm-n{background:var(--navy)}
+
+/* p19 */
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res{display:flex;flex-direction:column;gap:5px;text-decoration:none;background:var(--navy);border-radius:12px;padding:18px;color:rgba(255,255,255,.72);border-top:3px solid var(--gold);min-width:0}
+.res:hover,.res:focus-visible{background:var(--navy-mid);outline:2px solid var(--gold);outline-offset:2px}
+.res-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:15px}
+.res-d{font-size:12.5px}
+.res-go{font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.gloss{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gloss>div{border-top:2px solid var(--light-gray);padding-top:8px;min-width:0}
+.gl-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:12.5px}
+.gl-d{font-size:11.5px;color:var(--mid-gray)}
+
+/* back */
+.back{background:var(--navy);text-align:center;padding:64px 40px;color:rgba(255,255,255,.65)}
+.back h2{font-family:var(--display);font-weight:900;font-size:clamp(30px,5vw,48px);line-height:1.1;color:var(--white);margin:0 0 18px;text-wrap:balance}
+.back h2 span{color:var(--gold)}
+.back>p{max-width:540px;margin:0 auto 28px;font-size:15px}
+.back .cover-divider{margin:0 auto 20px}
+.back-l{font-size:12px;color:rgba(255,255,255,.4);margin-top:10px}
+.back-c{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* responsive */
+@media (max-width:760px){
+  .page{padding:26px 20px 22px}
+  .two-col,.two-col.wide-left,.exec-top,.gbp-top,.fp-top{grid-template-columns:1fr}
+  .exec-score,.fp-score{justify-self:center}
+  .prompt-grid,.steps3,.q-grid,.starter,.moves,.phases,.pl-grid,.gb-grid{grid-template-columns:1fr}
+  .gauges{grid-template-columns:repeat(3,1fr)}
+  .plat-grid,.stat-row,.res-grid,.gloss{grid-template-columns:repeat(2,1fr)}
+  .la-grid,.la-grid.ten{grid-template-columns:repeat(2,1fr)}
+  .cal-row{grid-template-columns:1fr 1fr}
+  .cal:nth-child(2){border-right:0} .cal{border-bottom:1px solid var(--light-gray)}
+  .pyr-row{grid-template-columns:1fr;gap:6px}
+  .pb0,.pb1,.pb2,.pb3,.pb4{width:100%}
+  .cover{padding:48px 22px 90px}
+  .cover-footer{flex-direction:column;align-items:center;gap:4px}
+  .timeline{display:none}
+  .fl{flex-basis:100%;clip-path:none!important;border-radius:8px;margin-bottom:6px}
+  .flow{flex-direction:column}
+  .rm-you{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* print / PDF: one report page per sheet */
+@page{size:11in 8.5in;margin:0}
+@media print{
+  body{background:var(--white)}
+  .report{padding:0;gap:0}
+  .page,.cover,.back{max-width:none;width:11in;height:8.5in;border-radius:0;box-shadow:none;break-after:page;page-break-after:always}
+  .cover,.back{justify-content:center}
+  .page{padding:.42in .6in .34in}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.page>*{flex-shrink:0}
+@media print{
+  .tbl.sim td{padding:5px 12px}
+  .tbl .grp td{padding:4px 12px}
+  .page{gap:14px}
+  .cover{padding:40px 40px 64px}
+  .cover-name{font-size:76px}
+  .cover-title{margin-bottom:22px}
+  .cover-divider{margin-bottom:22px}
+  .cover-sub{margin-bottom:26px}
+  .cover-score-pill{margin-bottom:26px}
+  .fp-top .ring{width:112px;height:112px}
+  .fp-bars .meter{margin-bottom:7px}
+  .pl{padding:8px 12px}
+  .gauges .ring{width:92px;height:92px}
+}
+@media print{
+  .tbl td{padding:6px 12px}
+  .tbl.sim td{padding:4px 12px;font-size:12px}
+  .sim-foot{font-size:12px}
+  .q{padding:11px 14px}
+  .fp-top{gap:20px}
+}
+@media print{ #p10,#p15{gap:9px} #p10 .tbl th{padding:7px 12px} }
+@media print{
+  #p1 .cover-sub{margin-bottom:20px} #p1 .cover-score-pill{margin-bottom:20px} #p1 .cover-headline{margin-bottom:10px} #p1 .cover-eyebrow{margin-bottom:14px} #p1{padding-top:30px}
+  #p8{gap:10px} #p8 .tbl td{padding:4px 12px} #p8 .q{padding:9px 12px} #p8 .callout{padding:10px 14px;font-size:12.5px} #p8 .script{padding:12px 14px}
+  #p15{gap:9px} #p15 .pl{padding:6px 10px} #p15 .script{padding:12px 14px}
+}
+</style>
+</head><body><main class="report">
+<section class="cover" id="p1">
+<p class="cover-eyebrow">AI Visibility Index · Realtor Edition</p>
+<p class="cover-prep">Prepared for</p>
+<h1 class="cover-name">KRISTIN<br><span>DAVIS</span></h1>
+<p class="cover-title">REALTOR® · Sales Associate · Berkshire Hathaway HomeServices Kee Realty · Monroe, Michigan</p>
+<div class="cover-divider"></div>
+<h2 class="cover-headline">How Visible Is Your Business When Consumers Ask AI to Recommend a Realtor?</h2>
+<p class="cover-sub">A personalized look at how Google and AI tools see your business across Monroe and Monroe County, with practical next steps.</p>
+<div class="cover-score-pill">
+  <div class="cover-score-number">10</div>
+  <div class="cover-score-label"><span class="band">FOUNDATIONAL</span><span class="out-of">out of 100 · AI Visibility Score</span></div>
+</div>
+<p class="cover-branding">Presented by Brian Snyder</p>
+<div class="cover-footer"><span>Building Better Businesses. Building Better Lives.</span><span>Confidential · October 2026</span></div>
+</section>
+<section class="page" id="p2">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>02</span></header>
+<p class="eyebrow">Executive Summary</p>
+<h2 class="page-title">An Award-Winning Start, Ready to Be Found</h2>
+<div class="divider"></div>
+
+<div class="exec-top">
+  <div class="exec-score"><svg class="ring" viewBox="0 0 150 150" width="150" height="150" role="img" aria-label="Overall 10 out of 100">
+<circle cx="75.0" cy="75.0" r="68.0" fill="none" stroke="var(--light-gray)" stroke-width="13"/>
+<circle cx="75.0" cy="75.0" r="68.0" fill="none" class="arc-opp" stroke-width="13" stroke-linecap="round"
+ stroke-dasharray="42.7 427.3" transform="rotate(-90 75.0 75.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--navy)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="45">10</text>
+</svg><p class="band-label">Foundational</p><p class="tiny">Overall AI Visibility Score</p></div>
+  <p class="exec-para">Kristin Davis started her real estate career with a Rookie of the Year award from the Monroe Downriver Association of Realtors, and she works out of the Berkshire Hathaway HomeServices office on South Monroe Street. When someone searches "Kristin Davis Realtor Monroe Michigan," Google puts her Facebook page and agent profile at the top. When a buyer or seller asks a cold question like "who's the best Realtor in Monroe," her name doesn't come up yet. Part of that is the name itself, because AI also knows an actress named Kristin Davis and Realtors with the same name in Iowa, Alabama and Connecticut. The path forward is practical: pair her name with Monroe, Michigan everywhere, open a Google Business Profile that collects reviews, and publish a few local pages that answer the questions Monroe families already ask.</p>
+</div>
+<div class="two-col">
+  <div class="list-card"><p class="list-k">Three Strengths</p><ul class="ticks">
+    <li><b>Rookie of the Year</b> from the Monroe Downriver Association of Realtors for sales and community service in her first 18 months.</li>
+    <li><b>A downtown Monroe home base</b> at 824 S. Monroe Street, backed by one of the most recognized names in real estate.</li>
+    <li><b>Her own business pages already exist.</b> A Facebook page in her name and an agent page that links to it, with a bio built around client experience.</li>
+  </ul></div>
+  <div class="list-card gold"><p class="list-k">Three Opportunities</p><ul class="arrows">
+    <li><b>Help AI tell her apart.</b> "Kristin Davis" is shared with a well-known actress and several other agents, so her name needs "Monroe, Michigan" beside it every time.</li>
+    <li><b>Put reviews where AI reads them.</b> No personal Google profile or portal reviews surfaced in the audit.</li>
+    <li><b>Answer Monroe's questions.</b> "How long does it take to sell a house in Monroe?" is answered today by national sites.</li>
+  </ul></div>
+</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p3">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>03</span></header>
+<p class="eyebrow">Why This Matters</p>
+<h2 class="page-title">The Search Happens Before the Phone Call</h2>
+<div class="divider"></div>
+
+<p class="lede">Buyers and sellers around Monroe now type questions like these into ChatGPT, Google and Gemini, and the answer often names two or three agents. The consumer never sees a page of search results.</p>
+<div class="prompt-grid"><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best Realtor in Monroe, Michigan</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best listing agent near me (48161)</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best buyer's agent in Monroe County</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Realtor for first-time homebuyers in Monroe, MI</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Luxury Realtor near Monroe or Lambertville</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Realtor for a move between Detroit and Toledo</span></div></div>
+<div class="steps3">
+  <div class="step"><span class="step-n">1</span><p class="step-t">AI reads the web</p><p class="step-d">Reviews, directories, local news, your agent page and your social profiles.</p></div>
+  <div class="step"><span class="step-n">2</span><p class="step-t">It looks for agreement</p><p class="step-d">The same name, the same town and the same specialty said in many places.</p></div>
+  <div class="step"><span class="step-n">3</span><p class="step-t">It names who it understands</p><p class="step-d">Agents with a clear, repeated story get recommended. The rest get left out of the answer.</p></div>
+</div>
+<div class="callout"><strong>The big idea:</strong> AI can only recommend a professional it understands. With a shared name and a city name used in a dozen states, Kristin's version of that is simple to say and worth doing well: make "Kristin Davis" and "Monroe, Michigan" travel together everywhere.</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page dark" id="p4">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>04</span></header>
+<p class="eyebrow">AI Visibility Score</p>
+<h2 class="page-title">Your Score. Your Starting Point.</h2>
+<div class="divider"></div>
+
+<div class="score-hero">
+  <div class="big-score"><svg class="ring" viewBox="0 0 170 170" width="170" height="170" role="img" aria-label="Overall 10 out of 100">
+<circle cx="85.0" cy="85.0" r="77.5" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14"/>
+<circle cx="85.0" cy="85.0" r="77.5" fill="none" class="arc-opp" stroke-width="14" stroke-linecap="round"
+ stroke-dasharray="48.7 486.9" transform="rotate(-90 85.0 85.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="51">10</text>
+</svg><span class="big-band">Foundational</span><span class="big-sub">out of 100</span></div>
+  <div class="score-read">
+    <div class="split"><div><p class="split-n">38</p><p class="split-l">Searched by name</p></div><div><p class="split-n gold">0</p><p class="split-l">Found by strangers</p></div></div>
+    <p class="score-p">Searched with her full name and city, Kristin's own pages come up first. Searched by name alone, other people named Kristin Davis crowd in, and the cold questions strangers ask don't reach her yet. Both numbers move quickly once AI can connect her name to Monroe.</p>
+  </div>
+</div>
+<div class="gauges"><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Discovery Presence 0 out of 100">
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="0.0 292.2" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">0</text>
+</svg><p class="g-name">Discovery Presence</p><p class="g-w">Weight 30%</p><p class="g-d">Found when strangers ask</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Outside Authority 20 out of 100">
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="58.4 292.2" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">20</text>
+</svg><p class="g-name">Outside Authority</p><p class="g-w">Weight 20%</p><p class="g-d">Other sites vouching for you</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Reviews 5 out of 100">
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="14.6 292.2" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">5</text>
+</svg><p class="g-name">Reviews</p><p class="g-w">Weight 15%</p><p class="g-d">What clients say, and where</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Local Content 0 out of 100">
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="0.0 292.2" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">0</text>
+</svg><p class="g-name">Local Content</p><p class="g-w">Weight 15%</p><p class="g-d">Pages about your towns</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Personal Brand 30 out of 100">
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="87.7 292.2" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">30</text>
+</svg><p class="g-name">Personal Brand</p><p class="g-w">Weight 10%</p><p class="g-d">One name, one clear lane</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Technical Foundation 18 out of 100">
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.5" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="52.6 292.2" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">18</text>
+</svg><p class="g-name">Technical Foundation</p><p class="g-w">Weight 10%</p><p class="g-d">Site, Google profile, matching info</p></div></div>
+<div class="key"><span><i class="dot d-strong"></i>Strong 70+</span><span><i class="dot d-build"></i>Building 45 to 69</span><span><i class="dot d-opp"></i>Opportunity under 45</span></div>
+<p class="bench"><b>Market context:</b> most agents in Monroe County score under 30 today because this is still new ground for the industry. Agents actively investing in AI visibility typically score 45 to 65, which means the agents who start now have real room to lead.</p>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p5">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>05</span></header>
+<p class="eyebrow">The Framework</p>
+<h2 class="page-title">The AI Visibility Pyramid</h2>
+<div class="divider"></div>
+
+<p class="lede">Consumers experience your business from the top down, starting with reviews. AI builds its understanding from the bottom up. Each layer supports the one above it.</p>
+<div class="pyramid"><div class="pyr-row"><div class="pyr-block pb0"><span>Reviews</span></div><div class="pyr-note"><p class="pn-d">What clients say about you, and on how many sites.</p><span class="chip chip-opp">Ready to start</span></div></div><div class="pyr-row"><div class="pyr-block pb1"><span>Personal Brand</span></div><div class="pyr-note"><p class="pn-d">One name, one lane, said the same way everywhere.</p><span class="chip chip-opp">Needs a hometown tag</span></div></div><div class="pyr-row"><div class="pyr-block pb2"><span>Outside Authority</span></div><div class="pyr-note"><p class="pn-d">Other trusted sites mentioning you: board, chamber, builders.</p><span class="chip chip-opp">Directories only</span></div></div><div class="pyr-row"><div class="pyr-block pb3"><span>Local Content</span></div><div class="pyr-note"><p class="pn-d">Pages you publish about Monroe and its schools and neighborhoods.</p><span class="chip chip-opp">Open lane</span></div></div><div class="pyr-row"><div class="pyr-block pb4"><span>Technical Foundation</span></div><div class="pyr-note"><p class="pn-d">Your agent page, Google Business Profile and matching contact info.</p><span class="chip chip-build">Agent page in place</span></div></div></div>
+<div class="callout"><strong>Where to start:</strong> the bottom two layers cost nothing and take a few hours. Once your name, town and phone match everywhere, every review and local page you add afterward counts toward the right Kristin Davis.</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p6">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>06</span></header>
+<p class="eyebrow">Online Presence Audit</p>
+<h2 class="page-title">Where AI Can Find You Today</h2>
+<div class="divider"></div>
+
+<div class="ch-grid"><div class="ch"><p class="ch-n">Agent website</p><p class="ch-s">bhhskeerealty.com agent page</p><span class="chip chip-build">Found · headline skips Monroe</span></div><div class="ch"><p class="ch-n">Google Search</p><p class="ch-s">Name plus Monroe, Michigan</p><span class="chip chip-strong">Your pages lead</span></div><div class="ch"><p class="ch-n">Google Maps</p><p class="ch-s">824 S. Monroe St office pin</p><span class="chip chip-build">Office only, not you</span></div><div class="ch"><p class="ch-n">Google Business Profile</p><p class="ch-s">Personal profile</p><span class="chip chip-opp">Not found yet</span></div><div class="ch"><p class="ch-n">LinkedIn</p><p class="ch-s">Professional profile</p><span class="chip chip-opp">Not found in search</span></div><div class="ch"><p class="ch-n">Facebook</p><p class="ch-s">Kristin Davis · Berkshire Hathaway</p><span class="chip chip-strong">Business page found</span></div><div class="ch"><p class="ch-n">Instagram</p><p class="ch-s">@k.davis86</p><span class="chip chip-build">Linked · handle skips your brand</span></div><div class="ch"><p class="ch-n">YouTube</p><p class="ch-s">Local video</p><span class="chip chip-opp">Not found yet</span></div><div class="ch"><p class="ch-n">Brokerage website</p><p class="ch-s">Monroe office roster</p><span class="chip chip-strong">Listed with 15 colleagues</span></div><div class="ch"><p class="ch-n">Homes.com</p><p class="ch-s">Agent profile</p><span class="chip chip-opp">Not found in search</span></div><div class="ch"><p class="ch-n">Zillow</p><p class="ch-s">Agent profile</p><span class="chip chip-opp">Not found in search</span></div><div class="ch"><p class="ch-n">Realtor.com</p><p class="ch-s">Agent profile</p><span class="chip chip-opp">Not found in search</span></div><div class="ch"><p class="ch-n">Local directories</p><p class="ch-s">FastExpert, RealEstateBook</p><span class="chip chip-build">Found · no reviews shown</span></div></div>
+<div class="two-col">
+ <div class="callout"><strong>What stands out:</strong> your agent page headline reads "YOUR Local Real Estate Agent!!" without naming a town, and it lists a 586 office number that belongs to the Clinton Township office. To AI, a Macomb County phone number on a Monroe agent's page is a mixed signal about where you work.</div>
+ <div class="script"><p class="script-k">Copy and paste · Request to your brokerage web admin</p><p class="script-t">Hi, could you help me update my agent page? I'd like the headline to read &quot;Kristin Davis, REALTOR® | Monroe, Michigan,&quot; my cell (734-735-0325) listed as the main number, and the Monroe office line (734-242-4700) in place of the Clinton Township number. Thank you!</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p7">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>07</span></header>
+<p class="eyebrow">Review Analysis</p>
+<h2 class="page-title">Happy Clients, Waiting to Be Heard Online</h2>
+<div class="divider"></div>
+
+<div class="plat-grid"><div class="plat"><p class="plat-n">Google</p><p class="plat-c">No profile</p><p class="plat-d">No personal listing yet</p><span class="chip chip-opp">Opportunity</span></div><div class="plat"><p class="plat-n">Zillow</p><p class="plat-c">Not found</p><p class="plat-d">No profile surfaced</p><span class="chip chip-opp">Opportunity</span></div><div class="plat"><p class="plat-n">Homes.com</p><p class="plat-c">Not found</p><p class="plat-d">No profile surfaced</p><span class="chip chip-opp">Opportunity</span></div><div class="plat"><p class="plat-n">Facebook</p><p class="plat-c">Page found</p><p class="plat-d">Recommendations not visible</p><span class="chip chip-build">Building</span></div></div>
+<div class="two-col">
+ <div><p class="mini-h">How your reviews read to AI</p>
+ <div class="meter"><div class="meter-top"><span>Quantity</span><span class="meter-v">None found under your own name</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div>
+ <div class="meter"><div class="meter-top"><span>Quality</span><span class="meter-v">Not yet visible to measure</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div>
+ <div class="meter"><div class="meter-top"><span>Recency</span><span class="meter-v">No dated reviews found</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div>
+ <div class="meter"><div class="meter-top"><span>Consistency</span><span class="meter-v">Zero of four platforms</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div>
+ <p class="note">Your Rookie of the Year award came partly from client service, so the raw material is there. The Monroe office's Google listing has 9 reviews that name individual agents, which shows Monroe clients are willing to write them when asked.</p></div>
+ <div class="stack"><div class="callout"><strong>Why it matters:</strong> reviews are the top of the pyramid and the first thing AI quotes. Five reviews on your own Google profile, each mentioning Monroe, would change how AI describes you more than any other single step.</div>
+ <div class="script"><p class="script-k">Copy and paste · Post-closing review request</p><p class="script-t">Congratulations again on your new home! If you have two minutes, a quick review would mean a lot and helps other families in Monroe find someone they can trust. Here's the link: [your Google review link]. If you mention something specific, like the neighborhood or how the process went for you, that helps people most. Thank you for letting me be part of this.</p></div></div>
+</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p8">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>08</span></header>
+<p class="eyebrow">Brand Consistency</p>
+<h2 class="page-title">Does AI Know Which Kristin Davis You Are?</h2>
+<div class="divider"></div>
+
+<div class="q-grid"><div class="q"><p class="q-q">Who is she?</p><p class="q-a">A Kee Realty sales associate, sharing her name with an actress and several out-of-state agents</p><span class="chip chip-build">Shared name</span></div><div class="q"><p class="q-q">Where does she serve?</p><p class="q-a">Office in Monroe, with no service area listed on any profile</p><span class="chip chip-build">Implied</span></div><div class="q"><p class="q-q">What is she known for?</p><p class="q-a">Client experience comes through in the bio, with no named specialty</p><span class="chip chip-opp">Not yet defined</span></div></div>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Element</th><th>What AI finds</th><th>Status</th></tr></thead><tbody><tr><td>Name</td><td>Kristin Davis on your agent page, Facebook and directories</td><td><span class="chip chip-strong">Consistent</span></td></tr><tr><td>Profile photo</td><td>Headshot on your agent page</td><td><span class="chip chip-build">Use it everywhere</span></td></tr><tr><td>Biography</td><td>One bio on your agent page, none found elsewhere</td><td><span class="chip chip-build">One version</span></td></tr><tr><td>Brokerage name</td><td>Kee Realty today, older links still carry the Hudkins web address</td><td><span class="chip chip-build">Close</span></td></tr><tr><td>Phone numbers</td><td>734-735-0325 · 586-840-0400 · 734-242-4700</td><td><span class="chip chip-opp">Three numbers</span></td></tr><tr><td>Office address</td><td>824 S. Monroe St and 36594 Moravian Dr, Clinton Twp</td><td><span class="chip chip-opp">Two addresses</span></td></tr><tr><td>Website</td><td>Agent page headline without a town</td><td><span class="chip chip-opp">Needs Monroe</span></td></tr><tr><td>Messaging</td><td>No specialty or hometown line yet</td><td><span class="chip chip-opp">Open</span></td></tr></tbody></table></div>
+<div class="two-col">
+ <div class="callout"><strong>Name twins:</strong> search "Kristin Davis Realtor" and you'll also find agents in Waukee, Iowa, Huntsville, Alabama and Glastonbury, Connecticut (that one is also with Berkshire Hathaway). Writing "Monroe, Michigan" beside your name every time is how AI keeps you separate.</div>
+ <div class="script"><p class="script-k">Copy and paste · One-line bio to use everywhere</p><p class="script-t">Kristin Davis is a Monroe, Michigan Realtor with Berkshire Hathaway HomeServices Kee Realty, helping buyers and sellers across Monroe County. She was named Rookie of the Year by the Monroe Downriver Association of Realtors and brings a hospitality background to every move.</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p9">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>09</span></header>
+<p class="eyebrow">Local Authority</p>
+<h2 class="page-title">A Growing Market With Open Questions</h2>
+<div class="divider"></div>
+
+<div class="stat-row">
+ <div class="stat"><p class="stat-n">$258K</p><p class="stat-l">Monroe median price</p></div>
+ <div class="stat"><p class="stat-n">+5.9%</p><p class="stat-l">vs. a year ago</p></div>
+ <div class="stat"><p class="stat-n">1,513</p><p class="stat-l">agents listed for Monroe</p></div>
+ <div class="stat"><p class="stat-n">I-75</p><p class="stat-l">Detroit to Toledo</p></div>
+</div>
+<p class="tiny">Median sale price, January to March 2026, Redfin data reported by Stacker. Agent count from Homes.com's Monroe, MI directory.</p>
+<p class="mini-h">Published local authority today</p>
+<div class="la-grid"><div class="la"><span class="chip chip-opp">Open</span><span>Neighborhood guides</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Community pages</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Market updates</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Local videos</span></div><div class="la"><span class="chip chip-opp">Open</span><span>School district content</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Buyer education</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Seller education</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Community involvement</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Lifestyle content</span></div></div>
+<div class="callout"><strong>How this improves visibility:</strong> with more than 1,500 agents listed for Monroe, AI needs a reason to pick one. When someone asks about living in Monroe or which schools serve a Frenchtown Township address, AI quotes whoever wrote the clearest local answer. That lane is open today, and your Facebook page and agent page give you two places to publish starting this month.</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p10">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>10</span></header>
+<p class="eyebrow">AI Search Simulation</p>
+<h2 class="page-title">What Happens When Consumers Ask</h2>
+<div class="divider"></div>
+
+<div class="tbl-wrap"><table class="tbl sim"><thead><tr><th>What a consumer asks</th><th>Kristin</th><th>What shows up</th></tr></thead><tbody><tr class="grp"><td colspan="3">Discovery · someone who doesn't know you yet</td></tr><tr><td>Best Realtor in Monroe, Michigan</td><td><span class="chip chip-opp">Not yet</span></td><td>Clever, HomeLight and Ramsey directory pages</td></tr><tr><td>Best real estate agent near Monroe, MI</td><td><span class="chip chip-opp">Not yet</span></td><td>Clever's top 50 list, BiggerPockets</td></tr><tr><td>Best listing agent in Monroe, MI</td><td><span class="chip chip-opp">Not yet</span></td><td>HomeLight and Clever agent profiles</td></tr><tr><td>Realtor for first-time homebuyers in Monroe County</td><td><span class="chip chip-opp">Not yet</span></td><td>Larger brokerages' agent and community pages</td></tr><tr><td>Best luxury Realtor near Monroe</td><td><span class="chip chip-opp">Not yet</span></td><td>Directory profiles and luxury listing sites</td></tr><tr><td>Realtor for relocation to Monroe County</td><td><span class="chip chip-opp">Not yet</span></td><td>Larger brokerages' agent pages</td></tr><tr><td>Who should I use to sell my home in Monroe, MI?</td><td><span class="chip chip-opp">Not yet</span></td><td>HomeLight commission and timing guides</td></tr><tr><td>Local Realtor vs. big brokerage in Monroe</td><td><span class="chip chip-opp">Not yet</span></td><td>National articles, no local agents</td></tr><tr class="grp"><td colspan="3">Branded · someone who already has your name</td></tr><tr><td>Kristin Davis Berkshire Hathaway Kee Realty reviews</td><td><span class="chip chip-build">Mentioned</span></td><td>Your pages appear once Monroe is added, no reviews</td></tr><tr><td>Kristin Davis Realtor Monroe, Michigan</td><td><span class="chip chip-strong">Named</span></td><td>Your Facebook page, FastExpert and agent page lead</td></tr><tr><td>Is Kristin Davis a good Realtor?</td><td><span class="chip chip-opp">Not yet</span></td><td>Agents named Kristin in other states</td></tr><tr><td>Kristin Davis real estate license Michigan</td><td><span class="chip chip-opp">Not yet</span></td><td>An Ann Arbor attorney named Kristin Davis</td></tr></tbody></table></div>
+<div class="sim-foot"><p><b>Discovery:</b> named in 0 of 8. <b>Branded:</b> named in 1 of 4, mentioned in 1.</p><p class="tiny">All 12 queries in the audit bank, run October 8, 2026 through the web sources AI tools draw from. Results are directional and change month to month.</p></div>
+<div class="callout"><strong>The biggest opening:</strong> every discovery answer above comes from a national directory or article. Searches for "Monroe" also pull in Monroe, Georgia, Louisiana and Connecticut, so a page clearly titled for Monroe, Michigan has an easy path to being the local answer.</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p11">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>11</span></header>
+<p class="eyebrow">Search Presence</p>
+<h2 class="page-title">Where Your Name Travels Online</h2>
+<div class="divider"></div>
+
+<div class="two-col wide-left">
+ <div><div class="meter"><div class="meter-top"><span>Google Search</span><span class="meter-v">Name plus city returns your pages first</span></div><div class="bar"><i class="fill-build" style="width:55%"></i></div></div><div class="meter"><div class="meter-top"><span>Google Maps</span><span class="meter-v">Office pin at 824 S. Monroe St, not you</span></div><div class="bar"><i class="fill-opp" style="width:25%"></i></div></div><div class="meter"><div class="meter-top"><span>AI results</span><span class="meter-v">Found only with full name and city</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div><div class="meter"><div class="meter-top"><span>Brokerage website</span><span class="meter-v">Agent page with bio and award</span></div><div class="bar"><i class="fill-build" style="width:50%"></i></div></div><div class="meter"><div class="meter-top"><span>Directory listings</span><span class="meter-v">FastExpert, RealEstateBook</span></div><div class="bar"><i class="fill-opp" style="width:30%"></i></div></div><div class="meter"><div class="meter-top"><span>Third-party mentions</span><span class="meter-v">None found beyond directories</span></div><div class="bar"><i class="fill-opp" style="width:8%"></i></div></div><div class="meter"><div class="meter-top"><span>Local news</span><span class="meter-v">No articles found</span></div><div class="bar"><i class="fill-opp" style="width:3%"></i></div></div><div class="meter"><div class="meter-top"><span>Industry websites</span><span class="meter-v">Rookie award not found online</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div></div>
+ <div class="stack">
+  <div class="callout"><strong>Why third-party mentions matter:</strong> AI trusts what other sites say about you more than what you say about yourself. Your Rookie of the Year award is a ready-made third-party story that isn't published anywhere AI can read yet.</div>
+  <div class="mini-card"><p class="mini-h">Three places to earn a mention</p><ul class="arrows">
+   <li>Monroe Downriver Association of Realtors: ask them to post your award or a member spotlight</li>
+   <li>Monroe County Chamber of Commerce member directory</li>
+   <li>A builder's preferred-agent page (Soave Homes and Guenther Homes both build in Monroe County)</li></ul></div>
+ </div>
+</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p12">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>12</span></header>
+<p class="eyebrow">Local Content Evaluation</p>
+<h2 class="page-title">Three Pages That Would Change the Answer</h2>
+<div class="divider"></div>
+
+<div class="la-grid ten"><div class="la"><span class="chip chip-opp">Not yet</span><span>Market updates</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Neighborhood spotlights</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Community events</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>School information</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Local businesses</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Buying tips</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Selling tips</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>FAQs</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Moving advice</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Home maintenance</span></div></div>
+<div class="starter">
+ <div class="st"><span class="st-n">1</span><p class="st-t">A Monroe Address, Which School District?</p><p class="st-d">A Monroe mailing address can sit in Monroe, Jefferson, Airport or Mason schools. Show buyers how to check before they fall in love with a house.</p></div>
+ <div class="st"><span class="st-n">2</span><p class="st-t">How Long Does It Take to Sell a House in Monroe, Michigan?</p><p class="st-d">National sites answer this today. Your version uses real local numbers and what you see on the ground.</p></div>
+ <div class="st"><span class="st-n">3</span><p class="st-t">Living in Monroe, Michigan</p><p class="st-d">Sterling State Park, the River Raisin Battlefield, downtown on South Monroe Street, and the I-75 commute to Detroit or Toledo.</p></div>
+</div>
+<p class="mini-h">A content calendar Monroe already hands you</p>
+<div class="cal-row"><div class="cal"><p class="cal-d">Summer</p><p class="cal-t">River Raisin Jazz Festival</p><p class="cal-p">St. Mary's Park, downtown</p></div><div class="cal"><p class="cal-d">Summer</p><p class="cal-t">Summer Concert Series</p><p class="cal-p">City of Monroe</p></div><div class="cal"><p class="cal-d">Late summer</p><p class="cal-t">Monroe County Fair</p><p class="cal-p">Monroe County Fairgrounds</p></div><div class="cal"><p class="cal-d">October</p><p class="cal-t">River Raisin Halloween Festival</p><p class="cal-p">City of Monroe</p></div></div>
+<p class="note">Why consistency matters: AI favors sources that keep publishing. One helpful local page every two weeks builds more trust than ten pages written in one weekend. Always write "Monroe, Michigan" in titles so AI doesn't mix your page up with one of the many other Monroes.</p>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p13">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>13</span></header>
+<p class="eyebrow">Google Business Profile</p>
+<h2 class="page-title">The Single Biggest Quick Win</h2>
+<div class="divider"></div>
+
+<div class="gbp-top"><div class="gbp-badge"><p class="gbp-r">New</p><p class="gbp-s">☆☆☆☆☆</p><p class="gbp-c">Ready to claim</p></div>
+<p class="lede">A Google Business Profile in your own name gives AI a verified record of who you are, where you work and what clients say. Right now the only Google listing near your name belongs to the office, which shares its reviews across 16 agents.</p></div>
+<div class="gb-grid"><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Profile exists</p><p class="gb-d">No personal profile found · office listing has 9 reviews</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Verification</p><p class="gb-d">Verify by phone, email or video</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Business description</p><p class="gb-d">Paste the description below</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Categories</p><p class="gb-d">Primary: Real estate agent</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Photos</p><p class="gb-d">Headshot, sold homes, downtown Monroe, Sterling State Park</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Google Posts</p><p class="gb-d">One post a week, starting with a new local page</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Reviews</p><p class="gb-d">Send your link to recent clients</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Service areas</p><p class="gb-d">Monroe, Frenchtown Twp, Monroe Twp, Raisinville Twp, Bedford Twp and other towns you serve</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Questions and answers</p><p class="gb-d">Add common local questions to posts and your description</p></div></div></div>
+<div class="script"><p class="script-k">Copy and paste · Business description</p><p class="script-t">Kristin Davis is a Monroe, Michigan Realtor with Berkshire Hathaway HomeServices Kee Realty, helping buyers and sellers in Monroe, Frenchtown Township, Monroe Township and nearby Monroe County communities. Named Rookie of the Year by the Monroe Downriver Association of Realtors, Kristin brings a hospitality background to every move, with quick answers and steady communication from first showing to closing.</p></div>
+<p class="tiny">Adjust the towns to the ones you serve, and check your brokerage's policy on individual agent profiles before you publish.</p>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p14">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>14</span></header>
+<p class="eyebrow">Social Presence</p>
+<h2 class="page-title">Two Channels to Build From</h2>
+<div class="divider"></div>
+
+<div class="plat-grid"><div class="plat"><p class="plat-n">Facebook</p><p class="plat-c">Found</p><p class="plat-d">Business page in your name</p><span class="chip chip-strong">Strong</span></div><div class="plat"><p class="plat-n">LinkedIn</p><p class="plat-c">Not found</p><p class="plat-d">No profile surfaced in search</p><span class="chip chip-opp">Opportunity</span></div><div class="plat"><p class="plat-n">Instagram</p><p class="plat-c">Found</p><p class="plat-d">@k.davis86, linked from your agent page</p><span class="chip chip-build">Building</span></div><div class="plat"><p class="plat-n">YouTube</p><p class="plat-c">Not found</p><p class="plat-d">No local video yet</p><span class="chip chip-opp">Opportunity</span></div></div>
+<div class="two-col">
+ <div><div class="meter"><div class="meter-top"><span>Posting consistency</span></div><div class="bar"><i class="fill-opp" style="width:30%"></i></div></div><div class="meter"><div class="meter-top"><span>Professional branding</span></div><div class="bar"><i class="fill-build" style="width:50%"></i></div></div><div class="meter"><div class="meter-top"><span>Consumer education</span></div><div class="bar"><i class="fill-opp" style="width:15%"></i></div></div><div class="meter"><div class="meter-top"><span>Local relevance</span></div><div class="bar"><i class="fill-opp" style="width:25%"></i></div></div><div class="meter"><div class="meter-top"><span>Overall effectiveness</span></div><div class="bar"><i class="fill-opp" style="width:30%"></i></div></div><p class="tiny">Based on what's publicly visible to search tools. Facebook posts and Instagram content aren't fully readable from outside, so these are estimates.</p>
+ <div class="callout" style="margin-top:12px"><strong>Small fix, big signal:</strong> set your Instagram display name to "Kristin Davis | Monroe, MI Realtor" so the handle and the name tell AI the same story.</div></div>
+ <div class="mini-card"><p class="mini-h">A simple monthly rhythm</p><ul class="arrows">
+  <li><b>Week 1:</b> share your newest Monroe page on Facebook and LinkedIn</li>
+  <li><b>Week 2:</b> a 60-second phone video from a local spot like Sterling State Park, posted to Facebook, Instagram and YouTube</li>
+  <li><b>Week 3:</b> a just-closed story (with the client's permission)</li>
+  <li><b>Week 4:</b> a community event, like the River Raisin Jazz Festival or the county fair</li></ul>
+  <p class="note">Every post links back to your agent page, so the signals all point to one home base.</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p15">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>15</span></header>
+<p class="eyebrow">Your Community Footprint</p>
+<h2 class="page-title">Recognized Locally, Quiet Online</h2>
+<div class="divider"></div>
+
+<div class="fp-top"><div class="fp-score"><svg class="ring" viewBox="0 0 130 130" width="130" height="130" role="img" aria-label="Community Footprint 21 out of 100">
+<circle cx="65.0" cy="65.0" r="58.5" fill="none" stroke="var(--light-gray)" stroke-width="12"/>
+<circle cx="65.0" cy="65.0" r="58.5" fill="none" class="arc-opp" stroke-width="12" stroke-linecap="round"
+ stroke-dasharray="77.2 367.6" transform="rotate(-90 65.0 65.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--navy)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="39">21</text>
+</svg><p class="band-label">Foundational</p><p class="tiny">Community Footprint Score</p></div>
+<div class="fp-bars"><div class="meter"><div class="meter-top"><span>Board recognition</span><span class="meter-v">70</span></div><div class="bar"><i class="fill-build" style="width:70%"></i></div></div><div class="meter"><div class="meter-top"><span>Hometown story online</span><span class="meter-v">20</span></div><div class="bar"><i class="fill-opp" style="width:20%"></i></div></div><div class="meter"><div class="meter-top"><span>Local sales history online</span><span class="meter-v">10</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div><div class="meter"><div class="meter-top"><span>School district know-how published</span><span class="meter-v">10</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div><div class="meter"><div class="meter-top"><span>Chamber and local groups online</span><span class="meter-v">10</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div><div class="meter"><div class="meter-top"><span>Media and partner mentions</span><span class="meter-v">5</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div></div></div>
+<div class="flow"><div class="fl">Community Involvement</div><div class="fl">Local Content</div><div class="fl">Search Visibility</div><div class="fl">AI Understanding</div><div class="fl">Consumer Trust</div></div>
+<div class="pl-grid"><div class="pl"><p class="pl-k">Schools</p><p class="pl-v">Monroe Public Schools · Jefferson Schools · Airport Community Schools · Bedford Public Schools</p></div><div class="pl"><p class="pl-k">Parks</p><p class="pl-v">Sterling State Park · River Raisin National Battlefield Park</p></div><div class="pl"><p class="pl-k">Events</p><p class="pl-v">River Raisin Jazz Festival · Monroe County Fair · Summer Concert Series · River Raisin Halloween Festival</p></div><div class="pl"><p class="pl-k">Builders</p><p class="pl-v">Soave Homes · Guenther Homes · Decker Homes (all active in Monroe County)</p></div><div class="pl"><p class="pl-k">Organizations</p><p class="pl-v">Monroe County Chamber of Commerce · Monroe Downriver Association of Realtors</p></div><div class="pl"><p class="pl-k">Employers</p><p class="pl-v">La-Z-Boy headquarters · ProMedica Monroe Regional Hospital · Monroe County Community College</p></div></div>
+<div class="script"><p class="script-k">Copy and paste · Pitch to a local builder or the Chamber</p><p class="script-t">Hi [Name], I'm a Realtor with Berkshire Hathaway HomeServices Kee Realty on South Monroe Street and I help a lot of buyers and sellers around Monroe County. I'd love to be considered for your [preferred agent page / member spotlight]. Happy to send a short bio, a headshot and a few client reviews, whatever's easiest on your end.</p></div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page dark" id="p16">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>16</span></header>
+<p class="eyebrow">Three Biggest Opportunities</p>
+<h2 class="page-title">The Moves That Change the Answer</h2>
+<div class="divider"></div>
+<div class="moves"><div class="move"><p class="move-rank">1</p><p class="move-title">Claim &quot;Kristin Davis, Monroe, Michigan&quot;</p><p class="move-body">Retitle your agent page, set one phone number, and use the one-line bio on Facebook, Instagram, LinkedIn and every directory.</p>
+<p class="move-why"><b>Why it matters:</b> AI can't recommend you until it can tell you apart from the other Kristin Davises. This gives every later step the right address.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Easy</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">2 to 3 hours plus one request to your brokerage</p></div></div></div><div class="move"><p class="move-rank">2</p><p class="move-title">Open Your Google Profile and Start Reviews</p><p class="move-body">Create and verify a Google Business Profile in your name, then send your review link after every closing.</p>
+<p class="move-why"><b>Why it matters:</b> Reviews are what AI quotes first, and a verified profile is the record it trusts most for local agents.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Easy</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">1 hour to set up, 10 minutes per closing</p></div></div></div><div class="move"><p class="move-rank">3</p><p class="move-title">Become the Voice of Monroe, Michigan</p><p class="move-body">Publish the three local pages on page 12, then one new Monroe County page every two weeks.</p>
+<p class="move-why"><b>Why it matters:</b> Every cold question in the audit is answered by a national site today. Local answers are how you get named.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Moderate</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">About 2 hours per page</p></div></div></div></div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p17">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>17</span></header>
+<p class="eyebrow">90-Day Action Plan</p>
+<h2 class="page-title">One Month at a Time</h2>
+<div class="divider"></div>
+
+<div class="timeline"><span class="tl-dot"></span><span class="tl-line"></span><span class="tl-dot"></span><span class="tl-line"></span><span class="tl-dot"></span></div>
+<div class="phases"><div class="phase"><p class="phase-l">Month One</p><p class="phase-t">Quick Wins</p><ul class="phase-i"><li>Send the web admin request on page 6</li><li>Use 734-735-0325 and 824 S. Monroe St on every profile</li><li>Paste your one-line bio into Facebook, Instagram and directories</li><li>Create and verify your Google Business Profile</li><li>Send review requests to your past clients</li></ul></div><div class="phase"><p class="phase-l">Month Two</p><p class="phase-t">Authority Building</p><ul class="phase-i"><li>Claim Zillow, Realtor.com and Homes.com profiles with the same bio</li><li>Publish "A Monroe Address, Which School District?"</li><li>Publish "How Long Does It Take to Sell a House in Monroe?"</li><li>Ask the Monroe Downriver Association of Realtors to post your award</li><li>Join or update your Monroe County Chamber listing</li></ul></div><div class="phase"><p class="phase-l">Month Three</p><p class="phase-t">Content Consistency</p><ul class="phase-i"><li>Publish "Living in Monroe, Michigan"</li><li>Start a monthly Monroe County market update</li><li>Post one short local video each month</li><li>Set up a LinkedIn profile with the same bio and photo</li><li>Re-run this audit and compare the trend</li></ul></div></div>
+<div class="callout"><strong>Keep score:</strong> add "Where did you first hear about me?" to every intake conversation. The trend over three months tells you more than any single score.</div>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p18">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>18</span></header>
+<p class="eyebrow">AI Visibility Roadmap</p>
+<h2 class="page-title">From a Shared Name to the Local Answer</h2>
+<div class="divider"></div>
+
+<div class="roadmap"><div class="rm here"><span class="rm-n">1</span><span class="rm-t">Current Visibility</span><span class="rm-you">You are here · 10</span></div><div class="rm"><span class="rm-n">2</span><span class="rm-t">Better Google Presence</span></div><div class="rm"><span class="rm-n">3</span><span class="rm-t">More Local Authority</span></div><div class="rm"><span class="rm-n">4</span><span class="rm-t">More Helpful Content</span></div><div class="rm"><span class="rm-n">5</span><span class="rm-t">Stronger AI Understanding</span></div><div class="rm"><span class="rm-n">6</span><span class="rm-t">Greater Consumer Trust</span></div><div class="rm"><span class="rm-n">7</span><span class="rm-t">More Conversations</span></div></div>
+<p class="lede center">Each step builds on the one before it. The first two are almost entirely within your control this month, and they make everything after them work better.</p>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p19">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>19</span></header>
+<p class="eyebrow">Additional Resources</p>
+<h2 class="page-title">Optional Next Steps</h2>
+<div class="divider"></div>
+
+<p class="lede">These guides from the Business Growth Library go deeper on each recommendation, whenever you're ready.</p>
+<div class="res-grid"><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/google-business-profile/" target="_blank" rel="noopener"><p class="res-t">Google Visibility Blueprint</p><p class="res-d">Claiming and completing a Google Business Profile that AI and consumers trust.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/local-authority-blueprint/" target="_blank" rel="noopener"><p class="res-t">Local Authority Blueprint</p><p class="res-d">Turning neighborhood and market knowledge into published local pages.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/hometown-podcast-playbook/" target="_blank" rel="noopener"><p class="res-t">Hometown Podcast Playbook</p><p class="res-d">Community conversations that earn outside mentions and local trust.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/closing-table-review-playbook/" target="_blank" rel="noopener"><p class="res-t">Closing Table Review Playbook</p><p class="res-d">A repeatable way to turn every closing into a fresh review on more than one site.</p><span class="res-go">Open resource →</span></a></div>
+<div class="gloss">
+ <div><p class="gl-t">Discovery search</p><p class="gl-d">Searching for a type of help, not a name, like "best Realtor near me."</p></div>
+ <div><p class="gl-t">Branded search</p><p class="gl-d">Searching for a Realtor by name.</p></div>
+ <div><p class="gl-t">NAP consistency</p><p class="gl-d">Name, address and phone matching exactly on every site.</p></div>
+ <div><p class="gl-t">Name twin</p><p class="gl-d">Someone else online with your name. A city next to your name keeps AI from mixing you up.</p></div>
+</div>
+<p class="tiny">General guidance, not legal advice. Confirm review, advertising and individual-profile rules with your broker, and keep Fair Housing and Michigan license display rules in mind for anything you publish.</p>
+<footer class="page-foot"><span>Prepared for Kristin Davis · Monroe, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="back" id="p20">
+<h2>One Name. One Hometown.<br><span>Next, Found by Question.</span></h2>
+<p>Kristin's award says Monroe clients and colleagues already noticed her work. The next step is making sure the tools Monroe families ask first can say her name too, and it's a conversation worth continuing whenever you're ready.</p>
+<div class="cover-divider"></div>
+<p class="cover-branding">Brian Snyder</p>
+<p class="back-l">Building Better Businesses. Building Better Lives.</p>
+<p class="back-c">614-306-3051 · bsnyder@uhm.com</p>
+</section>
+</main></body></html>
