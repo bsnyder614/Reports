@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Mark Lizyness AI Visibility Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>/* Layout: stacked report pages (navy cover, paper pages, navy feature pages), LO series brand kit */
+:root{
+  --navy:#1B2A4A; --navy-mid:#243660; --gold:#C9A84C; --gold-light:#E8C96A; --gold-pale:#F5EDD6;
+  --white:#FFFFFF; --off-white:#F7F8FA; --paper:#FFFFFF; --light-gray:#E8ECF2; --mid-gray:#6B7A90; --dark-gray:#2D3748;
+  --strong:#2E7D5B; --strong-bg:#DDF3E8; --build:#9A7A1F; --build-bg:#F5EDD6; --opp:#A5561A; --opp-bg:#FBEBDD;
+  --display:'Montserrat', 'Helvetica Neue', Arial, sans-serif; --body:'Open Sans', 'Segoe UI', Arial, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{background:var(--off-white);color:var(--dark-gray);font-family:var(--body);line-height:1.55;margin:0}
+.report{padding:24px 16px;display:flex;flex-direction:column;gap:24px;align-items:center}
+p{margin:0}
+b,strong{color:var(--navy);font-weight:700}
+
+/* ---- page shell ---- */
+.page,.cover,.back{width:100%;max-width:880px;border-radius:14px;box-shadow:0 1px 3px rgba(27,42,74,.08),0 8px 28px rgba(27,42,74,.06);position:relative;overflow:hidden}
+.page{background:var(--paper);padding:34px 44px 30px;display:flex;flex-direction:column;gap:18px}
+.page-head,.page-foot{display:flex;justify-content:space-between;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid-gray)}
+.page-head span:last-child{color:var(--gold);font-size:12px}
+.page-foot{margin-top:auto;padding-top:10px;border-top:1px solid var(--light-gray);font-weight:600;letter-spacing:1.5px}
+.eyebrow{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.page-title{font-family:var(--display);font-size:clamp(24px,4vw,33px);font-weight:900;color:var(--navy);line-height:1.12;margin:-10px 0 0;text-wrap:balance}
+.divider{height:3px;width:100%;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;margin-top:-6px}
+.lede{font-size:15.5px;max-width:68ch;color:var(--dark-gray)}
+.lede.center{text-align:center;margin:0 auto}
+.note{font-size:13px;color:var(--mid-gray);margin-top:10px}
+.tiny{font-size:11px;color:var(--mid-gray)}
+.mini-h{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.two-col>*{min-width:0}
+.two-col.wide-left{grid-template-columns:1.25fr 1fr}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+/* dark pages */
+.page.dark{background:var(--navy);color:rgba(255,255,255,.8)}
+.page.dark .page-title{color:var(--white)}
+.page.dark .page-head,.page.dark .page-foot{color:rgba(255,255,255,.45);border-color:rgba(255,255,255,.1)}
+.page.dark b,.page.dark strong{color:var(--white)}
+
+/* chips */
+.chip{display:inline-block;font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.3px;border-radius:20px;padding:3px 10px;white-space:nowrap;align-self:flex-start}
+.chip-strong{background:var(--strong-bg);color:var(--strong)}
+.chip-build{background:var(--build-bg);color:var(--build)}
+.chip-opp{background:var(--opp-bg);color:var(--opp)}
+
+/* rings */
+.ring{display:block;max-width:100%;height:auto}
+.arc-strong{stroke:var(--strong)} .arc-build{stroke:var(--gold)} .arc-opp{stroke:#D08A4E}
+.page.dark .arc-opp{stroke:#E0A26A}
+.band-label{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-top:8px}
+
+/* callouts / scripts */
+.callout{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;line-height:1.6}
+.page.dark .callout{background:rgba(201,168,76,.12);color:rgba(255,255,255,.85)}
+.script{background:var(--navy);border-radius:10px;padding:16px 18px;color:rgba(255,255,255,.88)}
+.script-k{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.script-t{font-size:13px;line-height:1.6;font-style:italic}
+.list-card,.mini-card{background:var(--off-white);border-radius:12px;padding:18px 20px;border-top:3px solid var(--navy)}
+.list-card.gold{border-top-color:var(--gold)}
+.list-k{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+ul.ticks,ul.arrows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+ul.ticks li,ul.arrows li{padding-left:22px;position:relative;font-size:13.5px;line-height:1.55}
+ul.ticks li::before{content:"✓";position:absolute;left:0;color:var(--strong);font-weight:700}
+ul.arrows li::before{content:"→";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* cover */
+.cover{background:var(--navy);color:var(--white);text-align:center;padding:64px 40px 80px;display:flex;flex-direction:column;align-items:center}
+.cover::before{content:"";position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:rgba(201,168,76,.08)}
+.cover::after{content:"";position:absolute;bottom:-100px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(201,168,76,.06)}
+.cover>*{position:relative;z-index:1}
+.cover-eyebrow{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.cover-prep{font-family:var(--display);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px}
+.cover-name{font-family:var(--display);font-size:clamp(50px,9vw,86px);font-weight:900;line-height:1;letter-spacing:-1px;margin:0 0 12px}
+.cover-name span{color:var(--gold)}
+.cover-title{font-family:var(--display);font-size:14px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.5px;margin-bottom:32px;max-width:560px}
+.cover-divider{width:60px;height:3px;background:var(--gold);margin:0 auto 32px}
+.cover-headline{font-family:var(--display);font-size:clamp(22px,3.6vw,30px);font-weight:800;line-height:1.25;max-width:640px;margin:0 0 16px;text-wrap:balance}
+.cover-sub{font-size:15px;color:rgba(255,255,255,.62);max-width:520px;margin-bottom:40px}
+.cover-score-pill{background:rgba(201,168,76,.15);border:2px solid var(--gold);border-radius:50px;padding:12px 34px;display:inline-flex;align-items:center;gap:16px;margin-bottom:40px}
+.cover-score-number{font-family:var(--display);font-size:42px;font-weight:900;color:var(--gold);line-height:1}
+.cover-score-label{text-align:left}
+.cover-score-label .band{display:block;font-family:var(--display);font-size:17px;font-weight:800}
+.cover-score-label .out-of{display:block;font-size:12px;color:rgba(255,255,255,.5)}
+.cover-branding{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.cover-footer{position:absolute;bottom:26px;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:0 36px;font-family:var(--display);font-size:10.5px;letter-spacing:1px;color:rgba(255,255,255,.35)}
+
+/* p2 */
+.exec-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.exec-top>*{min-width:0}
+.exec-score{text-align:center}
+.exec-para{font-size:15px;line-height:1.7}
+
+/* p3 */
+.prompt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.prompt{display:flex;gap:10px;align-items:center;background:var(--off-white);border:1px solid var(--light-gray);border-radius:26px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--navy);min-width:0}
+.prompt-ic{flex:none;width:22px;height:22px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--display);font-weight:900;font-size:12px;display:grid;place-items:center}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:var(--navy);border-radius:12px;padding:18px;color:rgba(255,255,255,.7)}
+.step-n{font-family:var(--display);font-weight:900;font-size:30px;color:rgba(201,168,76,.45);line-height:1}
+.step-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:15px;margin:8px 0 4px}
+.step-d{font-size:12.5px}
+
+/* p4 */
+.score-hero{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.big-score{text-align:center}
+.big-band{display:block;font-family:var(--display);font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-top:8px}
+.big-sub{display:block;font-size:11px;color:rgba(255,255,255,.45)}
+.score-read{flex:1;min-width:240px;display:flex;flex-direction:column;gap:14px}
+.split{display:flex;gap:28px}
+.split-n{font-family:var(--display);font-weight:900;font-size:46px;color:#7FD3A8;line-height:1}
+.split-n.gold{color:var(--gold-light)}
+.split-l{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px}
+.score-p{font-size:14.5px;color:rgba(255,255,255,.78)}
+.gauges{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.gauge{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.g-name{font-family:var(--display);font-weight:800;font-size:11.5px;color:var(--white);margin-top:6px;line-height:1.25}
+.g-w{font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+.g-d{font-size:10.5px;color:rgba(255,255,255,.55);line-height:1.35}
+.key{display:flex;gap:22px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.7)}
+.key span{display:inline-flex;gap:7px;align-items:center}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.d-strong{background:var(--strong)} .d-build{background:var(--gold)} .d-opp{background:#E0A26A}
+.bench{font-size:13.5px;background:rgba(255,255,255,.06);border-radius:10px;padding:14px 18px;color:rgba(255,255,255,.8)}
+
+/* p5 pyramid */
+.pyramid{display:flex;flex-direction:column;gap:8px}
+.pyr-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:center}
+.pyr-block{height:58px;display:grid;place-items:center;color:var(--white);font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.5px;margin:0 auto}
+.pb0{width:44%;background:var(--gold);color:var(--navy);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
+.pb1{width:58%;background:#3B4F78;clip-path:polygon(11% 0,89% 0,100% 100%,0 100%)}
+.pb2{width:72%;background:var(--navy-mid);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%)}
+.pb3{width:86%;background:#1F3157;clip-path:polygon(6% 0,94% 0,100% 100%,0 100%)}
+.pb4{width:100%;background:var(--navy);clip-path:polygon(5% 0,95% 0,100% 100%,0 100%)}
+.pb0 span,.pb1 span,.pb2 span,.pb3 span,.pb4 span{padding:0 18%;text-align:center;line-height:1.15}
+.pyr-note{display:flex;flex-direction:column;gap:5px}
+.pn-d{font-size:13px}
+
+/* p6 channels */
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.ch{border:1px solid var(--light-gray);border-radius:10px;padding:11px 12px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.ch-n{font-family:var(--display);font-weight:800;font-size:12.5px;color:var(--navy)}
+.ch-s{font-size:11px;color:var(--mid-gray);margin-bottom:5px;overflow-wrap:anywhere}
+.ch .chip{white-space:normal}
+
+/* p7 reviews */
+.plat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.plat{background:var(--off-white);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.plat-n{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid-gray)}
+.plat-c{font-family:var(--display);font-weight:900;font-size:24px;color:var(--navy);line-height:1.1}
+.plat-d{font-size:12px;margin-bottom:5px}
+.meter{margin-bottom:11px}
+.meter-top{display:flex;justify-content:space-between;gap:10px;font-family:var(--display);font-weight:700;font-size:12.5px;color:var(--navy);margin-bottom:5px}
+.meter-v{font-family:var(--body);font-weight:500;color:var(--mid-gray);font-size:12px;text-align:right}
+.bar{height:9px;background:var(--light-gray);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px}
+.fill-strong{background:var(--strong)} .fill-build{background:var(--gold)} .fill-opp{background:#D08A4E}
+
+/* p8 */
+.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.q{border-top:3px solid var(--navy);background:var(--off-white);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.q-q{font-family:var(--display);font-weight:800;color:var(--navy);font-size:14px}
+.q-a{font-size:12.5px}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--navy);color:rgba(255,255,255,.7);font-family:var(--display);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;text-align:left;padding:9px 12px}
+.tbl td{padding:8px 12px;border-bottom:1px solid var(--light-gray);vertical-align:middle}
+.tbl td:first-child{font-weight:700;color:var(--navy);white-space:nowrap}
+.tbl.sim td:first-child{white-space:normal;font-weight:600}
+.tbl .grp td{background:var(--gold-pale);font-family:var(--display);font-size:10.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);padding:6px 12px}
+.tbl.sim td:last-child{color:var(--mid-gray);font-size:12px}
+.sim-foot{display:flex;flex-direction:column;gap:3px;font-size:13px}
+
+/* p9 */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:var(--navy);border-radius:12px;padding:16px;text-align:center}
+.stat-n{font-family:var(--display);font-weight:900;font-size:36px;color:var(--gold);line-height:1}
+.stat-l{font-size:11.5px;color:rgba(255,255,255,.7);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.la-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.la-grid.ten{grid-template-columns:repeat(5,1fr)}
+.la{display:flex;flex-direction:column;gap:6px;border:1px solid var(--light-gray);border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:600;color:var(--navy);min-width:0}
+
+/* p12 */
+.starter{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.st{background:var(--navy);border-radius:12px;padding:16px;color:rgba(255,255,255,.72);position:relative;overflow:hidden}
+.st::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.st-n{font-family:var(--display);font-weight:900;font-size:28px;color:rgba(201,168,76,.4);line-height:1}
+.st-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:14.5px;margin:6px 0 5px;line-height:1.3}
+.st-d{font-size:12.5px}
+.cal-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--light-gray);border-radius:12px;overflow:hidden}
+.cal{padding:12px 14px;border-right:1px solid var(--light-gray);min-width:0}
+.cal:last-child{border-right:0}
+.cal-d{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.cal-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:13px;margin:4px 0 2px}
+.cal-p{font-size:11.5px;color:var(--mid-gray)}
+
+/* p13 */
+.gbp-top{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.gbp-top>*{min-width:0}
+.gbp-badge{background:var(--navy);border-radius:14px;padding:16px 24px;text-align:center}
+.gbp-r{font-family:var(--display);font-weight:900;font-size:40px;color:var(--white);line-height:1}
+.gbp-s{color:var(--gold);letter-spacing:3px;font-size:16px}
+.gbp-c{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px}
+.gb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gb{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--light-gray);border-radius:10px;padding:11px 12px;min-width:0}
+.gb-n{font-family:var(--display);font-weight:800;font-size:12.5px;color:var(--navy)}
+.gb-d{font-size:11.5px;color:var(--mid-gray)}
+
+/* p15 */
+.fp-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.fp-top>*{min-width:0}
+.fp-score{text-align:center}
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.fl{flex:1;min-width:110px;background:var(--navy);color:var(--white);font-family:var(--display);font-weight:800;font-size:12px;text-align:center;padding:12px 18px;clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%);display:grid;place-items:center;line-height:1.2}
+.fl:first-child{clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)}
+.fl:nth-child(even){background:var(--navy-mid)}
+.fl:last-child{background:var(--gold);color:var(--navy)}
+.pl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pl{background:var(--off-white);border-radius:10px;padding:11px 13px;min-width:0}
+.pl-k{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.pl-v{font-size:12px;margin-top:3px}
+
+/* p16 */
+.moves{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.move{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px;min-width:0}
+.move::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.move-rank{font-family:var(--display);font-weight:900;font-size:40px;color:rgba(201,168,76,.35);line-height:1}
+.move-title{font-family:var(--display);font-weight:800;font-size:16px;color:var(--white);line-height:1.25}
+.move-body{font-size:13px;color:rgba(255,255,255,.75)}
+.move-why{font-size:12.5px;color:rgba(255,255,255,.65)}
+.move-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1)}
+.mm-wide{grid-column:1/-1}
+.mm-k{font-family:var(--display);font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.mm-v{font-size:12.5px;color:var(--white);font-weight:600}
+
+/* p17 */
+.timeline{display:flex;align-items:center;padding:0 16%}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:var(--gold);flex:none;box-shadow:0 0 0 4px var(--gold-pale)}
+.tl-line{flex:1;height:3px;background:var(--gold-pale)}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-6px}
+.phase{background:var(--navy);border-radius:12px;padding:20px;min-width:0}
+.phase-l{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.phase-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:16px;margin:4px 0 10px}
+.phase-i{list-style:none;margin:0;padding:0}
+.phase-i li{font-size:12.5px;color:rgba(255,255,255,.75);padding:6px 0 6px 16px;border-bottom:1px solid rgba(255,255,255,.08);position:relative;line-height:1.45}
+.phase-i li:last-child{border-bottom:0}
+.phase-i li::before{content:"›";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* p18 */
+.roadmap{display:flex;flex-direction:column;align-items:center;gap:0}
+.rm{display:flex;align-items:center;gap:14px;background:var(--off-white);border:1px solid var(--light-gray);border-radius:12px;padding:10px 18px;width:min(100%,460px);position:relative}
+.rm + .rm{margin-top:22px}
+.rm + .rm::before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--gold)}
+.rm-n{width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--display);font-weight:900;font-size:13px;display:grid;place-items:center;flex:none}
+.rm-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:14.5px}
+.rm.here{background:var(--navy);border-color:var(--navy)}
+.rm.here .rm-t{color:var(--white)}
+.rm.here .rm-n{background:var(--gold);color:var(--navy)}
+.rm-you{margin-left:auto;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.rm:last-child{background:var(--gold);border-color:var(--gold)}
+.rm:last-child .rm-n{background:var(--navy)}
+
+/* p19 */
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res{display:flex;flex-direction:column;gap:5px;text-decoration:none;background:var(--navy);border-radius:12px;padding:18px;color:rgba(255,255,255,.72);border-top:3px solid var(--gold);min-width:0}
+.res:hover,.res:focus-visible{background:var(--navy-mid);outline:2px solid var(--gold);outline-offset:2px}
+.res-t{font-family:var(--display);font-weight:800;color:var(--white);font-size:15px}
+.res-d{font-size:12.5px}
+.res-go{font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.gloss{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gloss>div{border-top:2px solid var(--light-gray);padding-top:8px;min-width:0}
+.gl-t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:12.5px}
+.gl-d{font-size:11.5px;color:var(--mid-gray)}
+
+/* back */
+.back{background:var(--navy);text-align:center;padding:64px 40px;color:rgba(255,255,255,.65)}
+.back h2{font-family:var(--display);font-weight:900;font-size:clamp(30px,5vw,48px);line-height:1.1;color:var(--white);margin:0 0 18px;text-wrap:balance}
+.back h2 span{color:var(--gold)}
+.back>p{max-width:540px;margin:0 auto 28px;font-size:15px}
+.back .cover-divider{margin:0 auto 20px}
+.back-l{font-size:12px;color:rgba(255,255,255,.4);margin-top:10px}
+.back-c{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* responsive */
+@media (max-width:760px){
+  .page{padding:26px 20px 22px}
+  .two-col,.two-col.wide-left,.exec-top,.gbp-top,.fp-top{grid-template-columns:1fr}
+  .exec-score,.fp-score{justify-self:center}
+  .prompt-grid,.steps3,.q-grid,.starter,.moves,.phases,.pl-grid,.gb-grid{grid-template-columns:1fr}
+  .gauges{grid-template-columns:repeat(3,1fr)}
+  .plat-grid,.stat-row,.res-grid,.gloss{grid-template-columns:repeat(2,1fr)}
+  .la-grid,.la-grid.ten{grid-template-columns:repeat(2,1fr)}
+  .cal-row{grid-template-columns:1fr 1fr}
+  .cal:nth-child(2){border-right:0} .cal{border-bottom:1px solid var(--light-gray)}
+  .pyr-row{grid-template-columns:1fr;gap:6px}
+  .pb0,.pb1,.pb2,.pb3,.pb4{width:100%}
+  .cover{padding:48px 22px 90px}
+  .cover-footer{flex-direction:column;align-items:center;gap:4px}
+  .timeline{display:none}
+  .fl{flex-basis:100%;clip-path:none!important;border-radius:8px;margin-bottom:6px}
+  .flow{flex-direction:column}
+  .rm-you{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* print / PDF: one report page per sheet */
+@page{size:11in 8.5in;margin:0}
+@media print{
+  body{background:var(--white)}
+  .report{padding:0;gap:0}
+  .page,.cover,.back{max-width:none;width:11in;height:8.5in;border-radius:0;box-shadow:none;break-after:page;page-break-after:always}
+  .cover,.back{justify-content:center}
+  .page{padding:.42in .6in .34in}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.page>*{flex-shrink:0}
+@media print{
+  .tbl.sim td{padding:5px 12px}
+  .tbl .grp td{padding:4px 12px}
+  .page{gap:14px}
+  .cover{padding:40px 40px 64px}
+  .cover-name{font-size:76px}
+  .cover-title{margin-bottom:22px}
+  .cover-divider{margin-bottom:22px}
+  .cover-sub{margin-bottom:26px}
+  .cover-score-pill{margin-bottom:26px}
+  .fp-top .ring{width:112px;height:112px}
+  .fp-bars .meter{margin-bottom:7px}
+  .pl{padding:8px 12px}
+  .gauges .ring{width:92px;height:92px}
+}
+@media print{
+  .tbl td{padding:6px 12px}
+  .tbl.sim td{padding:4px 12px;font-size:12px}
+  .sim-foot{font-size:12px}
+  .q{padding:11px 14px}
+  .fp-top{gap:20px}
+}
+@media print{ #p10,#p15{gap:9px} #p10 .tbl th{padding:7px 12px} }
+@media print{
+  #p1 .cover-sub{margin-bottom:20px} #p1 .cover-score-pill{margin-bottom:20px} #p1 .cover-headline{margin-bottom:10px} #p1 .cover-eyebrow{margin-bottom:14px} #p1{padding-top:30px}
+  #p8{gap:10px} #p8 .tbl td{padding:4px 12px} #p8 .q{padding:9px 12px} #p8 .callout{padding:10px 14px;font-size:12.5px} #p8 .script{padding:12px 14px}
+  #p15{gap:9px} #p15 .pl{padding:6px 10px} #p15 .script{padding:12px 14px}
+}
+@media print{ #p12{gap:11px} #p12 .st{padding:13px 16px} }
+</style>
+</head><body><main class="report">
+<section class="cover" id="p1">
+<p class="cover-eyebrow">AI Visibility Index · Realtor Edition</p>
+<p class="cover-prep">Prepared for</p>
+<h1 class="cover-name">MARK<br><span>LIZYNESS</span></h1>
+<p class="cover-title">Associate Broker · Real Estate One · Flat Rock and Downriver, Michigan</p>
+<div class="cover-divider"></div>
+<h2 class="cover-headline">How Visible Is Your Business When Consumers Ask AI to Recommend a Realtor?</h2>
+<p class="cover-sub">A personalized look at how Google and AI tools see your business across Flat Rock, Rockwood, Trenton and the Downriver communities of Wayne and Monroe Counties, with practical next steps.</p>
+<div class="cover-score-pill">
+  <div class="cover-score-number">28</div>
+  <div class="cover-score-label"><span class="band">EMERGING</span><span class="out-of">out of 100 · AI Visibility Score</span></div>
+</div>
+<p class="cover-branding">Presented by Brian Snyder</p>
+<div class="cover-footer"><span>Building Better Businesses. Building Better Lives.</span><span>Confidential · October 2026</span></div>
+</section>
+<section class="page" id="p2">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>02</span></header>
+<p class="eyebrow">Executive Summary</p>
+<h2 class="page-title">A Top 10 Michigan Reputation, Ready to Be Found</h2>
+<div class="divider"></div>
+
+<div class="exec-top">
+  <div class="exec-score"><svg class="ring" viewBox="0 0 150 150" width="150" height="150" role="img" aria-label="Overall 28 out of 100">
+<circle cx="75.0" cy="75.0" r="67.5" fill="none" stroke="var(--light-gray)" stroke-width="13"/>
+<circle cx="75.0" cy="75.0" r="67.5" fill="none" class="arc-opp" stroke-width="13" stroke-linecap="round"
+ stroke-dasharray="118.8 424.1" transform="rotate(-90 75.0 75.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--navy)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="45">28</text>
+</svg><p class="band-label">Emerging</p><p class="tiny">Overall AI Visibility Score</p></div>
+  <p class="exec-para">Mark Lizyness has helped Downriver families buy and sell since 2004, and his clients have left 125 five-star reviews across RateMyAgent, Zillow and Google. RateMyAgent ranks him in its Michigan Top 10 and in the top five for both Wayne and Monroe Counties, and a new review landed there in the last two weeks. Search his name and that reputation shows up right away. When a stranger asks a cold question like "who's the best Realtor in Flat Rock," his name doesn't come up yet, and many of the profiles AI reads still list him with RE/MAX Masters on Telegraph Road. The path forward is practical: put Real Estate One on every profile, bring Google up to date so fresh reviews land where AI looks first, and publish a handful of pages that answer the questions Flat Rock and Downriver buyers already ask.</p>
+</div>
+<div class="two-col">
+  <div class="list-card"><p class="list-k">Three Strengths</p><ul class="ticks">
+    <li><b>125 five-star reviews on three sites,</b> including 63 on RateMyAgent, where the newest one is less than two weeks old.</li>
+    <li><b>Recognized production.</b> RateMyAgent's Michigan Top 10, top five in Wayne and Monroe Counties, and 29 homes sold in the last 12 months.</li>
+    <li><b>Hometown roots.</b> Grew up in Rockwood, graduated from Gibraltar Carlson, and has worked Downriver for more than 20 years.</li>
+  </ul></div>
+  <div class="list-card gold"><p class="list-k">Three Opportunities</p><ul class="arrows">
+    <li><b>Bring every profile up to date.</b> Zillow, AgentPronto, LinkedIn and Yelp still show RE/MAX Masters.</li>
+    <li><b>Send reviews to Google.</b> Google shows nine reviews, and the newest are from early 2023.</li>
+    <li><b>Answer local questions.</b> "Best Realtor in Flat Rock" is answered today by Homes.com, HomeLight and Yelp lists.</li>
+  </ul></div>
+</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p3">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>03</span></header>
+<p class="eyebrow">Why This Matters</p>
+<h2 class="page-title">The Search Happens Before the Phone Call</h2>
+<div class="divider"></div>
+
+<p class="lede">Buyers and sellers around Flat Rock now type questions like these into ChatGPT, Google and Gemini, and the answer often names two or three agents. The consumer never sees a page of search results.</p>
+<div class="prompt-grid"><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best Realtor in Flat Rock, Michigan</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best listing agent near me (48134)</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Best buyer's agent Downriver</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Realtor for first-time homebuyers in Wayne County</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Luxury Realtor near Grosse Ile</span></div><div class="prompt"><span class="prompt-ic" aria-hidden="true">?</span><span>Realtor for a move to Downriver Detroit</span></div></div>
+<div class="steps3">
+  <div class="step"><span class="step-n">1</span><p class="step-t">AI reads the web</p><p class="step-d">Reviews, directories, local news, your agent page and your social profiles.</p></div>
+  <div class="step"><span class="step-n">2</span><p class="step-t">It looks for agreement</p><p class="step-d">The same name, the same brokerage and the same specialty said in many places.</p></div>
+  <div class="step"><span class="step-n">3</span><p class="step-t">It names who it understands</p><p class="step-d">Agents with a clear, repeated story get recommended. The rest get left out of the answer.</p></div>
+</div>
+<div class="callout"><strong>The big idea:</strong> AI can only recommend a professional it understands. For Mark that means making "Mark Lizyness, Real Estate One, Flat Rock and Downriver" read the same way on every site, so 22 years of client trust points to where he works today.</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page dark" id="p4">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>04</span></header>
+<p class="eyebrow">AI Visibility Score</p>
+<h2 class="page-title">Your Score. Your Starting Point.</h2>
+<div class="divider"></div>
+
+<div class="score-hero">
+  <div class="big-score"><svg class="ring" viewBox="0 0 170 170" width="170" height="170" role="img" aria-label="Overall 28 out of 100">
+<circle cx="85.0" cy="85.0" r="77.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14"/>
+<circle cx="85.0" cy="85.0" r="77.0" fill="none" class="arc-opp" stroke-width="14" stroke-linecap="round"
+ stroke-dasharray="135.5 483.8" transform="rotate(-90 85.0 85.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="51">28</text>
+</svg><span class="big-band">Emerging</span><span class="big-sub">out of 100</span></div>
+  <div class="score-read">
+    <div class="split"><div><p class="split-n">88</p><p class="split-l">Searched by name</p></div><div><p class="split-n gold">0</p><p class="split-l">Found by strangers</p></div></div>
+    <p class="score-p">Searched by name, Mark comes up across RateMyAgent, Homes.com, his Real Estate One site and LinkedIn, and that's a position a lot of agents never reach. The cold questions strangers ask don't reach him yet. Both numbers move quickly once his profiles, Google listing and local pages all say Real Estate One and Flat Rock.</p>
+  </div>
+</div>
+<div class="gauges"><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Discovery Presence 0 out of 100">
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="0.0 289.0" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">0</text>
+</svg><p class="g-name">Discovery Presence</p><p class="g-w">Weight 30%</p><p class="g-d">Found when strangers ask</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Outside Authority 45 out of 100">
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" class="arc-build" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="130.1 289.0" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">45</text>
+</svg><p class="g-name">Outside Authority</p><p class="g-w">Weight 20%</p><p class="g-d">Other sites vouching for you</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Reviews 85 out of 100">
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" class="arc-strong" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="245.7 289.0" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">85</text>
+</svg><p class="g-name">Reviews</p><p class="g-w">Weight 15%</p><p class="g-d">What clients say, and where</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Local Content 0 out of 100">
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="0.0 289.0" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">0</text>
+</svg><p class="g-name">Local Content</p><p class="g-w">Weight 15%</p><p class="g-d">Pages about your towns</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Personal Brand 30 out of 100">
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="86.7 289.0" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">30</text>
+</svg><p class="g-name">Personal Brand</p><p class="g-w">Weight 10%</p><p class="g-d">One name, one clear lane</p></div><div class="gauge"><svg class="ring" viewBox="0 0 104 104" width="104" height="104" role="img" aria-label="Technical Foundation 30 out of 100">
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+<circle cx="52.0" cy="52.0" r="46.0" fill="none" class="arc-opp" stroke-width="10" stroke-linecap="round"
+ stroke-dasharray="86.7 289.0" transform="rotate(-90 52.0 52.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--white)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="31">30</text>
+</svg><p class="g-name">Technical Foundation</p><p class="g-w">Weight 10%</p><p class="g-d">Site, Google profile, matching info</p></div></div>
+<div class="key"><span><i class="dot d-strong"></i>Strong 70+</span><span><i class="dot d-build"></i>Building 45 to 69</span><span><i class="dot d-opp"></i>Opportunity under 45</span></div>
+<p class="bench"><b>Market context:</b> most agents across Downriver Wayne and Monroe Counties score under 30 today because this is still new ground for the industry. Agents actively investing in AI visibility typically score 45 to 65, which means the agents who start now have real room to lead.</p>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p5">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>05</span></header>
+<p class="eyebrow">The Framework</p>
+<h2 class="page-title">The AI Visibility Pyramid</h2>
+<div class="divider"></div>
+
+<p class="lede">Consumers experience your business from the top down, starting with reviews. AI builds its understanding from the bottom up. Each layer supports the one above it.</p>
+<div class="pyramid"><div class="pyr-row"><div class="pyr-block pb0"><span>Reviews</span></div><div class="pyr-note"><p class="pn-d">What clients say about you, and on how many sites.</p><span class="chip chip-strong">125 five-star reviews</span></div></div><div class="pyr-row"><div class="pyr-block pb1"><span>Personal Brand</span></div><div class="pyr-note"><p class="pn-d">One name, one lane, said the same way everywhere.</p><span class="chip chip-opp">Update to Real Estate One</span></div></div><div class="pyr-row"><div class="pyr-block pb2"><span>Outside Authority</span></div><div class="pyr-note"><p class="pn-d">Other trusted sites mentioning you: awards, chamber, local news.</p><span class="chip chip-build">Awards and directories</span></div></div><div class="pyr-row"><div class="pyr-block pb3"><span>Local Content</span></div><div class="pyr-note"><p class="pn-d">Pages you publish about Flat Rock, Rockwood and their schools.</p><span class="chip chip-opp">Open lane</span></div></div><div class="pyr-row"><div class="pyr-block pb4"><span>Technical Foundation</span></div><div class="pyr-note"><p class="pn-d">Your agent site, Google Business Profile and matching contact info.</p><span class="chip chip-build">Update Google listing</span></div></div></div>
+<div class="callout"><strong>Where to start:</strong> your reviews already sit at the top of the pyramid. The bottom two layers cost nothing and take a few hours, and once your brokerage, phone and office match everywhere, all 125 of those reviews start pointing at Real Estate One.</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p6">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>06</span></header>
+<p class="eyebrow">Online Presence Audit</p>
+<h2 class="page-title">Where AI Can Find You Today</h2>
+<div class="divider"></div>
+
+<div class="ch-grid"><div class="ch"><p class="ch-n">Agent website</p><p class="ch-s">marklizyness.realestateone.com</p><span class="chip chip-strong">Found · Real Estate One</span></div><div class="ch"><p class="ch-n">Personal domain</p><p class="ch-s">markfindshomes.com</p><span class="chip chip-strong">Points to your site</span></div><div class="ch"><p class="ch-n">Google Search</p><p class="ch-s">Name plus Flat Rock</p><span class="chip chip-build">RE/MAX page leads</span></div><div class="ch"><p class="ch-n">Google Maps</p><p class="ch-s">Local listings</p><span class="chip chip-build">Old Telegraph Rd address</span></div><div class="ch"><p class="ch-n">Google Business Profile</p><p class="ch-s">9 Google reviews</p><span class="chip chip-build">Confirm and update</span></div><div class="ch"><p class="ch-n">LinkedIn</p><p class="ch-s">Two profiles</p><span class="chip chip-opp">Both show RE/MAX</span></div><div class="ch"><p class="ch-n">Facebook</p><p class="ch-s">facebook.com/mark.lizyness</p><span class="chip chip-build">Personal profile linked</span></div><div class="ch"><p class="ch-n">Instagram</p><p class="ch-s">@marklizyness</p><span class="chip chip-build">Linked from your site</span></div><div class="ch"><p class="ch-n">YouTube</p><p class="ch-s">@marklizyness2718</p><span class="chip chip-build">Channel exists</span></div><div class="ch"><p class="ch-n">Brokerage website</p><p class="ch-s">realestateone.com</p><span class="chip chip-strong">Trenton office roster</span></div><div class="ch"><p class="ch-n">Homes.com</p><p class="ch-s">9 reviews · 120 sales</p><span class="chip chip-strong">Real Estate One-Trenton</span></div><div class="ch"><p class="ch-n">Zillow</p><p class="ch-s">53 reviews · 355 sales</p><span class="chip chip-opp">Still RE/MAX Masters</span></div><div class="ch"><p class="ch-n">Realtor.com</p><p class="ch-s">Agent profile</p><span class="chip chip-opp">Not found in search</span></div><div class="ch"><p class="ch-n">RateMyAgent</p><p class="ch-s">63 reviews · 29 sales</p><span class="chip chip-strong">Michigan Top 10</span></div><div class="ch"><p class="ch-n">Local directories</p><p class="ch-s">AgentPronto, U.S. News, Yelp</p><span class="chip chip-build">RE/MAX Masters listed</span></div></div>
+<div class="two-col">
+ <div class="callout"><strong>What stands out:</strong> AgentPronto's Flat Rock page already ranks you second among local agents by recent sales, and your Zillow profile carries 53 five-star reviews. Both still say RE/MAX Masters. Updating those two profiles points years of earned trust at Real Estate One, and it's the fastest fix in this report.</div>
+ <div class="script"><p class="script-k">Copy and paste · Updated bio for Zillow and every portal</p><p class="script-t">I'm Mark Lizyness, an Associate Broker with Real Estate One serving Flat Rock, Rockwood, Trenton and the Downriver communities. I've been a Realtor since 2004, and I grew up right here in Rockwood and graduated from Gibraltar Carlson. Whether you're buying your first home, moving up, investing or settling a family estate, my job is to keep the process smooth, keep you informed and keep the deal on track.</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p7">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>07</span></header>
+<p class="eyebrow">Review Analysis</p>
+<h2 class="page-title">125 Five-Star Reviews, Ready to Work Harder</h2>
+<div class="divider"></div>
+
+<div class="plat-grid"><div class="plat"><p class="plat-n">Google</p><p class="plat-c">9 · 5.0★</p><p class="plat-d">Newest from February 2023</p><span class="chip chip-build">Refresh</span></div><div class="plat"><p class="plat-n">RateMyAgent</p><p class="plat-c">63 · 5.0★</p><p class="plat-d">Newest in the last two weeks</p><span class="chip chip-strong">Strong</span></div><div class="plat"><p class="plat-n">Zillow</p><p class="plat-c">53 reviews</p><p class="plat-d">All shown five stars, newest January 2022</p><span class="chip chip-build">Update brokerage</span></div><div class="plat"><p class="plat-n">Homes.com</p><p class="plat-c">9 · 5.0★</p><p class="plat-d">Pulls in your Google reviews</p><span class="chip chip-build">Grows with Google</span></div></div>
+<div class="two-col">
+ <div><p class="mini-h">How your reviews read to AI</p>
+ <div class="meter"><div class="meter-top"><span>Quantity</span><span class="meter-v">125 across three sites</span></div><div class="bar"><i class="fill-strong" style="width:90%"></i></div></div>
+ <div class="meter"><div class="meter-top"><span>Quality</span><span class="meter-v">Five stars, specific and personal</span></div><div class="bar"><i class="fill-strong" style="width:92%"></i></div></div>
+ <div class="meter"><div class="meter-top"><span>Recency</span><span class="meter-v">Fresh on RateMyAgent, older on Google and Zillow</span></div><div class="bar"><i class="fill-build" style="width:55%"></i></div></div>
+ <div class="meter"><div class="meter-top"><span>Consistency</span><span class="meter-v">Strong on two of four platforms checked</span></div><div class="bar"><i class="fill-build" style="width:50%"></i></div></div>
+ <p class="note">Clients describe quick sales and closings, patience walking them through their options, a smooth purchase during COVID and a relocation to Michigan. Facebook recommendations didn't surface in the audit.</p></div>
+ <div class="stack"><div class="callout"><strong>Why it matters:</strong> Google reviews feed Google Maps and Homes.com, and they're one of the first places AI tools look. With 29 closings a year, sending your Google link first would build a steady stream of fresh reviews that name Flat Rock and the towns around it.</div>
+ <div class="script"><p class="script-k">Copy and paste · Post-closing review request</p><p class="script-t">Congratulations again on [your new home / your sale]! If you have two minutes, a quick Google review would mean a lot and helps other families Downriver find someone they can trust. Here's the link: [your Google review link]. If you mention something specific, like the town or how the process went, that helps people most. Thank you for letting me be part of this.</p></div></div>
+</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p8">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>08</span></header>
+<p class="eyebrow">Brand Consistency</p>
+<h2 class="page-title">Does AI Know Where Mark Works Today?</h2>
+<div class="divider"></div>
+
+<div class="q-grid">
+ <div class="q"><p class="q-q">Who is he?</p><p class="q-a">An Associate Broker and Realtor since 2004, shown with RE/MAX Masters on most outside profiles</p><span class="chip chip-build">Needs updating</span></div>
+ <div class="q"><p class="q-q">Where does he serve?</p><p class="q-a">Sales in Flat Rock, Rockwood, Trenton, Wyandotte, Taylor and Huron Township</p><span class="chip chip-build">Shown by sales</span></div>
+ <div class="q"><p class="q-q">What is he known for?</p><p class="q-a">Smooth, low-stress deals for first-time buyers, move-up buyers, investors and estates</p><span class="chip chip-build">Ready to narrow</span></div>
+</div>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Element</th><th>What AI finds</th><th>Status</th></tr></thead><tbody><tr><td>Name</td><td>Mark Lizyness on every profile</td><td><span class="chip chip-strong">Consistent</span></td></tr><tr><td>Profile photo</td><td>Your Real Estate One site to copy from</td><td><span class="chip chip-build">Use it everywhere</span></td></tr><tr><td>Biography</td><td>Full bio on your site, none on Zillow or Homes.com</td><td><span class="chip chip-build">Add everywhere</span></td></tr><tr><td>Brokerage name</td><td>Real Estate One on your site, Homes.com and RateMyAgent · RE/MAX Masters on Zillow, LinkedIn, AgentPronto and Yelp</td><td><span class="chip chip-opp">Two names</span></td></tr><tr><td>Phone numbers</td><td>313-706-4420 on your site · 313-351-8381 on Homes.com · office 734-675-7500</td><td><span class="chip chip-opp">Three numbers</span></td></tr><tr><td>Office location</td><td>Trenton office on West Road · older listings on Telegraph Rd, Flat Rock</td><td><span class="chip chip-opp">Two addresses</span></td></tr><tr><td>Experience</td><td>Since 2004 on your site · 18 years on Homes.com · 22 on Zillow</td><td><span class="chip chip-build">Align</span></td></tr><tr><td>Website</td><td>markfindshomes.com points to your Real Estate One page</td><td><span class="chip chip-strong">Connected</span></td></tr></tbody></table></div>
+<div class="two-col">
+ <div class="callout"><strong>A lane worth claiming:</strong> clients most often mention fast sales and smooth closings, and your bio leads with growing up Downriver. "The Rockwood native who keeps the deal on track" is a specialty your reviews have already written. Check with your broker on how Real Estate One wants the office shown.</div>
+ <div class="script"><p class="script-k">Copy and paste · One-line bio to use everywhere</p><p class="script-t">Mark Lizyness is a Flat Rock and Downriver Associate Broker with Real Estate One, known for smooth, on-time closings. A Rockwood native and Realtor since 2004, he sold 29 homes in the last year across Wayne and Monroe Counties.</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p9">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>09</span></header>
+<p class="eyebrow">Local Authority</p>
+<h2 class="page-title">A Fast Market With Open Questions</h2>
+<div class="divider"></div>
+
+<div class="stat-row">
+ <div class="stat"><p class="stat-n">$290K</p><p class="stat-l">Flat Rock median price</p></div>
+ <div class="stat"><p class="stat-n">+11.7%</p><p class="stat-l">vs. a year ago</p></div>
+ <div class="stat"><p class="stat-n">14</p><p class="stat-l">median days on market</p></div>
+ <div class="stat"><p class="stat-n">102%</p><p class="stat-l">sale to list price</p></div>
+</div>
+<p class="tiny">Flat Rock median sale price, days on market and sale-to-list ratio for June 2026, Redfin. Monthly figures in a small city move around, so use them as a starting point.</p>
+<p class="mini-h">Published local authority today</p>
+<div class="la-grid"><div class="la"><span class="chip chip-build">Brokerage report</span><span>Market updates</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Neighborhood guides</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Community pages</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Local videos</span></div><div class="la"><span class="chip chip-opp">Open</span><span>School district content</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Buyer education</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Seller education</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Community involvement</span></div><div class="la"><span class="chip chip-opp">Open</span><span>Lifestyle content</span></div></div>
+<div class="callout"><strong>How this improves visibility:</strong> when someone asks which school district a Flat Rock address falls in, or what Downriver sellers should expect in 2026, AI quotes whoever wrote the clearest local answer. Today that space is filled by brokerage marketing pages and cash-buyer sites. You've answered these questions one client at a time for 22 years, and writing them down once lets AI repeat your answers for you.</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p10">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>10</span></header>
+<p class="eyebrow">AI Search Simulation</p>
+<h2 class="page-title">What Happens When Consumers Ask</h2>
+<div class="divider"></div>
+
+<div class="tbl-wrap"><table class="tbl sim"><thead><tr><th>What a consumer asks</th><th>Mark</th><th>What shows up</th></tr></thead><tbody><tr class="grp"><td colspan="3">Discovery · someone who doesn't know you yet</td></tr><tr><td>Best Realtor in Flat Rock, Michigan</td><td><span class="chip chip-opp">Not yet</span></td><td>Homes.com, HomeLight and Yelp agent lists</td></tr><tr><td>Best real estate agent near Flat Rock, MI</td><td><span class="chip chip-opp">Not yet</span></td><td>BiggerPockets, Ramsey and Yelp pages</td></tr><tr><td>Best listing agent in Flat Rock, MI</td><td><span class="chip chip-opp">Not yet</span></td><td>HomeLight, Angi and Yellow Pages lists</td></tr><tr><td>Realtor for first-time homebuyers Downriver / Wayne County</td><td><span class="chip chip-opp">Not yet</span></td><td>Local brokerage buyer guides and a lender page</td></tr><tr><td>Best luxury Realtor near Flat Rock or Grosse Ile</td><td><span class="chip chip-opp">Not yet</span></td><td>FastExpert Grosse Ile list, a Grosse Ile brokerage site</td></tr><tr><td>Realtor for relocation to Downriver</td><td><span class="chip chip-opp">Not yet</span></td><td>A brokerage office page, Yelp and Wikipedia</td></tr><tr><td>Who should I use to sell my home in Flat Rock?</td><td><span class="chip chip-opp">Not yet</span></td><td>HomeLight, Help-U-Sell and cash-buyer sites</td></tr><tr><td>Local Realtor vs. big brokerage in Flat Rock</td><td><span class="chip chip-opp">Not yet</span></td><td>Discount-brokerage rankings, no local agents</td></tr><tr class="grp"><td colspan="3">Branded · someone who already has your name</td></tr><tr><td>Mark Lizyness Real Estate One reviews</td><td><span class="chip chip-strong">Named</span></td><td>RateMyAgent and Homes.com reviews lead</td></tr><tr><td>Mark Lizyness Realtor Flat Rock, Michigan</td><td><span class="chip chip-strong">Named</span></td><td>Your RE/MAX profile leads, Real Estate One follows</td></tr><tr><td>Is Mark Lizyness a good Realtor?</td><td><span class="chip chip-strong">Named</span></td><td>Homes.com, your site and RateMyAgent</td></tr><tr><td>Mark Lizyness real estate license Michigan</td><td><span class="chip chip-build">Mentioned</span></td><td>Associate Broker title shown, no state record surfaced</td></tr></tbody></table></div>
+<div class="sim-foot"><p><b>Discovery:</b> named in 0 of 8. <b>Branded:</b> named in 3 of 4, mentioned in 1.</p><p class="tiny">All 12 queries in the audit bank, run October 9, 2026 through the web sources AI tools draw from. Results are directional and change month to month.</p></div>
+<div class="callout"><strong>The biggest opening:</strong> AgentPronto's Flat Rock page, one of the directories AI reads, already lists you second by recent sales with seven Flat Rock closings. It just shows RE/MAX Masters. With your current brokerage and your reviews attached, your profile has what it needs to join the lists that answer these questions.</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p11">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>11</span></header>
+<p class="eyebrow">Search Presence</p>
+<h2 class="page-title">Where Your Name Travels Online</h2>
+<div class="divider"></div>
+
+<div class="two-col wide-left">
+ <div><div class="meter"><div class="meter-top"><span>Google Search</span><span class="meter-v">Name plus Flat Rock returns your profiles, led by RE/MAX</span></div><div class="bar"><i class="fill-build" style="width:65%"></i></div></div><div class="meter"><div class="meter-top"><span>Google Maps</span><span class="meter-v">Local listings still show Telegraph Rd</span></div><div class="bar"><i class="fill-opp" style="width:30%"></i></div></div><div class="meter"><div class="meter-top"><span>AI results</span><span class="meter-v">Found when searched by name</span></div><div class="bar"><i class="fill-opp" style="width:20%"></i></div></div><div class="meter"><div class="meter-top"><span>Brokerage website</span><span class="meter-v">Real Estate One site with testimonials and listings</span></div><div class="bar"><i class="fill-strong" style="width:75%"></i></div></div><div class="meter"><div class="meter-top"><span>Directory listings</span><span class="meter-v">RateMyAgent, Homes.com, Zillow, AgentPronto, U.S. News</span></div><div class="bar"><i class="fill-build" style="width:60%"></i></div></div><div class="meter"><div class="meter-top"><span>Third-party mentions</span><span class="meter-v">RateMyAgent awards, no outside articles</span></div><div class="bar"><i class="fill-opp" style="width:35%"></i></div></div><div class="meter"><div class="meter-top"><span>Local news</span><span class="meter-v">No articles found</span></div><div class="bar"><i class="fill-opp" style="width:3%"></i></div></div><div class="meter"><div class="meter-top"><span>Industry websites</span><span class="meter-v">No association or chamber page found</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div></div>
+ <div class="stack">
+  <div class="callout"><strong>Why third-party mentions matter:</strong> AI trusts what other sites say about you more than what you say about yourself. One mention from a Downriver organization or newspaper carries more weight than a page you write.</div>
+  <div class="mini-card"><p class="mini-h">Three places to earn a mention</p><ul class="arrows">
+   <li>Southern Wayne County Regional Chamber: a member listing and a spotlight in its Downriver business network</li>
+   <li>Downtown Flat Rock news, run with the Flat Rock DDA, which covers local businesses and events like the Food Craft Rally</li>
+   <li>The News-Herald: a short note on your RateMyAgent Michigan Top 10 recognition</li></ul></div>
+ </div>
+</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p12">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>12</span></header>
+<p class="eyebrow">Local Content Evaluation</p>
+<h2 class="page-title">Three Pages That Would Change the Answer</h2>
+<div class="divider"></div>
+
+<div class="la-grid ten"><div class="la"><span class="chip chip-build">Brokerage feed</span><span>Market updates</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Neighborhood spotlights</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Community events</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>School information</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Local businesses</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Buying tips</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Selling tips</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>FAQs</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Moving advice</span></div><div class="la"><span class="chip chip-opp">Not yet</span><span>Home maintenance</span></div></div>
+<div class="starter">
+ <div class="st"><span class="st-n">1</span><p class="st-t">Flat Rock Schools or Airport Schools? Check the Address First</p><p class="st-d">Most of Flat Rock is served by Flat Rock Community Schools, while the Monroe County side falls under Airport Community Schools. Show buyers how to check before they make an offer.</p></div>
+ <div class="st"><span class="st-n">2</span><p class="st-t">Selling Downriver in 2026: What 102% of List Means for You</p><p class="st-d">Flat Rock homes sold in about two weeks at just over asking this summer. Walk sellers through pricing with real numbers from your own closings.</p></div>
+ <div class="st"><span class="st-n">3</span><p class="st-t">Growing Up in Rockwood: A Hometown Guide</p><p class="st-d">From a Gibraltar Carlson grad: Lake Erie Metropark, Pointe Mouillee, the Huron River and what sets Rockwood apart from Flat Rock next door.</p></div>
+</div>
+<p class="mini-h">A content calendar Flat Rock already hands you</p>
+<div class="cal-row"><div class="cal"><p class="cal-d">August</p><p class="cal-t">Food Craft Rally</p><p class="cal-p">Telegraph Rd, downtown Flat Rock</p></div><div class="cal"><p class="cal-d">October</p><p class="cal-t">Spooktacular and Trunk or Treat</p><p class="cal-p">An 11-year Flat Rock tradition</p></div><div class="cal"><p class="cal-d">Spring to fall</p><p class="cal-t">Flat Rock Speedway</p><p class="cal-p">Racing on Telegraph since 1953</p></div><div class="cal"><p class="cal-d">December</p><p class="cal-t">Shop Local holidays</p><p class="cal-p">Flat Rock DDA program</p></div></div>
+<p class="note">Why consistency matters: AI favors sources that keep publishing. One helpful local page every two weeks builds more trust than ten pages written in one weekend, and each page should name the town in its title.</p>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p13">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>13</span></header>
+<p class="eyebrow">Google Business Profile</p>
+<h2 class="page-title">The Single Biggest Quick Win</h2>
+<div class="divider"></div>
+
+<div class="gbp-top"><div class="gbp-badge"><p class="gbp-r">9</p><p class="gbp-s">★★★★★</p><p class="gbp-c">Google reviews</p></div>
+<p class="lede">Clients have already reviewed you on Google, and Homes.com pulls those reviews onto your profile. The local listings that surfaced in this audit still connect you to RE/MAX Masters at 28628 Telegraph Road, so a current Google Business Profile under Real Estate One gives AI a verified record of where you work today.</p></div>
+<div class="gb-grid"><div class="gb"><span class="chip chip-build">Confirm</span><div><p class="gb-n">Profile exists</p><p class="gb-d">Nine Google reviews found, so confirm you control the listing</p></div></div><div class="gb"><span class="chip chip-build">Update</span><div><p class="gb-n">Verification</p><p class="gb-d">Re-verify after the brokerage and address change</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Business description</p><p class="gb-d">Paste the description below</p></div></div><div class="gb"><span class="chip chip-build">Check</span><div><p class="gb-n">Categories</p><p class="gb-d">Primary: Real estate agent</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Photos</p><p class="gb-d">Headshot, sold homes, downtown Flat Rock, Oakwoods Metropark</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Google Posts</p><p class="gb-d">One post a week, starting with a new local page</p></div></div><div class="gb"><span class="chip chip-build">Grow</span><div><p class="gb-n">Reviews</p><p class="gb-d">Send your Google link first after every closing</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Service areas</p><p class="gb-d">Flat Rock, Rockwood, Trenton, Gibraltar, Brownstown, Woodhaven, Wyandotte, Taylor, Huron Township</p></div></div><div class="gb"><span class="chip chip-opp">Add</span><div><p class="gb-n">Questions and answers</p><p class="gb-d">Add common buyer questions to posts and your description</p></div></div></div>
+<div class="script"><p class="script-k">Copy and paste · Business description</p><p class="script-t">Mark Lizyness is an Associate Broker with Real Estate One helping buyers and sellers in Flat Rock, Rockwood, Trenton, Gibraltar, Brownstown and the Downriver communities of Wayne and Monroe Counties. A Rockwood native and Realtor since 2004, Mark works with first-time buyers, move-up buyers, investors and families selling an estate, and he's known for keeping every deal smooth and on schedule.</p></div>
+<p class="tiny">Adjust the towns to the ones you serve, and check Real Estate One's policy on individual agent profiles before you publish.</p>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p14">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>14</span></header>
+<p class="eyebrow">Social Presence</p>
+<h2 class="page-title">The Channels Are Open. Now Point Them Home.</h2>
+<div class="divider"></div>
+
+<div class="plat-grid"><div class="plat"><p class="plat-n">Facebook</p><p class="plat-c">Linked</p><p class="plat-d">Personal profile linked from your site</p><span class="chip chip-build">Add a business page</span></div><div class="plat"><p class="plat-n">LinkedIn</p><p class="plat-c">2 profiles</p><p class="plat-d">Both still show RE/MAX Masters</p><span class="chip chip-opp">Merge into one</span></div><div class="plat"><p class="plat-n">Instagram</p><p class="plat-c">@marklizyness</p><p class="plat-d">Linked from your site</p><span class="chip chip-build">Add local posts</span></div><div class="plat"><p class="plat-n">YouTube</p><p class="plat-c">Channel</p><p class="plat-d">Videos weren't readable in the audit</p><span class="chip chip-build">Add town names</span></div></div>
+<div class="two-col">
+ <div><div class="meter"><div class="meter-top"><span>Posting consistency</span></div><div class="bar"><i class="fill-opp" style="width:25%"></i></div></div><div class="meter"><div class="meter-top"><span>Professional branding</span></div><div class="bar"><i class="fill-opp" style="width:30%"></i></div></div><div class="meter"><div class="meter-top"><span>Consumer education</span></div><div class="bar"><i class="fill-opp" style="width:15%"></i></div></div><div class="meter"><div class="meter-top"><span>Local relevance</span></div><div class="bar"><i class="fill-opp" style="width:20%"></i></div></div><div class="meter"><div class="meter-top"><span>Overall effectiveness</span></div><div class="bar"><i class="fill-opp" style="width:22%"></i></div></div><p class="tiny">Based on what's publicly visible to search tools. Personal accounts and private posts aren't readable from outside, so these are estimates.</p>
+ <div class="callout" style="margin-top:12px"><strong>Start with LinkedIn:</strong> merge the two profiles into one titled "Mark Lizyness | Flat Rock &amp; Downriver Realtor, Real Estate One" so AI finds one current version of you.</div></div>
+ <div class="mini-card"><p class="mini-h">A simple monthly rhythm</p><ul class="arrows">
+  <li><b>Week 1:</b> share your newest local page on Facebook and LinkedIn</li>
+  <li><b>Week 2:</b> a 60-second phone video from Oakwoods Metropark, the Huron River or downtown Flat Rock</li>
+  <li><b>Week 3:</b> a closing story (with the client's permission)</li>
+  <li><b>Week 4:</b> a community event, like the Food Craft Rally or a night at Flat Rock Speedway</li></ul>
+  <p class="note">Every post links back to your Real Estate One site, so the signals all point to one place.</p></div>
+</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p15">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>15</span></header>
+<p class="eyebrow">Your Community Footprint</p>
+<h2 class="page-title">Known by Clients, Ready to Be Known Around Town</h2>
+<div class="divider"></div>
+
+<div class="fp-top"><div class="fp-score"><svg class="ring" viewBox="0 0 130 130" width="130" height="130" role="img" aria-label="Community Footprint 28 out of 100">
+<circle cx="65.0" cy="65.0" r="58.0" fill="none" stroke="var(--light-gray)" stroke-width="12"/>
+<circle cx="65.0" cy="65.0" r="58.0" fill="none" class="arc-opp" stroke-width="12" stroke-linecap="round"
+ stroke-dasharray="102.0 364.4" transform="rotate(-90 65.0 65.0)"/>
+<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" fill="var(--navy)" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="39">28</text>
+</svg><p class="band-label">Emerging</p><p class="tiny">Community Footprint Score</p></div>
+<div class="fp-bars"><div class="meter"><div class="meter-top"><span>Sales history online</span><span class="meter-v">70</span></div><div class="bar"><i class="fill-strong" style="width:70%"></i></div></div><div class="meter"><div class="meter-top"><span>Client stories online</span><span class="meter-v">75</span></div><div class="bar"><i class="fill-strong" style="width:75%"></i></div></div><div class="meter"><div class="meter-top"><span>Neighborhood content</span><span class="meter-v">5</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div><div class="meter"><div class="meter-top"><span>School district know-how published</span><span class="meter-v">10</span></div><div class="bar"><i class="fill-opp" style="width:10%"></i></div></div><div class="meter"><div class="meter-top"><span>Chamber and local groups online</span><span class="meter-v">5</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div><div class="meter"><div class="meter-top"><span>Media and partner mentions</span><span class="meter-v">5</span></div><div class="bar"><i class="fill-opp" style="width:5%"></i></div></div></div></div>
+<div class="flow"><div class="fl">Community Involvement</div><div class="fl">Local Content</div><div class="fl">Search Visibility</div><div class="fl">AI Understanding</div><div class="fl">Consumer Trust</div></div>
+<div class="pl-grid"><div class="pl"><p class="pl-k">Schools</p><p class="pl-v">Flat Rock Community · Airport Community · Gibraltar · Woodhaven-Brownstown · Trenton · Wyandotte</p></div><div class="pl"><p class="pl-k">Parks</p><p class="pl-v">Oakwoods Metropark · Lake Erie Metropark · Pointe Mouillee State Game Area · Flat Rock Memorial Park</p></div><div class="pl"><p class="pl-k">Events</p><p class="pl-v">Food Craft Rally · Spooktacular and Trunk or Treat · Flat Rock Speedway · Shop Local holidays</p></div><div class="pl"><p class="pl-k">New homes</p><p class="pl-v">Trail Creek and Village of Fox River in New Boston (Huron Township)</p></div><div class="pl"><p class="pl-k">Organizations</p><p class="pl-v">Southern Wayne County Regional Chamber · Flat Rock DDA · Flat Rock Historical Society</p></div><div class="pl"><p class="pl-k">Employers</p><p class="pl-v">Ford Flat Rock Assembly Plant · Detroit Metro Airport</p></div></div>
+<div class="script"><p class="script-k">Copy and paste · Pitch to the Chamber or a local partner</p><p class="script-t">Hi [Name], I'm an Associate Broker with Real Estate One, and I've helped Downriver families buy and sell since 2004 (I grew up in Rockwood). I'd love to be considered for your [member spotlight / preferred agent page / community feature]. Happy to send a short bio, a headshot and a few client reviews, whatever's easiest on your end.</p></div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page dark" id="p16">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>16</span></header>
+<p class="eyebrow">Three Biggest Opportunities</p>
+<h2 class="page-title">The Moves That Change the Answer</h2>
+<div class="divider"></div>
+<div class="moves"><div class="move"><p class="move-rank">1</p><p class="move-title">Put Real Estate One on Every Profile</p><p class="move-body">Update Zillow, AgentPronto, Yelp and LinkedIn with the same bio, photo, cell number and Trenton office.</p>
+<p class="move-why"><b>Why it matters:</b> 53 Zillow reviews and a number two Flat Rock ranking still point to RE/MAX. Updating them points that trust at where you work today.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Easy</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">2 to 3 hours</p></div></div></div><div class="move"><p class="move-rank">2</p><p class="move-title">Bring Google Up to Date and Send Reviews There</p><p class="move-body">Confirm your Google Business Profile, switch it to Real Estate One, and send your Google link first after every closing.</p>
+<p class="move-why"><b>Why it matters:</b> Google shows nine reviews from 2023, and 29 closings a year could add fresh ones every month.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Easy</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">1 hour to set up, 10 minutes per closing</p></div></div></div><div class="move"><p class="move-rank">3</p><p class="move-title">Become Flat Rock's Local Answer</p><p class="move-body">Publish the three local pages on page 12, then one new Flat Rock or Downriver page every two weeks.</p>
+<p class="move-why"><b>Why it matters:</b> Every cold question in the audit is answered by a directory or a cash buyer today. Local answers are how you get named.</p>
+<div class="move-meta"><div><p class="mm-k">Impact</p><p class="mm-v">High</p></div><div><p class="mm-k">Difficulty</p><p class="mm-v">Moderate</p></div><div class="mm-wide"><p class="mm-k">Time</p><p class="mm-v">About 2 hours per page</p></div></div></div></div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p17">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>17</span></header>
+<p class="eyebrow">90-Day Action Plan</p>
+<h2 class="page-title">One Month at a Time</h2>
+<div class="divider"></div>
+
+<div class="timeline"><span class="tl-dot"></span><span class="tl-line"></span><span class="tl-dot"></span><span class="tl-line"></span><span class="tl-dot"></span></div>
+<div class="phases"><div class="phase"><p class="phase-l">Month One</p><p class="phase-t">Quick Wins</p><ul class="phase-i"><li>Paste the updated bio into Zillow and Homes.com</li><li>Use one cell number and the Trenton office everywhere</li><li>Confirm and update your Google Business Profile</li><li>Send Google review requests to clients from the last 12 months</li><li>Ask Real Estate One how it wants the office shown</li></ul></div><div class="phase"><p class="phase-l">Month Two</p><p class="phase-t">Authority Building</p><ul class="phase-i"><li>Update AgentPronto, U.S. News and Yelp</li><li>Merge your two LinkedIn profiles into one</li><li>Publish "Flat Rock Schools or Airport Schools?"</li><li>Publish "Selling Downriver in 2026"</li><li>Ask the Southern Wayne County Regional Chamber about a member spotlight</li></ul></div><div class="phase"><p class="phase-l">Month Three</p><p class="phase-t">Content Consistency</p><ul class="phase-i"><li>Publish "Growing Up in Rockwood"</li><li>Start a monthly Flat Rock and Downriver market update</li><li>Post one short local video each month</li><li>Share your RateMyAgent recognition with The News-Herald</li><li>Re-run this audit and compare the trend</li></ul></div></div>
+<div class="callout"><strong>Keep score:</strong> add "Where did you first hear about me?" to every first conversation. The trend over three months tells you more than any single score.</div>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p18">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>18</span></header>
+<p class="eyebrow">AI Visibility Roadmap</p>
+<h2 class="page-title">From 125 Reviews to the Local Answer</h2>
+<div class="divider"></div>
+
+<div class="roadmap"><div class="rm here"><span class="rm-n">1</span><span class="rm-t">Current Visibility</span><span class="rm-you">You are here · 28</span></div><div class="rm"><span class="rm-n">2</span><span class="rm-t">Better Google Presence</span></div><div class="rm"><span class="rm-n">3</span><span class="rm-t">More Local Authority</span></div><div class="rm"><span class="rm-n">4</span><span class="rm-t">More Helpful Content</span></div><div class="rm"><span class="rm-n">5</span><span class="rm-t">Stronger AI Understanding</span></div><div class="rm"><span class="rm-n">6</span><span class="rm-t">Greater Consumer Trust</span></div><div class="rm"><span class="rm-n">7</span><span class="rm-t">More Conversations</span></div></div>
+<p class="lede center">Each step builds on the one before it. The first two are almost entirely within your control this month, and they make everything after them work better.</p>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="page" id="p19">
+<header class="page-head"><span>AI Visibility Index · Realtor Edition</span><span>19</span></header>
+<p class="eyebrow">Additional Resources</p>
+<h2 class="page-title">Optional Next Steps</h2>
+<div class="divider"></div>
+
+<p class="lede">These guides from the Business Growth Library go deeper on each recommendation, whenever you're ready.</p>
+<div class="res-grid"><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/google-business-profile/" target="_blank" rel="noopener"><p class="res-t">Google Visibility Blueprint</p><p class="res-d">Claiming and completing a Google Business Profile that AI and consumers trust.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/local-authority-blueprint/" target="_blank" rel="noopener"><p class="res-t">Local Authority Blueprint</p><p class="res-d">Turning neighborhood and market knowledge into published local pages.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/hometown-podcast-playbook/" target="_blank" rel="noopener"><p class="res-t">Hometown Podcast Playbook</p><p class="res-d">Community conversations that earn outside mentions and local trust.</p><span class="res-go">Open resource →</span></a><a class="res" href="https://bsnyder614.github.io/Reports/business-growth-library/closing-table-review-playbook/" target="_blank" rel="noopener"><p class="res-t">Closing Table Review Playbook</p><p class="res-d">A repeatable way to turn every closing into a fresh review on more than one site.</p><span class="res-go">Open resource →</span></a></div>
+<div class="gloss"><div><p class="gl-t">Discovery search</p><p class="gl-d">Searching for a type of help, not a name, like "best Realtor near me."</p></div><div><p class="gl-t">Branded search</p><p class="gl-d">Searching for a Realtor by name.</p></div><div><p class="gl-t">NAP consistency</p><p class="gl-d">Name, address and phone matching exactly on every site.</p></div><div><p class="gl-t">Fragmented identity</p><p class="gl-d">When one agent's name is split across profiles that disagree, like an earlier brokerage and a current one.</p></div></div>
+<p class="tiny">General guidance, not legal advice. Confirm review, advertising and individual-profile rules with your broker, and keep Fair Housing and Michigan license display rules in mind for anything you publish.</p>
+<footer class="page-foot"><span>Prepared for Mark Lizyness · Flat Rock &amp; Downriver, Michigan</span><span>Business Growth Library</span></footer>
+</section>
+<section class="back" id="p20">
+<h2>125 Five-Star Reviews.<br><span>Next, Found by Question.</span></h2>
+<p>Mark's clients already say he sells quickly and keeps every deal on track. The next step is making sure the tools Downriver buyers ask first can say his name too, and it's a conversation worth continuing whenever you're ready.</p>
+<div class="cover-divider"></div>
+<p class="cover-branding">Brian Snyder</p>
+<p class="back-l">Building Better Businesses. Building Better Lives.</p>
+<p class="back-c">614-306-3051 · bsnyder@uhm.com</p>
+</section>
+</main></body></html>
